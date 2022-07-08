@@ -727,10 +727,26 @@ class Order extends CI_Controller {
 			//array_push($order, $data);
 		}
 
+		$count_all = $this->db->count_all('tb_rekapitulasi');
+		$offset = ($count_all / 2) - 1;
+
+		$c1 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` DESC")->row_array();
+		$c2;
+		if($offset == 0){
+			$c2 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC LIMIT 1")->row_array();
+		}else{
+			$c2 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC LIMIT 1 OFFSET '$offset'")->row_array();
+		}
+		
+		$c3 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC")->row_array();
+
 		$data['title']		= 'Rekapitulasi Order';
 		$data['month_c'] = $month;
 		$data['month']		= $this->db->query("SELECT DATE_FORMAT(tgl_order, '%Y-%m') as tgl1, DATE_FORMAT(tgl_order, '%M %Y') as tgl FROM tb_order GROUP BY DATE_FORMAT(tgl_order, '%M %Y') order by tgl_order ASC")->result_array();
 		$data['order'] = $this->db->query("SELECT * FROM tb_rekapitulasi JOIN tb_pelanggan ON(tb_rekapitulasi.id_pelanggan=tb_pelanggan.id_pelanggan)")->result_array();
+		$data['c_c1'] = [$c1['jas'], $c1['jaket'], $c1['kaos'], $c1['kemeja'], $c1['sweater']];
+		$data['c_c2'] = [$c2['jas'], $c2['jaket'], $c2['kaos'], $c2['kemeja'], $c2['sweater']];
+		$data['c_c3'] = [$c3['jas'], $c3['jaket'], $c3['kaos'], $c3['kemeja'], $c3['sweater']];
 
 		$this->load->view('order/data_rekapitulasi', $data);
 	}

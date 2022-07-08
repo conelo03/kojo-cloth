@@ -75,11 +75,7 @@
         </div>
       </div>
     </div>
-    <?php
-      $c_c1 = [0, 0, 286, 0, 0];
-      $c_c2 = [0, 92, 0, 32, 0];
-      $c_c3 = [17, 0, 8, 0, 0];
-    ?>
+
     <div class="section-body">
       <div class="row">
         <div class="col-12">
@@ -183,7 +179,7 @@
                       <td class="text-center" colspan="5" bgcolor="<?= $hc2 == $min_hc ? '#FFFF00' : '' ?>">
                         <?= $hc2; ?>
                       </td>
-                      <td class="text-center" colspan="5" bgcolor="<?= $hc3 == $min_hc ? '#FFF00' : '' ?>">
+                      <td class="text-center" colspan="5" bgcolor="<?= $hc3 == $min_hc ? '#FFFF00' : '' ?>">
                         <?= $hc3; ?>
                       </td>
                     </tr>

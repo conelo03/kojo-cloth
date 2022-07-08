@@ -162,7 +162,7 @@
                       <td class="text-center" colspan="5" bgcolor="<?= $hc2 == $min_hc ? '#FFFF00' : '' ?>">
                         <?= $hc2; ?>
                       </td>
-                      <td class="text-center" colspan="5" bgcolor="<?= $hc3 == $min_hc ? '#FFF00' : '' ?>">
+                      <td class="text-center" colspan="5" bgcolor="<?= $hc3 == $min_hc ? '#FFFF00' : '' ?>">
                         <?= $hc3; ?>
                       </td>
                     </tr>
