@@ -64,17 +64,15 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
             <?php endif;?>
 
 
-            <?php if(is_admin() || is_k_marketing() || is_marketing() || is_produksi() || is_owner()):?>
             <li class="menu-header">Data Order</li>   
             <li class="nav-item dropdown <?= $title == 'Order Belum Dikonfirmasi' || $title == 'Data Order' ? 'active' : ''; ?>">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-cart-plus"></i> <span>Data Order</span></a>
               <ul class="dropdown-menu">
                 <li class="<?= $title == 'Order Belum Dikonfirmasi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('all-order');?>">Order Belum Dikonfirmasi</a></li>
-                <li class="<?= $title == 'Data Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('order');?>"><?= is_admin() || is_produksi() || is_owner() ? 'Data Order' : 'My Order' ?></a></li>
+                <li class="<?= $title == 'Data Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('order');?>"><?= is_admin() || is_produksi() || is_owner() || is_keuangan() || is_purchase() ? 'Data Order' : 'My Order' ?></a></li>
               </ul>
             </li> 
-            <li class="<?= $title == 'Riwayat Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('riwayat-order');?>"><i class="fas fa-list"></i> <span>Riwayat Order</span></a></li> 
-            <?php endif;?>    
+            <li class="<?= $title == 'Riwayat Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('riwayat-order');?>"><i class="fas fa-list"></i> <span>Riwayat Order</span></a></li>    
             
             <?php if(is_admin() || is_k_marketing()):?>  
               <li class="<?= $title == 'Rekapitulasi Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('rekapitulasi-order');?>"><i class="fas fa-calendar"></i> <span>Rekapitulasi Order</span></a></li> 

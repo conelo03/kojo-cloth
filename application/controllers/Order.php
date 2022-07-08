@@ -18,7 +18,7 @@ class Order extends CI_Controller {
 	public function index()
 	{
     $data['title']		= 'Data Order';
-		$data['order']		= $this->M_order->get_data(is_admin() || is_produksi() || is_owner() ? null : $this->session->userdata('id_pegawai'), null, true)->result_array();
+		$data['order']		= $this->M_order->get_data(is_admin() || is_produksi() || is_owner() || is_keuangan() || is_purchase() ? null : $this->session->userdata('id_pegawai'), null, true)->result_array();
 		$this->load->view('order/data', $data);
 	}
 
