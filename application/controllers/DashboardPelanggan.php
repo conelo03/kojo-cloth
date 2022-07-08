@@ -72,7 +72,7 @@ class DashboardPelanggan extends CI_Controller {
 				redirect('ulasan-order/'.$id_order);
 			} else {
 				$this->session->set_flashdata('msg', 'success');
-				redirect('riwayat-order');
+				redirect('riwayat-order-pelanggan');
 			}
 		}
 		

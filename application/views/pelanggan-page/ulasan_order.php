@@ -46,7 +46,7 @@
               </div>
 
               <div class="card-footer text-right">
-                <a href="<?= base_url('riwayat-order');?>" class="btn btn-light"><i class="fa fa-arrow-left"></i> Kembali</a>
+                <a href="<?= base_url('riwayat-order-pelanggan');?>" class="btn btn-light"><i class="fa fa-arrow-left"></i> Kembali</a>
                 <button type="reset" class="btn btn-danger"><i class="fa fa-sync"></i> Reset</button>
                 <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Simpan</button>
               </div>
