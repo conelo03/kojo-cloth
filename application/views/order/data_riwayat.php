@@ -30,6 +30,7 @@
                       <th>Produk</th>
                       <th>Jumlah</th>
                       <th>Nama Marketing</th>
+                      <th>Ulasan</th>
                       <th class="text-center" style="width: 200px;">Aksi</th>
                     </tr>
                   </thead>
@@ -54,8 +55,22 @@
                         XXL : <?= $u['jumlah_ukuran_xxl'];?>
                       </td>
                       <td><?= $u['nama'];?></td>
+                      <td>
+                        <?php 
+                          if ($u['rate'] != 0 || $u['rate'] != NULL) {
+                            for ($i=1; $i <= 5; $i++) { 
+                              if ($i <= $u['rate']) {?>
+                                <span class="fa fa-star" style="color: orange"></span>
+                              <?php } else { ?>
+                                <span class="fa fa-star"></span>
+                              <?php }
+                            }
+                          }
+                        ?>
+                        <br/><?= $u['ulasan'] ?>
+                      </td>
                       <td class="text-center">
-                        <a href="<?= base_url('cetak-order/'.$u['id_order']);?>" class="btn btn-info"><i class="fa fa-print"></i> Print</a>
+                        <a href="<?= base_url('detail-order/'.$u['id_order']);?>" class="btn btn-light"><i class="fa fa-eye"></i> Detail</a>
                       </td>
                     </tr>
                     <?php endforeach;?>

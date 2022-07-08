@@ -9,7 +9,7 @@ class Order extends CI_Controller {
 		if($this->session->userdata('login') != TRUE)
 		{
 			set_pesan('Silahkan login terlebih dahulu', false);
-			redirect('');
+			redirect('administrator');
 		}
 		date_default_timezone_set("Asia/Jakarta");
 		$this->load->library('upload');
@@ -18,8 +18,40 @@ class Order extends CI_Controller {
 	public function index()
 	{
     $data['title']		= 'Data Order';
-		$data['order']		= $this->M_order->get_data(null, null, true)->result_array();
+		$data['order']		= $this->M_order->get_data(is_admin() || is_produksi() || is_owner() ? null : $this->session->userdata('id_pegawai'), null, true)->result_array();
 		$this->load->view('order/data', $data);
+	}
+
+	public function all()
+	{
+    $data['title']		= 'Order Belum Dikonfirmasi';
+		$this->db->select('*');
+		$this->db->from('tb_order');
+		$this->db->join('tb_produk', 'tb_produk.id_produk=tb_order.id_produk');
+		$this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan=tb_order.id_pelanggan');
+		$this->db->where('tb_order.id_pegawai =', 0);
+		$data['order']		= $this->db->get()->result_array();
+		$this->load->view('order/data_all', $data);
+	}
+
+	public function detail_all($id_order)
+	{
+    $data['title']		= 'Order Belum Dikonfirmasi';
+		$data['order']		= $this->M_order->get_all_by_id($id_order);
+		$this->load->view('order/detail_all', $data);
+	}
+
+	public function confirm($id_order)
+	{
+		$data = [
+			'id_pegawai' => $this->session->userdata('id_pegawai'),
+			'status_order'			=> 0,
+		];
+		$this->db->where('id_order', $id_order);
+		$this->db->update('tb_order', $data);
+		$this->add_detail_order($id_order);
+		$this->session->set_flashdata('msg', 'confirm');
+		redirect('order');
 	}
 
 	public function riwayat()
@@ -27,6 +59,13 @@ class Order extends CI_Controller {
     $data['title']		= 'Riwayat Order';
 		$data['order']		= $this->M_order->get_data_riwayat()->result_array();
 		$this->load->view('order/data_riwayat', $data);
+	}
+
+	public function laporan()
+	{
+    $data['title']		= 'Laporan Order';
+		$data['order']		= $this->M_order->get_data_riwayat()->result_array();
+		$this->load->view('order/data_laporan', $data);
 	}
 
 	public function tambah()
@@ -646,4 +685,165 @@ class Order extends CI_Controller {
 		$this->session->set_flashdata('msg', 'hapus');
 		redirect('detail-order/'.$id_order);
 	}
+
+	public function klasterisasi()
+	{
+		$this->db->truncate('tb_rekapitulasi');
+    $data['title']		= 'Rangkum Order';
+		$post_m = $this->input->post('month');
+		if(empty($post_m)){
+			$month = date('Y-m');
+		} else {
+			$month = $post_m;
+		}
+
+		$pelanggan = $this->db->query("SELECT * FROM tb_pelanggan join tb_order ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) WHERE tb_order.tgl_order LIKE '2022-04%' GROUP BY tb_pelanggan.id_pelanggan")->result_array();
+
+		$order = [];
+		foreach ($pelanggan as $p) {
+			$id_pelanggan = $p['id_pelanggan'];
+			$jaket = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Jaket' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$kaos = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Kaos' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$jas = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Jas' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$kemeja = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Kemeja' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$sweater = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Sweater' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$jaket = is_null($jaket['jumlah']) ? 0 : (int)$jaket['jumlah'];
+			$kaos = is_null($kaos['jumlah']) ? 0 : (int)$kaos['jumlah'];
+			$jas = is_null($jas['jumlah']) ? 0 : (int)$jas['jumlah'];
+			$kemeja = is_null($kemeja['jumlah']) ? 0 : (int)$kemeja['jumlah'];
+			$sweater = is_null($sweater['jumlah']) ? 0 : (int)$sweater['jumlah'];
+			$data = [
+				'id_pelanggan' => $id_pelanggan,
+				'jaket' => $jaket,
+				'kaos' => $kaos,
+				'jas' => $jas,
+				'kemeja' => $kemeja,
+				'sweater' => $sweater,
+				'total' => $jaket+$kaos+$jas+$kemeja+$sweater,
+			];
+
+			$this->db->insert('tb_rekapitulasi', $data);
+
+			//array_push($order, $data);
+		}
+
+		$data['title']		= 'Rekapitulasi Order';
+		$data['month_c'] = $month;
+		$data['month']		= $this->db->query("SELECT DATE_FORMAT(tgl_order, '%Y-%m') as tgl1, DATE_FORMAT(tgl_order, '%M %Y') as tgl FROM tb_order GROUP BY DATE_FORMAT(tgl_order, '%M %Y') order by tgl_order ASC")->result_array();
+		$data['order'] = $this->db->query("SELECT * FROM tb_rekapitulasi JOIN tb_pelanggan ON(tb_rekapitulasi.id_pelanggan=tb_pelanggan.id_pelanggan)")->result_array();
+
+		$this->load->view('order/data_rekapitulasi', $data);
+	}
+
+	public function klasterisasi_next()
+	{    
+    $id = "";
+    $id = $this->db->query('select max(nomor) as m from tb_hasil_centroid');
+    foreach($id->result() as $i)
+    {
+      $id = $i->m;
+    }
+    $this->db->where('nomor', $id);
+    $data['centroid'] = $this->db->get('tb_hasil_centroid')->row_array();
+    $data['id'] = $id+1;
+    
+    $it = "";
+    $it = $this->db->query('select max(iterasi) as it from tb_centroid_temp');
+    foreach($it->result() as $i)
+    {
+      $it = $i->it;
+    }
+    
+    $it_temp = $it-1;
+    $this->db->where('iterasi', $it_temp);
+    $it_sebelum = $this->db->get('tb_centroid_temp');
+    $c1_sebelum = array();
+    $c2_sebelum = array();
+    $c3_sebelum = array();
+    $no=0;
+    foreach($it_sebelum->result() as $it_prev)
+    {
+      $c1_sebelum[$no] = $it_prev->c1;
+      $c2_sebelum[$no] = $it_prev->c2;
+      $c3_sebelum[$no] = $it_prev->c3;
+      $no++;
+    }
+    
+    $this->db->where('iterasi', $it);
+    $it_sesesudah = $this->db->get('tb_centroid_temp');
+    $c1_sesesudah = array();
+    $c2_sesesudah = array();
+    $c3_sesesudah = array();
+    $no=0;
+    foreach($it_sesesudah->result() as $it_next)
+    {
+      $c1_sesesudah[$no] = $it_next->c1;
+      $c2_sesesudah[$no] = $it_next->c2;
+      $c3_sesesudah[$no] = $it_next->c3;
+      $no++;
+    }
+    
+    if($c1_sebelum==$c1_sesesudah && 
+      $c2_sebelum==$c2_sesesudah && 
+      $c3_sebelum==$c3_sesesudah  )
+    {
+      echo $this->session->set_flashdata('msg','iterasi-selesai');
+      redirect('rekapitulasi-order-end');
+    }
+    else
+    {
+			$data['title'] = "Rekapitulasi Order";
+			$data['order'] = $this->db->query("SELECT * FROM tb_rekapitulasi JOIN tb_pelanggan ON(tb_rekapitulasi.id_pelanggan=tb_pelanggan.id_pelanggan)")->result_array();
+      $this->load->view('order/data_rekapitulasi_next', $data); 
+    }
+    
+  }
+	
+	function klasterisasi_end()
+  {
+    $data['title'] = "Rekapitulasi Order";
+    $data['order'] = $this->db->query("SELECT * FROM tb_rekapitulasi JOIN tb_pelanggan ON(tb_rekapitulasi.id_pelanggan=tb_pelanggan.id_pelanggan)")->result_array();
+
+    $data['q'] = $this->db->query('SELECT * from tb_centroid_temp group by iterasi')->result_array();
+    $get_max = $this->db->query("SELECT max(iterasi) as iterasi from tb_centroid_temp")->row();
+    $max = $get_max->iterasi;
+    $iterasi = $this->db->query("SELECT * from tb_centroid_temp where iterasi='$max' ")->result_array();
+    $id_pelangan = array();
+    $instansi = array();
+
+    foreach ($data['order'] as $a) {
+      $id_pelangan[]=$a['id_pelanggan'];
+      $instansi[]=$a['instansi'];
+    }
+
+    $no = 0;
+    foreach ($iterasi as $i) {
+      $id_pelanggan = $id_pelangan[$no];
+      $instansi = $instansi[$no];
+
+      if($i['c1'] == 1){
+        $klaster = 'C1';
+      } elseif($i['c2'] == 1){
+        $klaster = 'C2';
+      } elseif($i['c3'] == 1){
+        $klaster = 'C3';
+      }
+
+
+      $hasil['id_pelanggan'] = $id_pelanggan;
+      $hasil['instansi'] = $instansi;
+      $hasil['klaster'] = $klaster;
+
+      $this->db->insert('tb_hasil_klasterisasi', $hasil);
+      $no++;
+    }
+
+		$this->db->select('*');
+		$this->db->from('tb_hasil_klasterisasi');
+		$this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan=tb_hasil_klasterisasi.id_pelanggan');
+		$this->db->join('tb_kota', 'tb_kota.id_kota=tb_pelanggan.id_kota');
+    $data['hasil_klasterisasi'] = $this->db->get()->result_array();
+
+    $this->load->view('order/data_rekapitulasi_end', $data); 
+  }
 }

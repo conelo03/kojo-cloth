@@ -127,7 +127,7 @@
                         <?php if (empty($order['design_order'])) {
                           echo "Tidak ada gambar.";
                         } else { ?>
-                        <img src="<?= base_url('assets/upload/design_order/'.$order['design_order']) ?>" class="img"/>
+                        <img src="<?= base_url('assets/upload/design_order/'.$order['design_order']) ?>" class="img" width="100%"/>
                         <?php } ?>
                       </h6>
                     </div>

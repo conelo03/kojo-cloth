@@ -36,13 +36,13 @@ class Login extends CI_Controller {
 			else 
 			{
 				set_pesan('Username atau password salah', false);
-				redirect('');
+				redirect('administrator');
 			}
 		} 
 		else 
 		{
 			set_pesan('Username tidak terdaftar', false);
-			redirect('');
+			redirect('administrator');
 		}
 	}
 
@@ -54,6 +54,6 @@ class Login extends CI_Controller {
 		$this->session->unset_userdata('username');
 		$this->session->unset_userdata('akses');
 		set_pesan('Anda telah keluar', true);
-		redirect('');
+		redirect('administrator');
 	}
 }

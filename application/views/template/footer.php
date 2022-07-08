@@ -30,6 +30,51 @@
   <!-- Page Specific JS File -->
   <script src="<?= base_url(); ?>assets/js/page/index-0.js"></script>
   <script type="text/javascript">
+    $(document).ready(function(){
+      
+      $("#select-pegawai").change(function(){ 
+      
+        $.ajax({
+          type: "POST", 
+          url: "<?= base_url("Pegawai/get_gaji"); ?>", 
+          data: {id_pegawai : $("#select-pegawai").val()}, 
+          async : true,
+          dataType: "JSON",
+          success: function(res) {
+            console.log(res);
+            if(res.response === true){
+              document.getElementById("gaji_pokok").setAttribute('value',res.data.gaji_pokok);
+              $('#item-error').html('');
+            } else {
+              $('#item-error').html('Item tidak ditemukan!');
+              document.getElementById("gaji_pokok").setAttribute('value', '');
+            }
+          }, 
+        });
+      });
+
+      $("#select-order").change(function(){ 
+      
+        $.ajax({
+          type: "POST", 
+          url: "<?= base_url("Pendapatan_order/get_order"); ?>", 
+          data: {id_order : $("#select-order").val()}, 
+          async : true,
+          dataType: "JSON",
+          success: function(res) {
+            console.log(res);
+            if(res.response === true){
+              document.getElementById("keterangan").setAttribute('value',res.data.keterangan);
+              $('#item-error').html('');
+            } else {
+              $('#item-error').html('Item tidak ditemukan!');
+              document.getElementById("keterangan").setAttribute('value', '');
+            }
+          }, 
+        });
+      });
+    });
+
     $(document).ready( function () {
       $('#datatables-user').DataTable({
         "ordering": false,
@@ -79,6 +124,9 @@
       $('#select-pejabat').selectpicker({
         search : true,
       });
+      $('#select-order').selectpicker({
+        search : true,
+      });
     });
 
   </script>
@@ -87,6 +135,22 @@
       iziToast.success({
           title: 'Sukses!',
           message: 'Data berhasil disimpan!',
+          position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+      });
+    </script>
+  <?php elseif($this->session->flashdata('msg')=='iterasi-selesai'):?>
+    <script type="text/javascript">
+      iziToast.success({
+          title: 'Sukses!',
+          message: 'Iterasi Selesai!',
+          position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+      });
+    </script>
+  <?php elseif($this->session->flashdata('msg')=='confirm'):?>
+    <script type="text/javascript">
+      iziToast.success({
+          title: 'Sukses!',
+          message: 'Data telah dikonfirmasi!',
           position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
       });
     </script>
@@ -119,6 +183,22 @@
       iziToast.success({
           title: 'Sukses!',
           message: 'Data berhasil dihapus!',
+          position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+      });
+    </script>
+  <?php elseif($this->session->flashdata('msg')=='generate'):?>
+    <script type="text/javascript">
+      iziToast.success({
+          title: 'Sukses!',
+          message: 'Data berhasil digenerate!',
+          position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+      });
+    </script>
+  <?php elseif($this->session->flashdata('msg')=='posting'):?>
+    <script type="text/javascript">
+      iziToast.success({
+          title: 'Sukses!',
+          message: 'Data berhasil diposting!',
           position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
       });
     </script>

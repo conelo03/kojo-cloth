@@ -49,10 +49,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Login';
+$route['default_controller'] = 'HomePelanggan';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['home-pelanggan']				= 'HomePelanggan';
+$route['registrasi-pelanggan']				= 'HomePelanggan/registrasi';
+
+//pelanggan
+$route['login-pelanggan'] 				= 'LoginPelanggan/proses';
+$route['logout-pelanggan'] 				= 'LoginPelanggan/logout';
+$route['dashboard-pelanggan']				= 'DashboardPelanggan';
+$route['profile-pelanggan/(:any)']				= 'DashboardPelanggan/profile/$1';
+$route['password-pelanggan/(:any)']				= 'DashboardPelanggan/password/$1';
+$route['my-order'] 	        = 'DashboardPelanggan/order';
+$route['riwayat-order'] 	        = 'DashboardPelanggan/riwayat_order';
+$route['tambah-order-pelanggan/(:any)'] 	        = 'DashboardPelanggan/tambah_order/$1';
+$route['tambah-order-pelanggan'] 	        = 'DashboardPelanggan/tambah_order';
+$route['edit-order-pelanggan/(:any)'] 	    = 'DashboardPelanggan/edit_order/$1';
+$route['hapus-order-pelanggan/(:any)']    	= 'DashboardPelanggan/hapus_order/$1';
+$route['ulasan-order/(:any)']    	= 'DashboardPelanggan/ulasan_order/$1';
+
+// pegawai
+$route['administrator'] 				= 'Login';
 $route['login'] 				= 'Login/proses';
 $route['logout'] 				= 'Login/logout';
 $route['dashboard']				= 'Dashboard';
@@ -76,11 +95,90 @@ $route['tambah-produk'] 	        = 'Produk/tambah';
 $route['edit-produk/(:any)'] 	    = 'Produk/edit/$1';
 $route['hapus-produk/(:any)']    	= 'Produk/hapus/$1';
 
+$route['pelanggan'] 				    = 'Pelanggan';
+$route['tambah-pelanggan'] 	        = 'Pelanggan/tambah';
+$route['edit-pelanggan/(:any)'] 	    = 'Pelanggan/edit/$1';
+$route['hapus-pelanggan/(:any)']    	= 'Pelanggan/hapus/$1';
+
+$route['jenis-pemasukan'] 				    = 'Jenis_pemasukan';
+$route['tambah-jenis-pemasukan'] 	        = 'Jenis_pemasukan/tambah';
+$route['edit-jenis-pemasukan/(:any)'] 	    = 'Jenis_pemasukan/edit/$1';
+$route['hapus-jenis-pemasukan/(:any)']    	= 'Jenis_pemasukan/hapus/$1';
+
+$route['jenis-pengeluaran'] 				    = 'Jenis_pengeluaran';
+$route['tambah-jenis-pengeluaran'] 	        = 'Jenis_pengeluaran/tambah';
+$route['edit-jenis-pengeluaran/(:any)'] 	    = 'Jenis_pengeluaran/edit/$1';
+$route['hapus-jenis-pengeluaran/(:any)']    	= 'Jenis_pengeluaran/hapus/$1';
+
 $route['order'] 				    = 'Order';
+$route['all-order'] 	        = 'Order/all';
+$route['confirm-order/(:any)']		= 'Order/confirm/$1';
+$route['detail-all-order/(:any)']		= 'Order/detail_all/$1';
 $route['tambah-order'] 	        = 'Order/tambah';
 $route['edit-order/(:any)'] 	    = 'Order/edit/$1';
 $route['hapus-order/(:any)']    	= 'Order/hapus/$1';
 $route['detail-order/(:any)']		= 'Order/detail/$1';
 $route['cetak-order/(:any)']		= 'Order/cetak/$1';
 $route['riwayat-order']		= 'Order/riwayat';
+$route['laporan-order']		= 'Order/laporan';
 $route['cetak-bom-list/(:any)']		= 'Order/cetak_bom_list/$1';
+
+$route['rekapitulasi-order'] = 'Order/klasterisasi';
+$route['rekapitulasi-order-next'] = 'Order/klasterisasi_next';
+$route['rekapitulasi-order-end'] = 'Order/klasterisasi_end';
+
+$route['agenda'] 				    = 'Agenda';
+$route['tambah-agenda'] 	        = 'Agenda/tambah';
+$route['edit-agenda/(:any)'] 	    = 'Agenda/edit/$1';
+$route['hapus-agenda/(:any)']    	= 'Agenda/hapus/$1';
+
+$route['detail-agenda/(:any)'] 				    = 'Agenda/detail/$1';
+$route['tambah-detail-agenda/(:any)'] 	        = 'Agenda/tambah_detail/$1';
+$route['edit-detail-agenda/(:any)/(:any)'] 	    = 'Agenda/edit_detail/$1/$2';
+$route['hapus-detail-agenda/(:any)/(:any)']    	= 'Agenda/hapus_detail/$1/$2';
+
+$route['pemasukan'] 				    = 'Pemasukan';
+$route['tambah-pemasukan'] 	        = 'Pemasukan/tambah';
+$route['edit-pemasukan/(:any)'] 	    = 'Pemasukan/edit/$1';
+$route['hapus-pemasukan/(:any)']    	= 'Pemasukan/hapus/$1';
+
+$route['pengeluaran'] 				    = 'Pengeluaran';
+$route['tambah-pengeluaran'] 	        = 'Pengeluaran/tambah';
+$route['edit-pengeluaran/(:any)'] 	    = 'Pengeluaran/edit/$1';
+$route['hapus-pengeluaran/(:any)']    	= 'Pengeluaran/hapus/$1';
+
+$route['cash-flow'] 				    = 'Cashflow';
+
+$route['gaji'] 				    = 'Gaji';
+$route['tambah-gaji'] 	        = 'Gaji/tambah';
+$route['edit-gaji/(:any)'] 	    = 'Gaji/edit/$1';
+$route['hapus-gaji/(:any)']    	= 'Gaji/hapus/$1';
+$route['posting-gaji/(:any)']    	= 'Gaji/posting/$1';
+$route['detail-gaji/(:any)']    	= 'Gaji/detail/$1';
+$route['tambah-detail-gaji/(:any)'] 	        = 'Gaji/tambah_detail/$1';
+$route['edit-detail-gaji/(:any)/(:any)'] 	    = 'Gaji/edit_detail/$1/$2';
+$route['hapus-detail-gaji/(:any)/(:any)']    	= 'Gaji/hapus_detail/$1/$2';
+$route['cetak-slip-gaji/(:any)']    	= 'Gaji/cetak_slip/$1';
+
+$route['gaji-produksi'] 				    = 'Gaji_produksi';
+$route['tambah-gaji-produksi'] 	        = 'Gaji_produksi/tambah';
+$route['edit-gaji-produksi/(:any)'] 	    = 'Gaji_produksi/edit/$1';
+$route['hapus-gaji-produksi/(:any)']    	= 'Gaji_produksi/hapus/$1';
+$route['generate-gaji-produksi/(:any)']    	= 'Gaji_produksi/generate/$1';
+$route['posting-gaji-produksi/(:any)']    	= 'Gaji_produksi/posting/$1';
+$route['detail-gaji-produksi/(:any)']    	= 'Gaji_produksi/detail/$1';
+$route['detail-gaji-by-pegawai/(:any)/(:any)'] = 'Gaji_produksi/detail_gaji/$1/$2';
+
+$route['pengajuan'] 				    = 'Pengajuan';
+$route['tambah-pengajuan'] 	        = 'Pengajuan/tambah';
+$route['edit-pengajuan/(:any)'] 	    = 'Pengajuan/edit/$1';
+$route['hapus-pengajuan/(:any)']    	= 'Pengajuan/hapus/$1';
+$route['posting-pengajuan/(:any)']    	= 'Pengajuan/posting/$1';
+$route['approve-pengajuan/(:any)']    	= 'Pengajuan/approve/$1';
+
+$route['pendapatan-order'] 				    = 'Pendapatan_order';
+$route['tambah-pendapatan-order'] 	        = 'Pendapatan_order/tambah';
+$route['edit-pendapatan-order/(:any)'] 	    = 'Pendapatan_order/edit/$1';
+$route['hapus-pendapatan-order/(:any)']    	= 'Pendapatan_order/hapus/$1';
+$route['posting-pendapatan-order/(:any)']    	= 'Pendapatan_order/posting/$1';
+$route['approve-pendapatan-order/(:any)']    	= 'Pendapatan_order/approve/$1';

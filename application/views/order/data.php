@@ -17,7 +17,7 @@
             <div class="card-header">
               <h4>Data Order</h4>
               <div class="card-header-action">
-                <?php if(is_admin() || is_marketing()):?> 
+                <?php if(is_admin() || is_marketing() || is_k_marketing() || is_produksi()):?> 
                 <a href="<?= base_url('tambah-order');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
                 <?php endif;?>
               </div>
@@ -63,7 +63,7 @@
                       <td><?= $u['progres'];?></td>
                       <td class="text-center">
                         <a href="<?= base_url('detail-order/'.$u['id_order']);?>" class="btn btn-light"><i class="fa fa-eye"></i> Detail</a>
-                        <?php if(is_admin() || is_marketing()):?> 
+                        <?php if(is_admin() || is_marketing() || is_k_marketing() || is_produksi()):?> 
                         <a href="<?= base_url('edit-order/'.$u['id_order']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
                         <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-order/'.$u['id_order']); ?>';"><i class="fa fa-trash"></i> Delete</button>
                         <?php endif;?>
