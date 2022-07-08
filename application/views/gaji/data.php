@@ -17,7 +17,9 @@
             <div class="card-header">
               <h4>Data Gaji</h4>
               <div class="card-header-action">
-                <a href="<?= base_url('tambah-gaji');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                <?php if(is_admin() || is_keuangan()): ?>
+                  <a href="<?= base_url('tambah-gaji');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                <?php endif; ?>
               </div>
             </div>
             <div class="card-body">
@@ -45,22 +47,35 @@
                       <td>
                         <?php
                           if($u['status'] == 0){
-                            echo 'Belum Diposting';
+                            echo 'Belum Diapprove';
                           }elseif($u['status'] == 1){
+                            echo 'Belum Diposting';
+                          }elseif($u['status'] == 2){
                             echo 'Sudah Diposting';
                           }
                         ?>
                         </td>
                       <td class="text-center">
+                      <?php if(is_owner()): ?>
                         <?php if($u['status'] == 0): ?>
-                          <button class="btn btn-success" data-confirm="Anda yakin ingin posting data gaji?|Data yang sudah diposting tidak akan bisa diedit kembali." data-confirm-yes="document.location.href='<?= base_url('posting-gaji/'.$u['id_gaji']); ?>';"><i class="fa fa-paper-plane"></i> Posting</button>
+                          <button class="btn btn-success" data-confirm="Anda yakin ingin menyetujui data gaji ini?|Data yang sudah disetujui tidak akan bisa diedit kembali." data-confirm-yes="document.location.href='<?= base_url('approve-gaji/'.$u['id_gaji']); ?>';"><i class="fa fa-check"></i> Approve</button>
+                          <a href="<?= base_url('detail-gaji/'.$u['id_gaji']);?>" class="btn btn-light"><i class="fa fa-list"></i> Detail</a>
+                        <?php else: ?>
+                          <a href="<?= base_url('detail-gaji/'.$u['id_gaji']);?>" class="btn btn-light"><i class="fa fa-list"></i> Detail</a>
+                        <?php endif; ?>
+                      <?php else: ?>
+                        <?php if($u['status'] == 0): ?>
                           <a href="<?= base_url('detail-gaji/'.$u['id_gaji']);?>" class="btn btn-light"><i class="fa fa-list"></i> Detail</a>
                           <a href="<?= base_url('edit-gaji/'.$u['id_gaji']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
                           <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-gaji/'.$u['id_gaji']); ?>';"><i class="fa fa-trash"></i> Delete</button>
                         <?php elseif($u['status'] == 1): ?>
+                          <button class="btn btn-success" data-confirm="Anda yakin ingin posting data gaji?|Data yang sudah diposting tidak akan bisa diedit kembali." data-confirm-yes="document.location.href='<?= base_url('posting-gaji/'.$u['id_gaji']); ?>';"><i class="fa fa-paper-plane"></i> Posting</button>
+                          <a href="<?= base_url('detail-gaji/'.$u['id_gaji']);?>" class="btn btn-light"><i class="fa fa-list"></i> Detail</a>
+                        <?php elseif($u['status'] == 2): ?>
                           <a href="<?= base_url('detail-gaji/'.$u['id_gaji']);?>" class="btn btn-light"><i class="fa fa-list"></i> Detail</a>
                           <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-gaji/'.$u['id_gaji']); ?>';"><i class="fa fa-trash"></i> Delete</button>
                         <?php endif; ?>
+                      <?php endif; ?>
                         
                         
                       </td>

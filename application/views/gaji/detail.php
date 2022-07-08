@@ -17,9 +17,11 @@
             <div class="card-header">
               <h4>Data Gaji</h4>
               <div class="card-header-action">
-                <?php if ($gp['status'] == 0) { ?>
-                    <a href="<?= base_url('tambah-detail-gaji/'.$id_gaji);?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
-                <?php } ?>
+                <?php if(is_admin() || is_keuangan()): ?>
+                  <?php if ($gp['status'] == 0) { ?>
+                      <a href="<?= base_url('tambah-detail-gaji/'.$id_gaji);?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                  <?php } ?>
+                <?php endif; ?>
               </div>
             </div>
             <div class="card-body">
@@ -48,11 +50,13 @@
                       <td>Rp <?= number_format($u['kasbon'], '2',',','.' );?></td>
                       <td>Rp <?= number_format($u['total'], '2',',','.' );?></td>
                       <td class="text-center">
-                        <a href="<?= base_url('cetak-slip-gaji/'.$u['id_detail_gaji']);?>" target="_blank" class="btn btn-light"><i class="fa fa-print"></i> Cetak Slip</a>
-                        <?php if ($gp['status'] == 0) { ?>
-                          <a href="<?= base_url('edit-detail-gaji/'.$id_gaji.'/'.$u['id_detail_gaji']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
-                          <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-detail-gaji/'.$id_gaji.'/'.$u['id_detail_gaji']); ?>';"><i class="fa fa-trash"></i> Delete</button>
-                        <?php } ?>
+                        <?php if(is_admin() || is_keuangan()): ?>
+                          <a href="<?= base_url('cetak-slip-gaji/'.$u['id_detail_gaji']);?>" target="_blank" class="btn btn-light"><i class="fa fa-print"></i> Cetak Slip</a>
+                          <?php if ($gp['status'] == 0) { ?>
+                            <a href="<?= base_url('edit-detail-gaji/'.$id_gaji.'/'.$u['id_detail_gaji']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+                            <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-detail-gaji/'.$id_gaji.'/'.$u['id_detail_gaji']); ?>';"><i class="fa fa-trash"></i> Delete</button>
+                          <?php } ?>
+                        <?php endif; ?>
                       </td>
                     </tr>
                     <?php endforeach;?>

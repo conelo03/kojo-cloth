@@ -6,7 +6,7 @@ class DashboardPelanggan extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('login') != TRUE)
+		if($this->session->userdata('login_pelanggan') != TRUE)
 		{
 			set_pesan('Silahkan login terlebih dahulu', false);
 			redirect('LoginPelanggan');

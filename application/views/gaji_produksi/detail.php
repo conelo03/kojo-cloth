@@ -42,7 +42,9 @@
                       <td>Rp <?= number_format($u['total'], '2',',','.' );?></td>
                       <td class="text-center">
                         <a href="<?= base_url('detail-gaji-by-pegawai/'.$u['id_gaji_produksi'].'/'.$u['id_pegawai']);?>" class="btn btn-light"><i class="fa fa-list"></i> Detail</a>
+                        <?php if(is_admin() || is_keuangan()): ?>
                         <a href="<?= base_url('cetak-slip-gaji-produksi/'.$u['id_detail_gaji_produksi']);?>" class="btn btn-info"><i class="fa fa-print"></i> Cetak Slip</a>
+                        <?php endif; ?>
                       </td>
                     </tr>
                     <?php endforeach;?>

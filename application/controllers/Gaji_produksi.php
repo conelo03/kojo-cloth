@@ -83,7 +83,7 @@ class Gaji_produksi extends CI_Controller {
 		$this->db->where('id_gaji_produksi', $id_gaji_produksi);
 		$this->db->delete('tb_detail_gaji_produksi');
 		$this->session->set_flashdata('msg', 'hapus');
-		redirect('gaji_produksi');
+		redirect('gaji-produksi');
 	}
 
 	public function generate($id_gaji_produksi)
@@ -125,7 +125,19 @@ class Gaji_produksi extends CI_Controller {
 		$this->M_gaji_produksi->update($data);
 
 		$this->session->set_flashdata('msg', 'generate');
-		redirect('gaji_produksi');
+		redirect('gaji-produksi');
+	}
+
+	public function approve($id_gaji_produksi)
+	{
+		$data_user	= [
+			'id_gaji_produksi'		=> $id_gaji_produksi,
+			'status'			=> 2,
+		];
+
+		$this->M_gaji_produksi->update($data_user);
+		$this->session->set_flashdata('msg', 'verifikasi');
+		redirect('gaji-produksi');
 	}
 
 	public function posting($id_gaji_produksi)
@@ -141,11 +153,11 @@ class Gaji_produksi extends CI_Controller {
 		$this->M_pengeluaran->insert($data);
 		$data = [
 			'id_gaji_produksi' => $id_gaji_produksi,
-			'status' => 2
+			'status' => 3
 		];
 		$this->M_gaji_produksi->update($data);
 		$this->session->set_flashdata('msg', 'posting');
-		redirect('gaji_produksi');
+		redirect('gaji-produksi');
 	}
 
 	public function detail($id_gaji_produksi)

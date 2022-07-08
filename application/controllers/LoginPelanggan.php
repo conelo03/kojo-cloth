@@ -11,6 +11,10 @@ class LoginPelanggan extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('login_pelanggan') == TRUE)
+		{
+			redirect('DashboardPelanggan');
+		}
 		$data['title']	= 'Login';
 		$this->load->view('pelanggan-page/login', $data);
 	}
@@ -26,7 +30,7 @@ class LoginPelanggan extends CI_Controller {
 				$get_user = $user->row_array();
 				if(password_verify($password, $get_user['password']))
 				{
-					$this->session->set_userdata('login', TRUE);
+					$this->session->set_userdata('login_pelanggan', TRUE);
 					$this->session->set_userdata('id_pelanggan', $get_user['id_pelanggan']);
 					$this->session->set_userdata('nama_pelanggan', $get_user['nama_pelanggan']);
 					$this->session->set_userdata('username', $get_user['username']);
@@ -51,7 +55,7 @@ class LoginPelanggan extends CI_Controller {
 
 	public function logout()
 	{
-		$this->session->unset_userdata('login');
+		$this->session->unset_userdata('login_pelanggan');
 		$this->session->unset_userdata('id_pelanggan');
 		$this->session->unset_userdata('nama_pelanggan');
 		$this->session->unset_userdata('username');

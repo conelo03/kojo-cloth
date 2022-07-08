@@ -100,6 +100,9 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
 
 
             <?php if(is_owner()):?>
+            <li class="menu-header">Data Gaji</li>       
+            <li class="<?= $title == 'Data Gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji</span></a></li> 
+            <li class="<?= $title == 'Data Gaji Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji-produksi');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji Produksi</span></a></li> 
             <li class="menu-header">Data Pengajuan</li>       
             <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan</span></a></li> 
             <li class="menu-header">Data Transaksi</li>

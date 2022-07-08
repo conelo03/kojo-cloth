@@ -86,6 +86,18 @@ class Gaji extends CI_Controller {
 		redirect('gaji');
 	}
 
+	public function approve($id_gaji)
+	{
+		$data_user	= [
+			'id_gaji'		=> $id_gaji,
+			'status'			=> 1,
+		];
+
+		$this->M_gaji->update($data_user);
+		$this->session->set_flashdata('msg', 'verifikasi');
+		redirect('gaji');
+	}
+
 	public function posting($id_gaji)
 	{
 		$gp = $this->M_gaji->get_by_id($id_gaji);
@@ -99,7 +111,7 @@ class Gaji extends CI_Controller {
 		$this->M_pengeluaran->insert($data);
 		$data = [
 			'id_gaji' => $id_gaji,
-			'status' => 1
+			'status' => 2
 		];
 		$this->M_gaji->update($data);
 		$this->session->set_flashdata('msg', 'posting');
