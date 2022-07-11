@@ -83,7 +83,7 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
             <li class="<?= $title == 'Data Agenda' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('agenda');?>"><i class="fas fa-calendar"></i> <span>Data Agenda</span></a></li>
             <?php endif;?>
 
-            <?php if(is_produksi() || is_marketing() || is_purchase()):?>
+            <?php if(is_produksi() || is_marketing() || is_purchase() || is_k_marketing()):?>
             <li class="menu-header">Data Pengajuan</li>       
             <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Pengajuanku</span></a></li> 
             <?php endif;?>
