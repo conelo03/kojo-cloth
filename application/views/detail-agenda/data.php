@@ -41,8 +41,8 @@
                     foreach($agenda as $u):?>
                     <tr>
                       <td class="text-center"><?= $no++;?></td>
-                      <td><img src="<?= base_url('assets/upload/foto_agenda/'.$u['foto_agenda']) ?>" width="150px" /></td>
-                      <td><?= $u['tautan'];?></td>
+                      <td><a href="#" data-toggle="modal" data-target="#preview<?= $u['id_detail_agenda'] ?>"><img src="<?= base_url('assets/upload/foto_agenda/'.$u['foto_agenda']) ?>" width="150px" /></a></td>
+                      <td><a href="http://<?= $u['tautan'] ?>" target="_blank"><?= $u['tautan'];?></a></td>
                       <td><?= $u['keterangan'];?></td>
                       <td class="text-center">
                         <?php if ($tgl_sekarang < $a['tenggat_agenda']) { ?>
@@ -63,4 +63,25 @@
     </div>
   </section>
 </div>
+
+<?php foreach($agenda as $u):?>
+<div class="modal fade " id="preview<?= $u['id_detail_agenda'] ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hasil Kegiatan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="<?= base_url('assets/upload/foto_agenda/'.$u['foto_agenda']);?>" width="100%" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+<?php endforeach;?>
 <?php $this->load->view('template/footer');?>

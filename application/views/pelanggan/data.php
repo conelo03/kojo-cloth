@@ -33,7 +33,9 @@
                       <th>No. Telepon</th>
                       <th>Alamat</th>
                       <th>Instansi</th>
+                      <?php if (is_admin()) { ?>
                       <th>Username</th>
+                      <?php } ?>
                       <th class="text-center" style="width: 200px;">Aksi</th>
                     </tr>
                   </thead>
@@ -47,7 +49,9 @@
                       <td><?= $u['no_telepon'];?></td>
                       <td><?= $u['alamat'];?></td>
                       <td><?= $u['instansi'];?></td>
+                      <?php if (is_admin()) { ?>
                       <td><?= $u['username'];?></td>
+                      <?php } ?>
                       <td class="text-center">
                         <?php if (is_admin()) { ?>
                           <a href="<?= base_url('edit-pelanggan/'.$u['id_pelanggan']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
