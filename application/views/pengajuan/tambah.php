@@ -46,12 +46,18 @@
                     <?= form_error('keterangan', '<span class="text-danger small">', '</span>'); ?>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>Jumlah</label>
-                    <input type="number" name="jumlah" class="form-control" value="<?= set_value('jumlah'); ?>" required="">
-                    <?= form_error('jumlah', '<span class="text-danger small">', '</span>'); ?>
+                    <label>Bukti Pengajuan</label>
+                    <input type="file" name="bukti_pengajuan" class="form-control" required="">
+                    <span class="text-danger small">*) File PDF atau Image dengan ukuran tidak melebihi 10 MB</span>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label>Jumlah</label>
+                  <input type="number" name="jumlah" class="form-control" value="<?= set_value('jumlah'); ?>" required="">
+                  <?= form_error('jumlah', '<span class="text-danger small">', '</span>'); ?>
+                </div>
               </div>
+              
 
               <div class="card-footer text-right">
                 <a href="<?= base_url('pengajuan');?>" class="btn btn-light"><i class="fa fa-arrow-left"></i> Kembali</a>

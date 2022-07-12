@@ -46,10 +46,16 @@
                     <?= form_error('keterangan', '<span class="text-danger small">', '</span>'); ?>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>Jumlah</label>
-                    <input type="number" name="jumlah" class="form-control" value="<?= set_value('jumlah', $p['jumlah']); ?>" required="">
-                    <?= form_error('jumlah', '<span class="text-danger small">', '</span>'); ?>
+                    <label>Bukti Pengajuan</label>
+                    <input type="hidden" name="bukti_pengajuan_old" value="<?= $p['bukti_pengajuan'] ?>" class="form-control" required="">
+                    <input type="file" name="bukti_pengajuan" class="form-control" >
+                    <span class="text-danger small">*) Kosongkan jika tidak diubah</span>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label>Jumlah</label>
+                  <input type="number" name="jumlah" class="form-control" value="<?= set_value('jumlah', $p['jumlah']); ?>" required="">
+                  <?= form_error('jumlah', '<span class="text-danger small">', '</span>'); ?>
                 </div>
               </div>
 

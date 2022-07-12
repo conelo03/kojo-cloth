@@ -39,12 +39,14 @@ class Pengajuan extends CI_Controller {
 			$this->load->view('pengajuan/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			$file = $this->upload_file('bukti_pengajuan');
 			$data_user	= [
 				'tanggal'			=> $data['tanggal'],
 				'id_jenis_pengeluaran'			=> $data['id_jenis_pengeluaran'],
 				'keterangan'			=> $data['keterangan'],
 				'id_pegawai'			=> $this->session->userdata('id_pegawai'),
 				'jumlah'			=> $data['jumlah'],
+				'bukti_pengajuan' => $file
 			];
 
 			if ($this->M_pengajuan->insert($data_user)) {
@@ -67,12 +69,18 @@ class Pengajuan extends CI_Controller {
 			$this->load->view('pengajuan/edit', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			if (empty($_FILES['bukti_pengajuan']['name'])) {
+				$file = $data['bukti_pengajuan_old'];
+			}else{
+				$file = $this->upload_file('bukti_pengajuan');
+			}
 			$data_user	= [
 				'id_pengajuan'		=> $id_pengajuan,
 				'tanggal'			=> $data['tanggal'],
 				'id_jenis_pengeluaran'			=> $data['id_jenis_pengeluaran'],
 				'keterangan'			=> $data['keterangan'],
 				'jumlah'			=> $data['jumlah'],
+				'bukti_pengajuan' => $file
 			];
 			
 			if ($this->M_pengajuan->update($data_user)) {
@@ -130,5 +138,21 @@ class Pengajuan extends CI_Controller {
 		$this->M_pengajuan->update($data);
 		$this->session->set_flashdata('msg', 'posting');
 		redirect('pengajuan');
+	}
+
+	private function upload_file($file)
+	{
+		$config['upload_path'] = './assets/upload/'.$file;
+		$config['allowed_types'] = 'jpg|png|jpeg|pdf';
+		$config['max_size'] = 10000;
+		$this->upload->initialize($config);
+		$this->load->library('upload', $config);
+
+		if(! $this->upload->do_upload($file))
+		{
+			return '';
+		}
+
+		return $this->upload->data('file_name');
 	}
 }
