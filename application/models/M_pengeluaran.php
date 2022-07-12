@@ -5,11 +5,14 @@ class M_pengeluaran extends CI_Model {
 
 	public $table	= 'tb_pengeluaran';
 
-	public function get_data()
+	public function get_data($month = null)
 	{
 		$this->db->select('*');
 		$this->db->from($this->table);
 		$this->db->join('tb_jenis_pengeluaran', 'tb_jenis_pengeluaran.id_jenis_pengeluaran=tb_pengeluaran.id_jenis_pengeluaran');
+		if ($month != null) {
+			$this->db->like('tb_pengeluaran.tanggal', $month, 'both');
+		}
 		$this->db->order_by('tanggal', 'DESC');
     return $this->db->get();
 	}

@@ -118,6 +118,11 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
             <li class="menu-header">Laporan</li>  
             <?php if(is_admin() || is_produksi() || is_owner()):?>  
               <li class="<?= $title == 'Laporan Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-order');?>"><i class="fas fa-file"></i> <span>Laporan Order</span></a></li> 
+            <?php endif;?>   
+            <?php if(is_admin() || is_keuangan() || is_owner()):?>  
+              <li class="<?= $title == 'Laporan Pemasukan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-pemasukan');?>"><i class="fas fa-file"></i> <span>Laporan Pemasukan</span></a></li> 
+              <li class="<?= $title == 'Laporan Pengeluaran' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-pengeluaran');?>"><i class="fas fa-file"></i> <span>Laporan Pengeluaran</span></a></li> 
+              <li class="<?= $title == 'Laporan Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-cash-flow');?>"><i class="fas fa-file"></i> <span>Laporan Cash Flow</span></a></li> 
             <?php endif;?>     
 
           </ul>

@@ -141,13 +141,16 @@ $route['pemasukan'] 				    = 'Pemasukan';
 $route['tambah-pemasukan'] 	        = 'Pemasukan/tambah';
 $route['edit-pemasukan/(:any)'] 	    = 'Pemasukan/edit/$1';
 $route['hapus-pemasukan/(:any)']    	= 'Pemasukan/hapus/$1';
+$route['laporan-pemasukan'] 	        = 'Pemasukan/laporan';
 
 $route['pengeluaran'] 				    = 'Pengeluaran';
 $route['tambah-pengeluaran'] 	        = 'Pengeluaran/tambah';
 $route['edit-pengeluaran/(:any)'] 	    = 'Pengeluaran/edit/$1';
 $route['hapus-pengeluaran/(:any)']    	= 'Pengeluaran/hapus/$1';
+$route['laporan-pengeluaran'] 	        = 'Pengeluaran/laporan';
 
 $route['cash-flow'] 				    = 'Cashflow';
+$route['laporan-cash-flow'] 				    = 'Cashflow/laporan';
 
 $route['gaji'] 				    = 'Gaji';
 $route['tambah-gaji'] 	        = 'Gaji/tambah';

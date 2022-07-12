@@ -22,6 +22,41 @@ class Pengeluaran extends CI_Controller {
 		$this->load->view('pengeluaran/data', $data);
 	}
 
+	public function laporan()
+	{
+		$post_m = $this->input->post('month');
+		$mode = $this->input->post('mode');
+		if(empty($post_m)){
+			$month = date('Y-m');
+		} else {
+			$month = $post_m;
+		}
+		if($mode == 'cetak'){
+			$data['month_c'] = $month;
+			$data['month']		= $this->db->query("SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pengeluaran GROUP BY DATE_FORMAT(tanggal, '%M %Y') order by tgl1 ASC")->result_array();
+			$data['title']		= 'Laporan Pengeluaran';
+			$data['pengeluaran']		= $this->M_pengeluaran->get_data($month)->result_array();
+			$this->load->library('pdf');
+			$html_content = $this->load->view('pengeluaran/cetak_laporan', $data, true);
+			$filename = 'Laporan Pengeluaran - '.date('F Y', strtotime($month)).' .pdf';
+
+			$this->pdf->loadHtml($html_content);
+
+			$this->pdf->set_paper('a4','potrait');
+			
+			$this->pdf->render();
+			$this->pdf->stream($filename, ['Attachment' => 1]);
+			$this->load->view('pengeluaran/cetak_laporan', $data);
+			
+		}else{
+			$data['month_c'] = $month;
+			$data['month']		= $this->db->query("SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pengeluaran GROUP BY DATE_FORMAT(tanggal, '%M %Y') order by tgl1 ASC")->result_array();
+			$data['title']		= 'Laporan Pengeluaran';
+			$data['pengeluaran']		= $this->M_pengeluaran->get_data($month)->result_array();
+			$this->load->view('pengeluaran/laporan', $data);
+		}
+	}
+
 	public function tambah()
 	{
 		$this->validation();

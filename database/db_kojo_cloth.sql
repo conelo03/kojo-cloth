@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2022 at 12:05 PM
+-- Generation Time: Jul 12, 2022 at 02:05 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.2.33
 
@@ -123,11 +123,7 @@ CREATE TABLE `tb_centroid_temp` (
 
 INSERT INTO `tb_centroid_temp` (`id`, `iterasi`, `c1`, `c2`, `c3`) VALUES
 (1, 1, '0', '1', '1'),
-(2, 1, '0', '1', '1'),
-(3, 2, '0', '1', '1'),
-(4, 2, '1', '0', '0'),
-(5, 3, '0', '1', '1'),
-(6, 3, '1', '0', '0');
+(2, 1, '0', '1', '1');
 
 -- --------------------------------------------------------
 
@@ -316,9 +312,7 @@ CREATE TABLE `tb_hasil_centroid` (
 --
 
 INSERT INTO `tb_hasil_centroid` (`nomor`, `c1a`, `c1b`, `c1c`, `c1d`, `c1e`, `c2a`, `c2b`, `c2c`, `c2d`, `c2e`, `c3a`, `c3b`, `c3c`, `c3d`, `c3e`) VALUES
-(1, '0', '0', '0', '0', '0', '0', '15', '0', '52', '0', '0', '15', '0', '52', '0'),
-(2, '0', '25', '0', '0', '0', '0', '5', '0', '104', '0', '0', '5', '0', '104', '0'),
-(3, '0', '25', '0', '0', '0', '0', '5', '0', '104', '0', '0', '5', '0', '104', '0');
+(1, '0', '0', '0', '0', '0', '0', '15', '0', '52', '0', '0', '15', '0', '52', '0');
 
 -- --------------------------------------------------------
 
@@ -332,14 +326,6 @@ CREATE TABLE `tb_hasil_klasterisasi` (
   `instansi` varchar(200) NOT NULL,
   `klaster` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tb_hasil_klasterisasi`
---
-
-INSERT INTO `tb_hasil_klasterisasi` (`id_hasil_klasterisasi`, `id_pelanggan`, `instansi`, `klaster`) VALUES
-(1, 1, 'PT. Sejahtera', 'C2'),
-(2, 2, 'T', 'C1');
 
 -- --------------------------------------------------------
 
@@ -1708,7 +1694,7 @@ ALTER TABLE `tb_bordir`
 -- AUTO_INCREMENT for table `tb_centroid_temp`
 --
 ALTER TABLE `tb_centroid_temp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_cutting`
@@ -1750,13 +1736,13 @@ ALTER TABLE `tb_gaji_produksi`
 -- AUTO_INCREMENT for table `tb_hasil_centroid`
 --
 ALTER TABLE `tb_hasil_centroid`
-  MODIFY `nomor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `nomor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_hasil_klasterisasi`
 --
 ALTER TABLE `tb_hasil_klasterisasi`
-  MODIFY `id_hasil_klasterisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_hasil_klasterisasi` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_jahit`
