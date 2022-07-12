@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2022 at 02:05 PM
+-- Generation Time: Jul 12, 2022 at 02:36 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.2.33
 
@@ -1189,6 +1189,7 @@ CREATE TABLE `tb_pengajuan` (
   `tanggal` date NOT NULL,
   `keterangan` text NOT NULL,
   `jumlah` double NOT NULL,
+  `bukti_pengajuan` text NOT NULL,
   `id_pegawai` int(11) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1197,9 +1198,11 @@ CREATE TABLE `tb_pengajuan` (
 -- Dumping data for table `tb_pengajuan`
 --
 
-INSERT INTO `tb_pengajuan` (`id_pengajuan`, `id_jenis_pengeluaran`, `tanggal`, `keterangan`, `jumlah`, `id_pegawai`, `status`) VALUES
-(5, 1, '2022-06-27', 'beli bahan', 1000000, 9, 2),
-(6, 3, '2022-06-30', 'acara kampus', 500000, 4, 0);
+INSERT INTO `tb_pengajuan` (`id_pengajuan`, `id_jenis_pengeluaran`, `tanggal`, `keterangan`, `jumlah`, `bukti_pengajuan`, `id_pegawai`, `status`) VALUES
+(5, 1, '2022-06-27', 'beli bahan', 1000000, '', 9, 2),
+(6, 3, '2022-06-30', 'acara kampus', 500000, '', 4, 0),
+(7, 1, '2022-07-12', 'HPP ----', 2000000, 'BOM_List_(10).pdf', 1, 0),
+(8, 3, '2022-07-12', 'Beban', 100000, 'aj_(2).jpeg', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1826,7 +1829,7 @@ ALTER TABLE `tb_pendapatan_order`
 -- AUTO_INCREMENT for table `tb_pengajuan`
 --
 ALTER TABLE `tb_pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_pengeluaran`
