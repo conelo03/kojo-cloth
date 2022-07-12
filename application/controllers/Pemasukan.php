@@ -46,7 +46,7 @@ class Pemasukan extends CI_Controller {
 			
 			$this->pdf->render();
 			$this->pdf->stream($filename, ['Attachment' => 1]);
-			$this->load->view('pemasukan/cetak_laporan', $data);
+			//$this->load->view('pemasukan/cetak_laporan', $data);
 			
 		}else{
 			$data['month_c'] = $month;

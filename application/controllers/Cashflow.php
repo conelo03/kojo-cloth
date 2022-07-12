@@ -40,22 +40,49 @@ class Cashflow extends CI_Controller {
 	public function laporan()
 	{
 		$post_m = $this->input->post('month');
-    $data['title']		= 'Cash Flow';
+		$mode = $this->input->post('mode');
+    $data['title']		= 'Laporan Cash Flow';
 		if(empty($post_m)){
 			$month = date('Y-m');
 		} else {
 			$month = $post_m;
 		}
-		$data['month_c'] = $month;
-		$data['month']		= $this->db->query("SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pemasukan UNION SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pengeluaran GROUP BY DATE_FORMAT(tanggal, '%M %Y') order by tgl1 ASC")->result_array();
-		$data['cash']		= $this->db->query("SELECT tanggal as tgl, keterangan as ket, referensi as ref, jumlah as pemasukan, '' as pengeluaran 
-		FROM tb_pemasukan 
-		WHERE tanggal like '$month%'
-		UNION 
-		SELECT tanggal as tgl, keterangan as ket, referensi as ref, '' as pemasukan, jumlah as pengeluaran 
-		FROM tb_pengeluaran 
-		WHERE tanggal like '$month%'
-		order by tgl ASC")->result_array();
-		$this->load->view('cashflow/data', $data);
+		if($mode == 'cetak'){
+			$data['month_c'] = $month;
+			$data['title']		= 'Laporan Cash Flow';
+			$data['month']		= $this->db->query("SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pemasukan UNION SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pengeluaran GROUP BY DATE_FORMAT(tanggal, '%M %Y') order by tgl1 ASC")->result_array();
+			$data['cash']		= $this->db->query("SELECT tanggal as tgl, keterangan as ket, referensi as ref, jumlah as pemasukan, '' as pengeluaran 
+			FROM tb_pemasukan 
+			WHERE tanggal like '$month%'
+			UNION 
+			SELECT tanggal as tgl, keterangan as ket, referensi as ref, '' as pemasukan, jumlah as pengeluaran 
+			FROM tb_pengeluaran 
+			WHERE tanggal like '$month%'
+			order by tgl ASC")->result_array();
+			$this->load->library('pdf');
+			$html_content = $this->load->view('cashflow/cetak_laporan', $data, true);
+			$filename = 'Laporan Cash Flow - '.date('F Y', strtotime($month)).' .pdf';
+
+			$this->pdf->loadHtml($html_content);
+
+			$this->pdf->set_paper('a4','potrait');
+			
+			$this->pdf->render();
+			$this->pdf->stream($filename, ['Attachment' => 1]);
+			//$this->load->view('cashflow/cetak_laporan', $data);
+			
+		}else{
+			$data['month_c'] = $month;
+			$data['month']		= $this->db->query("SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pemasukan UNION SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pengeluaran GROUP BY DATE_FORMAT(tanggal, '%M %Y') order by tgl1 ASC")->result_array();
+			$data['cash']		= $this->db->query("SELECT tanggal as tgl, keterangan as ket, referensi as ref, jumlah as pemasukan, '' as pengeluaran 
+			FROM tb_pemasukan 
+			WHERE tanggal like '$month%'
+			UNION 
+			SELECT tanggal as tgl, keterangan as ket, referensi as ref, '' as pemasukan, jumlah as pengeluaran 
+			FROM tb_pengeluaran 
+			WHERE tanggal like '$month%'
+			order by tgl ASC")->result_array();
+			$this->load->view('cashflow/laporan', $data);
+		}
 	}
 }
