@@ -76,6 +76,7 @@
       </div>
     </div>
 
+    <?php if($order): ?>
     <div class="section-body">
       <div class="row">
         <div class="col-12">
@@ -402,6 +403,9 @@
         </div>
       </div>
     </div>
+    <?php else:?>
+      <?= 'Tidak ada data.' ?>
+    <?php endif;?>
   </section>
 </div>
 <?php $this->load->view('template/footer');?>

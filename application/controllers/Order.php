@@ -697,7 +697,7 @@ class Order extends CI_Controller {
 			$month = $post_m;
 		}
 
-		$pelanggan = $this->db->query("SELECT * FROM tb_pelanggan join tb_order ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) WHERE tb_order.tgl_order LIKE '2022-04%' GROUP BY tb_pelanggan.id_pelanggan")->result_array();
+		$pelanggan = $this->db->query("SELECT * FROM tb_pelanggan join tb_order ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) WHERE tb_order.tgl_order LIKE '$month%' GROUP BY tb_pelanggan.id_pelanggan")->result_array();
 
 		$order = [];
 		foreach ($pelanggan as $p) {
@@ -732,7 +732,7 @@ class Order extends CI_Controller {
 
 		$c1 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` DESC")->row_array();
 		$c2;
-		if($offset == 0){
+		if($offset <= 0){
 			$c2 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC LIMIT 1")->row_array();
 		}else{
 			$c2 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC LIMIT 1 OFFSET '$offset'")->row_array();
