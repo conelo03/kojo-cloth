@@ -85,4 +85,44 @@ class Cashflow extends CI_Controller {
 			$this->load->view('cashflow/laporan', $data);
 		}
 	}
+
+	public function laporan_laba_rugi()
+	{
+		$post_m = $this->input->post('month');
+		$mode = $this->input->post('mode');
+    $data['title']		= 'Laporan Laba Rugi';
+		if(empty($post_m)){
+			$month = date('Y-m');
+		} else {
+			$month = $post_m;
+		}
+		if($mode == 'cetak'){
+			$data['month_c'] = $month;
+			$data['title']		= 'Laporan Laba Rugi';
+			$data['month']		= $this->db->query("SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pemasukan UNION SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pengeluaran GROUP BY DATE_FORMAT(tanggal, '%M %Y') order by tgl1 ASC")->result_array();
+			$data['penjualan']	= $this->db->query("SELECT sum(jumlah) as jumlah FROM tb_pemasukan WHERE id_jenis_pemasukan=1 AND tanggal like '$month%'")->row_array();
+			$data['hpp']	= $this->db->query("SELECT sum(jumlah) as jumlah FROM tb_pengeluaran WHERE id_jenis_pengeluaran=1 AND tanggal like '$month%'")->row_array();
+			$data['beban']	= $this->db->query("SELECT tb_jenis_pengeluaran.jenis_pengeluaran, sum(tb_pengeluaran.jumlah) as jumlah FROM tb_pengeluaran, tb_jenis_pengeluaran WHERE tb_pengeluaran.id_jenis_pengeluaran=tb_jenis_pengeluaran.id_jenis_pengeluaran AND tb_pengeluaran.id_jenis_pengeluaran != 1 AND tanggal like '$month%' GROUP BY tb_pengeluaran.id_jenis_pengeluaran")->result_array();
+			$this->load->library('pdf');
+			$html_content = $this->load->view('cashflow/cetak_laporan_laba_rugi', $data, true);
+			$filename = 'Laporan Laba Rugi Per - '.date('F Y', strtotime($month)).' .pdf';
+
+			$this->pdf->loadHtml($html_content);
+
+			$this->pdf->set_paper('a4','potrait');
+			
+			$this->pdf->render();
+			$this->pdf->stream($filename, ['Attachment' => 1]);
+			//$this->load->view('cashflow/cetak_laporan', $data);
+			
+		}else{
+			$data['month_c'] = $month;
+			$data['month']		= $this->db->query("SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pemasukan UNION SELECT DATE_FORMAT(tanggal, '%Y-%m') as tgl1, DATE_FORMAT(tanggal, '%M %Y') as tgl FROM tb_pengeluaran GROUP BY DATE_FORMAT(tanggal, '%M %Y') order by tgl1 ASC")->result_array();
+			$data['penjualan']	= $this->db->query("SELECT sum(jumlah) as jumlah FROM tb_pemasukan WHERE id_jenis_pemasukan=1 AND tanggal like '$month%'")->row_array();
+			$data['hpp']	= $this->db->query("SELECT sum(jumlah) as jumlah FROM tb_pengeluaran WHERE id_jenis_pengeluaran=1 AND tanggal like '$month%'")->row_array();
+			$data['beban']	= $this->db->query("SELECT tb_jenis_pengeluaran.jenis_pengeluaran, sum(tb_pengeluaran.jumlah) as jumlah FROM tb_pengeluaran, tb_jenis_pengeluaran WHERE tb_pengeluaran.id_jenis_pengeluaran=tb_jenis_pengeluaran.id_jenis_pengeluaran AND tb_pengeluaran.id_jenis_pengeluaran != 1 AND tanggal like '$month%' GROUP BY tb_pengeluaran.id_jenis_pengeluaran")->result_array();
+
+			$this->load->view('cashflow/laporan_laba_rugi', $data);
+		}
+	}
 }

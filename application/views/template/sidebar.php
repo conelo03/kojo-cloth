@@ -123,6 +123,7 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
               <li class="<?= $title == 'Laporan Pemasukan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-pemasukan');?>"><i class="fas fa-file"></i> <span>Laporan Pemasukan</span></a></li> 
               <li class="<?= $title == 'Laporan Pengeluaran' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-pengeluaran');?>"><i class="fas fa-file"></i> <span>Laporan Pengeluaran</span></a></li> 
               <li class="<?= $title == 'Laporan Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-cash-flow');?>"><i class="fas fa-file"></i> <span>Laporan Cash Flow</span></a></li> 
+              <li class="<?= $title == 'Laporan Laba Rugi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-laba-rugi');?>"><i class="fas fa-file"></i> <span>Laporan Laba Rugi</span></a></li> 
             <?php endif;?>     
 
           </ul>

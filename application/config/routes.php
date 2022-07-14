@@ -152,6 +152,8 @@ $route['laporan-pengeluaran'] 	        = 'Pengeluaran/laporan';
 $route['cash-flow'] 				    = 'Cashflow';
 $route['laporan-cash-flow'] 				    = 'Cashflow/laporan';
 
+$route['laporan-laba-rugi'] 				    = 'Cashflow/laporan_laba_rugi';
+
 $route['gaji'] 				    = 'Gaji';
 $route['tambah-gaji'] 	        = 'Gaji/tambah';
 $route['edit-gaji/(:any)'] 	    = 'Gaji/edit/$1';
