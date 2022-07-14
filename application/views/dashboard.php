@@ -11,7 +11,136 @@
       <h6>Selamat Datang di Aplikasi Manajemen <b>Kojo Cloth</b></h6>
 
     </div>
-    <?php if(is_admin() || is_produksi()):?>
+
+    <?php if(is_admin() || is_keuangan() || is_owner()):?>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="card card-statistic-2">
+            <div class="card-stats">
+              <div class="card-stats-title">
+                <h5>Total Pemasukan</h5>
+              </div>
+            </div>
+            <div class="card-icon shadow-primary bg-primary">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Balance</h4>
+              </div>
+              <div class="card-body">
+                <h6><?= 'Rp '.number_format($pemasukan['jumlah'], 0, ',', '.');?></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="card card-statistic-2">
+            <div class="card-stats">
+              <div class="card-stats-title">
+                <h5>Total Pengeluaran</h5>
+              </div>
+            </div>
+            <div class="card-icon shadow-primary bg-primary">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Balance</h4>
+              </div>
+              <div class="card-body">
+                <h6><?= 'Rp '.number_format($pengeluaran['jumlah'], 0, ',', '.');?></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="card card-statistic-2">
+            <div class="card-stats">
+              <div class="card-stats-title">
+                <h5>Total Saldo</h5>
+              </div>
+            </div>
+            <div class="card-icon shadow-primary bg-primary">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Balance</h4>
+              </div>
+              <div class="card-body">
+                <h6>
+                <?php
+                  $selisih; 
+                  if($pemasukan['jumlah'] - $pengeluaran['jumlah'] < 0) {
+                    $selisih = '<span style="color: red;">(Rp '.number_format($pemasukan['jumlah'] - $pengeluaran['jumlah'], '2',',','.' ).')</span';
+                  } else {
+                    $selisih = 'Rp '.number_format($pemasukan['jumlah'] - $pengeluaran['jumlah'], '2',',','.' );
+                  } ?>
+                  <?= $selisih;?>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	  <?php endif;?>
+
+    <?php if(is_admin() || is_owner()):?>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-warning">
+              <i class="fas fa-check"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Data Pengajuan Belum Diapprove</h4>
+              </div>
+              <div class="card-body">
+                <?= $pengajuan ?>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-warning">
+              <i class="fas fa-check"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Data Gaji Belum Diapprove</h4>
+              </div>
+              <div class="card-body">
+              <?= $gaji ?>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+          <div class="card card-statistic-1">
+            <div class="card-icon bg-warning">
+              <i class="fas fa-check"></i>
+            </div>
+            <div class="card-wrap">
+              <div class="card-header">
+                <h4>Data Gaji Produksi Belum Diapprove</h4>
+              </div>
+              <div class="card-body">
+              <?= $gaji_produksi ?>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	  <?php endif;?>
+
+    <?php if(is_admin() || is_produksi() || is_owner()):?>
     <div class="section-body">
       <div class="row">
         <div class="col-12">
@@ -71,7 +200,7 @@
     </div>
 	  <?php endif;?>
 
-    <?php if(is_admin() || is_marketing() || is_k_marketing()):?>
+    <?php if(is_admin() || is_marketing() || is_k_marketing() || is_owner()):?>
     <div class="section-body">
       <div class="row">
         <div class="col-12">
@@ -120,6 +249,7 @@
       </div>
     </div>
 	  <?php endif;?>
+
   </section>
   
 </div>

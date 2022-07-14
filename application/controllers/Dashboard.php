@@ -17,6 +17,11 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data['title']	= 'Dashboard';
+		$data['pemasukan']		= $this->db->select_sum('jumlah')->from('tb_pemasukan')->get()->row_array();
+		$data['pengeluaran']		= $this->db->select_sum('jumlah')->from('tb_pengeluaran')->get()->row_array();
+		$data['pengajuan'] = $this->db->get_where('tb_pengajuan', ['status' => 0])->num_rows();
+		$data['gaji'] = $this->db->get_where('tb_gaji', ['status' => 0])->num_rows();
+		$data['gaji_produksi'] = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->num_rows();
 		$this->db->select('*');
 		$this->db->from('tb_order');
 		$this->db->join('tb_produk', 'tb_produk.id_produk=tb_order.id_produk');
