@@ -175,6 +175,7 @@ $route['approve-gaji-produksi/(:any)']    	= 'Gaji_produksi/approve/$1';
 $route['posting-gaji-produksi/(:any)']    	= 'Gaji_produksi/posting/$1';
 $route['detail-gaji-produksi/(:any)']    	= 'Gaji_produksi/detail/$1';
 $route['detail-gaji-by-pegawai/(:any)/(:any)'] = 'Gaji_produksi/detail_gaji/$1/$2';
+$route['cetak-slip-gaji-produksi/(:any)/(:any)'] = 'Gaji_produksi/cetak_slip/$1/$2';
 
 $route['pengajuan'] 				    = 'Pengajuan';
 $route['tambah-pengajuan'] 	        = 'Pengajuan/tambah';

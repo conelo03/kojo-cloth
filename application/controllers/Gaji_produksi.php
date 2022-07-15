@@ -184,4 +184,24 @@ class Gaji_produksi extends CI_Controller {
 		$data['qc'] = $this->db->query("SELECT * FROM tb_pegawai_qc WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->result_array();
 		$this->load->view('gaji_produksi/detail_gaji_by_pegawai', $data);
 	}
+
+	public function cetak_slip($id_gaji_produksi, $id_pegawai)
+	{
+		$gaji = $this->M_gaji_produksi->get_by_id($id_gaji_produksi);
+		$tanggal_pencairan = $gaji['tanggal_pencairan'];
+
+    $data['title']		= 'Slip Gaji Produksi';
+		$data['id_gaji_produksi'] = $id_gaji_produksi;
+		$data['pegawai'] = $this->M_pegawai->get_by_id($id_pegawai);
+		$data['cutting'] = $this->db->query("SELECT * FROM tb_pegawai_cutting WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->result_array();
+		$data['jahit'] = $this->db->query("SELECT * FROM tb_pegawai_jahit WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->result_array();
+		$data['qc'] = $this->db->query("SELECT * FROM tb_pegawai_qc WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->result_array();
+		$data['total_cutting'] = $this->db->query("SELECT sum(jumlah*harga) as upah, sum(kasbon) as kasbon, sum(jumlah*harga-kasbon) as total FROM tb_pegawai_cutting WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->row_array();
+		$data['total_jahit'] = $this->db->query("SELECT sum(jumlah*harga) as upah, sum(kasbon) as kasbon, sum(jumlah*harga-kasbon) as total FROM tb_pegawai_jahit WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->row_array();
+		$data['total_qc'] = $this->db->query("SELECT sum(jumlah*harga) as upah, sum(kasbon) as kasbon, sum(jumlah*harga-kasbon) as total FROM tb_pegawai_qc WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->row_array();
+		$data['total_upah'] = $data['total_cutting']['upah'] + $data['total_jahit']['upah'] + $data['total_qc']['upah'];
+		$data['total_kasbon'] = $data['total_cutting']['kasbon'] + $data['total_jahit']['kasbon'] + $data['total_qc']['kasbon'];
+		$data['total_upah_dibayar'] = $data['total_cutting']['total'] + $data['total_jahit']['total'] + $data['total_qc']['total'];
+		$this->load->view('gaji_produksi/cetak_slip_gaji_produksi', $data);
+	}
 }
