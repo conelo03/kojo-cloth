@@ -17,7 +17,7 @@ class Jenis_pengeluaran extends CI_Controller {
 
 	public function index()
 	{
-    $data['title']		= 'Data Jenis Pemasukan';
+    $data['title']		= 'Data Jenis Pengeluaran';
 		$data['jenis_pengeluaran']		= $this->M_jenis_pengeluaran->get_data()->result_array();
 		$this->load->view('jenis_pengeluaran/data', $data);
 	}
@@ -26,7 +26,7 @@ class Jenis_pengeluaran extends CI_Controller {
 	{
 		$this->validation();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Jenis Pemasukan';
+			$data['title']		= 'Data Jenis Pengeluaran';
 			$this->load->view('jenis_pengeluaran/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
@@ -48,7 +48,7 @@ class Jenis_pengeluaran extends CI_Controller {
 	{
 		$this->validation();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Jenis Pemasukan';
+			$data['title']		= 'Data Jenis Pengeluaran';
 			$data['jp']	= $this->M_jenis_pengeluaran->get_by_id($id_jenis_pengeluaran);
 			$this->load->view('jenis_pengeluaran/edit', $data);
 		} else {
