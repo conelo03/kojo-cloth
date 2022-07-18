@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2022 at 02:36 PM
+-- Generation Time: Jul 18, 2022 at 01:57 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.2.33
 
@@ -1165,6 +1165,7 @@ CREATE TABLE `tb_pendapatan_order` (
   `id_pegawai` int(11) NOT NULL,
   `tanggal` date NOT NULL,
   `jumlah` int(11) NOT NULL,
+  `bukti_pendapatan` text NOT NULL,
   `keterangan` text NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1173,9 +1174,10 @@ CREATE TABLE `tb_pendapatan_order` (
 -- Dumping data for table `tb_pendapatan_order`
 --
 
-INSERT INTO `tb_pendapatan_order` (`id_pendapatan_order`, `id_order`, `id_pegawai`, `tanggal`, `jumlah`, `keterangan`, `status`) VALUES
-(3, 4, 4, '2022-06-30', 100, 'Pembayaran Order Jaket - PT. XYZ', 1),
-(4, 4, 4, '2022-06-27', 700000, 'Pembayaran Order Jaket - PT. XYZ', 1);
+INSERT INTO `tb_pendapatan_order` (`id_pendapatan_order`, `id_order`, `id_pegawai`, `tanggal`, `jumlah`, `bukti_pendapatan`, `keterangan`, `status`) VALUES
+(3, 4, 4, '2022-06-30', 100, '', 'Pembayaran Order Jaket - PT. XYZ', 1),
+(4, 4, 4, '2022-06-27', 700000, '', 'Pembayaran Order Jaket - PT. XYZ', 1),
+(5, 8, 1, '2022-07-18', 2000000, 'aj_(2).jpeg', 'Pembayaran Order Kaos Combed 305 - PT. Sejahtera', 0);
 
 -- --------------------------------------------------------
 
@@ -1237,7 +1239,8 @@ INSERT INTO `tb_pengeluaran` (`id_pengeluaran`, `tanggal`, `id_jenis_pengeluaran
 (17, '2022-07-30', 2, 'gaji manajemen', '-', 8350000),
 (18, '2022-07-29', 2, 'gaji', '-', 0),
 (19, '2022-04-23', 2, 'gaji mingguan', '-', 134950),
-(20, '2022-04-04', 2, 'gaji mingguan', '-', 0);
+(20, '2022-04-04', 2, 'gaji mingguan', '-', 0),
+(21, '2022-06-15', 3, 'lainnya', '-', 2000000);
 
 -- --------------------------------------------------------
 
@@ -1823,7 +1826,7 @@ ALTER TABLE `tb_pemasukan`
 -- AUTO_INCREMENT for table `tb_pendapatan_order`
 --
 ALTER TABLE `tb_pendapatan_order`
-  MODIFY `id_pendapatan_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pendapatan_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_pengajuan`
@@ -1835,7 +1838,7 @@ ALTER TABLE `tb_pengajuan`
 -- AUTO_INCREMENT for table `tb_pengeluaran`
 --
 ALTER TABLE `tb_pengeluaran`
-  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_pengeluaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tb_pengiriman`

@@ -20,7 +20,7 @@
                 <h4>Form Edit Pendapatan Order</h4>
               </div>
               <div class="card-body">
-              <div class="row">
+                <div class="row">
                   <div class="col-md-6 form-group">
                     <label>Tanggal</label>
                     <input type="date" name="tanggal" class="form-control" value="<?= set_value('tanggal', $p['tanggal']); ?>" required="">
@@ -50,6 +50,12 @@
                     <input type="number" name="jumlah" class="form-control" value="<?= set_value('jumlah', $p['jumlah']); ?>" required="">
                     <?= form_error('jumlah', '<span class="text-danger small">', '</span>'); ?>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label>Bukti Pendapatan</label>
+                  <input type="hidden" name="bukti_pendapatan_old" value="<?= $p['bukti_pendapatan'] ?>" class="form-control" required="">
+                  <input type="file" name="bukti_pendapatan" class="form-control" >
+                  <span class="text-danger small">*) Kosongkan jika tidak diubah</span>
                 </div>
               </div>
 

@@ -32,12 +32,14 @@ class Pendapatan_order extends CI_Controller {
 			$this->load->view('pendapatan_order/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			$file = $this->upload_file('bukti_pendapatan');
 			$data_user	= [
 				'tanggal'			=> $data['tanggal'],
 				'id_order'			=> $data['id_order'],
 				'keterangan'			=> $data['keterangan'],
 				'id_pegawai'			=> $this->session->userdata('id_pegawai'),
 				'jumlah'			=> $data['jumlah'],
+				'bukti_pendapatan' => $file
 			];
 
 			if ($this->M_pendapatan_order->insert($data_user)) {
@@ -61,12 +63,18 @@ class Pendapatan_order extends CI_Controller {
 			$this->load->view('pendapatan_order/edit', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			if (empty($_FILES['bukti_pendapatan']['name'])) {
+				$file = $data['bukti_pendapatan_old'];
+			}else{
+				$file = $this->upload_file('bukti_pendapatan');
+			}
 			$data_user	= [
 				'id_pendapatan_order'		=> $id_pendapatan_order,
 				'tanggal'			=> $data['tanggal'],
 				'id_order'			=> $data['id_order'],
 				'keterangan'			=> $data['keterangan'],
 				'jumlah'			=> $data['jumlah'],
+				'bukti_pendapatan' => $file
 			];
 			
 			if ($this->M_pendapatan_order->update($data_user)) {
@@ -130,5 +138,21 @@ class Pendapatan_order extends CI_Controller {
 
 		]; 
 		echo json_encode($response);
+	}
+
+	private function upload_file($file)
+	{
+		$config['upload_path'] = './assets/upload/'.$file;
+		$config['allowed_types'] = 'jpg|png|jpeg|pdf';
+		$config['max_size'] = 10000;
+		$this->upload->initialize($config);
+		$this->load->library('upload', $config);
+
+		if(! $this->upload->do_upload($file))
+		{
+			return '';
+		}
+
+		return $this->upload->data('file_name');
 	}
 }

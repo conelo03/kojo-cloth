@@ -20,7 +20,7 @@
                 <h4>Form Tambah Pendapatan Order</h4>
               </div>
               <div class="card-body">
-              <div class="row">
+                <div class="row">
                   <div class="col-md-6 form-group">
                     <label>Tanggal</label>
                     <input type="date" name="tanggal" class="form-control" value="<?= set_value('tanggal'); ?>" required="">
@@ -50,6 +50,11 @@
                     <input type="number" name="jumlah" class="form-control" value="<?= set_value('jumlah'); ?>" required="">
                     <?= form_error('jumlah', '<span class="text-danger small">', '</span>'); ?>
                   </div>
+                </div>
+                <div class="form-group">
+                  <label>Bukti Pendapatan</label>
+                  <input type="file" name="bukti_pendapatan" class="form-control" required="">
+                  <span class="text-danger small">*) File PDF atau Image dengan ukuran tidak melebihi 10 MB</span>
                 </div>
               </div>
 
