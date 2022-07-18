@@ -17,7 +17,7 @@ class Pendapatan_order extends CI_Controller {
 
 	public function index()
 	{
-    $data['title']		= 'Data Pendapatan Orderrr';
+    $data['title']		= 'Data Pendapatan Order';
 		$data['pendapatan_order']		= $this->M_pendapatan_order->get_data()->result_array();
 		$this->load->view('pendapatan_order/data', $data);
 	}
