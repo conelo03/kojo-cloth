@@ -123,9 +123,7 @@ $route['riwayat-order']		= 'Order/riwayat';
 $route['laporan-order']		= 'Order/laporan';
 $route['cetak-bom-list/(:any)']		= 'Order/cetak_bom_list/$1';
 
-$route['rekapitulasi-order'] = 'Order/klasterisasi';
-$route['rekapitulasi-order-next'] = 'Order/klasterisasi_next';
-$route['rekapitulasi-order-end'] = 'Order/klasterisasi_end';
+$route['rekapitulasi-order'] = 'Order/klasterisasi_new';
 
 $route['agenda'] 				    = 'Agenda';
 $route['tambah-agenda'] 	        = 'Agenda/tambah';

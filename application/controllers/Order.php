@@ -735,7 +735,7 @@ class Order extends CI_Controller {
 		if($offset <= 0){
 			$c2 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC LIMIT 1")->row_array();
 		}else{
-			$c2 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC LIMIT 1 OFFSET '$offset'")->row_array();
+			$c2 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC LIMIT 1 OFFSET $offset")->row_array();
 		}
 		
 		$c3 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC")->row_array();
@@ -862,4 +862,215 @@ class Order extends CI_Controller {
 
     $this->load->view('order/data_rekapitulasi_end', $data); 
   }
+
+	public function klasterisasi_new()
+	{
+		$this->db->truncate('tb_rekapitulasi');
+    $data['title']		= 'Rangkum Order';
+		$post_m = $this->input->post('month');
+		if(empty($post_m)){
+			$month = date('Y-m');
+		} else {
+			$month = $post_m;
+		}
+
+		$pelanggan = $this->db->query("SELECT * FROM tb_pelanggan join tb_order ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) WHERE tb_order.tgl_order LIKE '$month%' GROUP BY tb_pelanggan.id_pelanggan")->result_array();
+
+		$order = [];
+		foreach ($pelanggan as $p) {
+			$id_pelanggan = $p['id_pelanggan'];
+			$jaket = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Jaket' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$kaos = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Kaos' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$jas = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Jas' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$kemeja = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Kemeja' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$sweater = $this->db->query("SELECT tb_order.id_produk, tb_pelanggan.id_pelanggan, SUM(tb_order.jumlah_ukuran_s + tb_order.jumlah_ukuran_m + tb_order.jumlah_ukuran_l + tb_order.jumlah_ukuran_xl + tb_order.jumlah_ukuran_xxl) as jumlah FROM tb_order JOIN tb_pelanggan join tb_produk ON(tb_pelanggan.id_pelanggan=tb_order.id_pelanggan) and (tb_produk.id_produk=tb_order.id_produk) WHERE tb_produk.jenis_produk = 'Sweater' AND tb_order.tgl_order LIKE '$month%' AND tb_pelanggan.id_pelanggan = '".$p['id_pelanggan']."'")->row_array();
+			$jaket = is_null($jaket['jumlah']) ? 0 : (int)$jaket['jumlah'];
+			$kaos = is_null($kaos['jumlah']) ? 0 : (int)$kaos['jumlah'];
+			$jas = is_null($jas['jumlah']) ? 0 : (int)$jas['jumlah'];
+			$kemeja = is_null($kemeja['jumlah']) ? 0 : (int)$kemeja['jumlah'];
+			$sweater = is_null($sweater['jumlah']) ? 0 : (int)$sweater['jumlah'];
+			$data = [
+				'id_pelanggan' => $id_pelanggan,
+				'jaket' => $jaket,
+				'kaos' => $kaos,
+				'jas' => $jas,
+				'kemeja' => $kemeja,
+				'sweater' => $sweater,
+				'total' => $jaket+$kaos+$jas+$kemeja+$sweater,
+			];
+
+			$this->db->insert('tb_rekapitulasi', $data);
+
+			//array_push($order, $data);
+		}
+
+		$count_all = $this->db->count_all('tb_rekapitulasi');
+		$offset = 0;
+		if ($count_all % 2 == 0){ //Kondisi
+			$offset = ($count_all / 2) - 1;
+		}else {
+			$offset = (($count_all - 1) / 2) + 1;
+		}
+
+		$c1 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` DESC")->row_array();
+		$c2;
+		if($offset <= 0){
+			$c2 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC LIMIT 1")->row_array();
+		}else{
+			$c2 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC LIMIT 1 OFFSET $offset")->row_array();
+		}
+		
+		$c3 = $this->db->query("SELECT * FROM `tb_rekapitulasi` ORDER BY `tb_rekapitulasi`.`total` ASC")->row_array();
+
+		$centeroid = [
+			0 => [
+				'jas' => $c1['jas'],
+				'jaket' => $c1['jaket'],
+				'kaos' => $c1['kaos'],
+				'kemeja' => $c1['kemeja'],
+				'sweater' => $c1['sweater']
+			],
+			1 => [
+				'jas' => $c2['jas'],
+				'jaket' => $c2['jaket'],
+				'kaos' => $c2['kaos'],
+				'kemeja' => $c2['kemeja'],
+				'sweater' => $c2['sweater']
+			],
+			2 => [
+				'jas' => $c3['jas'],
+				'jaket' => $c3['jaket'],
+				'kaos' => $c3['kaos'],
+				'kemeja' => $c3['kemeja'],
+				'sweater' => $c3['sweater']
+			],
+		];
+		
+
+		$all_data = $this->db->query("SELECT * FROM tb_rekapitulasi JOIN tb_pelanggan ON(tb_rekapitulasi.id_pelanggan=tb_pelanggan.id_pelanggan)")->result_array();
+
+    $iteration = 1;
+
+    $c1[0] = $centeroid[0];
+    $c2[0] = $centeroid[1];
+    $c3[0] = $centeroid[2];
+
+		// c1 , c2 , c3
+    $data_c1 = [];
+    $data_c2 = [];
+    $data_c3 = [];
+    $list_all_data[0] = $all_data;
+    foreach ($list_all_data[0] as $index => $item_data) {
+      $list_all_data[0][$index]['c1'] = sqrt(pow($item_data['jas'] - $centeroid[0]['jas'], 2) + pow($item_data['jaket'] - $centeroid[0]['jaket'], 2) + pow($item_data['kaos'] - $centeroid[0]['kaos'], 2) + pow($item_data['kemeja'] - $centeroid[0]['kemeja'], 2) + pow($item_data['sweater'] - $centeroid[0]['sweater'], 2));
+      $list_all_data[0][$index]['c2'] = sqrt(pow($item_data['jas'] - $centeroid[1]['jas'], 2) + pow($item_data['jaket'] - $centeroid[1]['jaket'], 2) + pow($item_data['kaos'] - $centeroid[1]['kaos'], 2) + pow($item_data['kemeja'] - $centeroid[1]['kemeja'], 2) + pow($item_data['sweater'] - $centeroid[1]['sweater'], 2));
+      $list_all_data[0][$index]['c3'] = sqrt(pow($item_data['jas'] - $centeroid[2]['jas'], 2) + pow($item_data['jaket'] - $centeroid[2]['jaket'], 2) + pow($item_data['kaos'] - $centeroid[2]['kaos'], 2) + pow($item_data['kemeja'] - $centeroid[2]['kemeja'], 2) + pow($item_data['sweater'] - $centeroid[2]['sweater'], 2));
+      $list_all_data[0][$index]['jarak'] = min($list_all_data[0][$index]['c1'], $list_all_data[0][$index]['c2'], $list_all_data[0][$index]['c3']);
+      if ($list_all_data[0][$index]['jarak'] == $list_all_data[0][$index]['c1']) {
+        $list_all_data[0][$index]['label'] = 'c1';
+        array_push($data_c1, $list_all_data[0][$index]);
+      } else if ($list_all_data[0][$index]['jarak'] == $list_all_data[0][$index]['c2']) {
+        $list_all_data[0][$index]['label'] = 'c2';
+        array_push($data_c2, $list_all_data[0][$index]);
+      } else if ($list_all_data[0][$index]['jarak'] == $list_all_data[0][$index]['c3']) {
+        $list_all_data[0][$index]['label'] = 'c3';
+        array_push($data_c3, $list_all_data[0][$index]);
+      } else {
+        $list_all_data[0][$index]['label'] = 'undefined';
+      }
+    }
+
+		$iteration++;
+
+    $any_error = 1;
+
+    while ($any_error > 0) {
+      $any_error = 0;
+
+      // prepare mencari centeroid 2
+      $c1[$iteration - 1] = [
+        'jas' => count($data_c1) == 0 ? 0 : array_sum(array_column($data_c1, 'jas')) / count($data_c1),
+        'jaket' => count($data_c1) == 0 ? 0 : array_sum(array_column($data_c1, 'jaket')) / count($data_c1),
+        'kaos' => count($data_c1) == 0 ? 0 : array_sum(array_column($data_c1, 'kaos')) / count($data_c1),
+				'kemeja' => count($data_c1) == 0 ? 0 : array_sum(array_column($data_c1, 'kemeja')) / count($data_c1),
+				'sweater' => count($data_c1) == 0 ? 0 : array_sum(array_column($data_c1, 'sweater')) / count($data_c1),
+      ];
+      $c2[$iteration - 1] = [
+        'jas' => count($data_c2) == 0 ? 0 : array_sum(array_column($data_c2, 'jas')) / count($data_c2),
+        'jaket' => count($data_c2) == 0 ? 0 : array_sum(array_column($data_c2, 'jaket')) / count($data_c2),
+        'kaos' => count($data_c2) == 0 ? 0 : array_sum(array_column($data_c2, 'kaos')) / count($data_c2),
+				'kemeja' => count($data_c2) == 0 ? 0 : array_sum(array_column($data_c2, 'kemeja')) / count($data_c2),
+				'sweater' => count($data_c2) == 0 ? 0 : array_sum(array_column($data_c2, 'sweater')) / count($data_c2),
+      ];
+      $c3[$iteration - 1] = [
+        'jas' => count($data_c3) == 0 ? 0 : array_sum(array_column($data_c3, 'jas')) / count($data_c3),
+        'jaket' => count($data_c3) == 0 ? 0 : array_sum(array_column($data_c3, 'jaket')) / count($data_c3),
+        'kaos' => count($data_c3) == 0 ? 0 : array_sum(array_column($data_c3, 'kaos')) / count($data_c3),
+				'kemeja' => count($data_c3) == 0 ? 0 : array_sum(array_column($data_c3, 'kemeja')) / count($data_c3),
+				'sweater' => count($data_c3) == 0 ? 0 : array_sum(array_column($data_c3, 'sweater')) / count($data_c3),
+      ];
+
+			$list_all_data[$iteration - 1] = $list_all_data[$iteration - 2];
+
+      $data_c1 = [];
+      $data_c2 = [];
+      $data_c3 = [];
+
+			foreach ($list_all_data[$iteration - 1] as $index => $item_data) {
+        $list_all_data[$iteration - 1][$index]['c1'] = sqrt(pow($item_data['jas'] - $c1[$iteration - 1]['jas'], 2) + pow($item_data['jaket'] - $c1[$iteration - 1]['jaket'], 2) + pow($item_data['kaos'] - $c1[$iteration - 1]['kaos'], 2) + pow($item_data['kemeja'] - $c1[$iteration - 1]['kemeja'], 2) + pow($item_data['sweater'] - $c1[$iteration - 1]['sweater'], 2));
+        $list_all_data[$iteration - 1][$index]['c2'] = sqrt(pow($item_data['jas'] - $c2[$iteration - 1]['jas'], 2) + pow($item_data['jaket'] - $c2[$iteration - 1]['jaket'], 2) + pow($item_data['kaos'] - $c2[$iteration - 1]['kaos'], 2) + pow($item_data['kemeja'] - $c2[$iteration - 1]['kemeja'], 2) + pow($item_data['sweater'] - $c2[$iteration - 1]['sweater'], 2));
+        $list_all_data[$iteration - 1][$index]['c3'] = sqrt(pow($item_data['jas'] - $c3[$iteration - 1]['jas'], 2) + pow($item_data['jaket'] - $c3[$iteration - 1]['jaket'], 2) + pow($item_data['kaos'] - $c3[$iteration - 1]['kaos'], 2) + pow($item_data['kemeja'] - $c3[$iteration - 1]['kemeja'], 2) + pow($item_data['sweater'] - $c3[$iteration - 1]['sweater'], 2));
+        $list_all_data[$iteration - 1][$index]['jarak'] = min($list_all_data[$iteration - 1][$index]['c1'], $list_all_data[$iteration - 1][$index]['c2'], $list_all_data[$iteration - 1][$index]['c3']);
+        if ($list_all_data[$iteration - 1][$index]['jarak'] == $list_all_data[$iteration - 1][$index]['c1']) {
+          $list_all_data[$iteration - 1][$index]['label'] = 'c1';
+          array_push($data_c1,  $list_all_data[$iteration - 1][$index]);
+        } else if ($list_all_data[$iteration - 1][$index]['jarak'] == $list_all_data[$iteration - 1][$index]['c2']) {
+          $list_all_data[$iteration - 1][$index]['label'] = 'c2';
+          array_push($data_c2,  $list_all_data[$iteration - 1][$index]);
+        } else if ($list_all_data[$iteration - 1][$index]['jarak'] == $list_all_data[$iteration - 1][$index]['c3']) {
+          $list_all_data[$iteration - 1][$index]['label'] = 'c3';
+          array_push($data_c3,  $list_all_data[$iteration - 1][$index]);
+        } else {
+          $list_all_data[$iteration - 1][$index]['label'] = 'undefined';
+        }
+      }
+
+			// membandingkan pola
+      $compare1 = array_column($list_all_data[$iteration - 1], 'label');
+      $compare2 = array_column($list_all_data[$iteration - 2], 'label');
+
+      if ($compare1 != $compare2) {
+        $any_error = 1;
+      }
+
+      $iteration++;
+    }
+
+		$result_c1 = [];
+    $result_c2 = [];
+    $result_c3 = [];
+
+    foreach ($list_all_data[$iteration - 2] as $item) {
+      $item['instansi'] = $item['instansi'];
+      if ($item['label'] == 'c1') {
+        array_push($result_c1, $item);
+      } else if ($item['label'] == 'c2') {
+        array_push($result_c2, $item);
+      } else if ($item['label'] == 'c3') {
+        array_push($result_c3, $item);
+      }
+    }
+
+		$data['title']		= 'Rekapitulasi Order';
+		$data['month_c'] = $month;
+		$data['month']		= $this->db->query("SELECT DATE_FORMAT(tgl_order, '%Y-%m') as tgl1, DATE_FORMAT(tgl_order, '%M %Y') as tgl FROM tb_order GROUP BY DATE_FORMAT(tgl_order, '%M %Y') order by tgl_order ASC")->result_array();
+		$data['list_all_data'] = $list_all_data;
+		$data['c1'] = $c1;
+		$data['c2'] = $c2;
+		$data['c3'] = $c3;
+		$data['result_c1'] = $result_c1;
+		$data['result_c2'] = $result_c2;
+		$data['result_c3'] = $result_c3;
+
+		$this->load->view('order/data_rekapitulasi_new', $data);
+	}
 }
