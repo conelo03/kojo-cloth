@@ -31,6 +31,10 @@ class Akun extends CI_Controller {
 			$this->load->view('akun/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			if(empty($data['role'])){
+				$this->session->set_flashdata('msg', 'error');
+				redirect('tambah-akun');
+			}
 			$data_akun	= [
 				'id_pegawai'		=> $data['id_pegawai'],
 				'username'		=> $data['username'],
@@ -58,6 +62,10 @@ class Akun extends CI_Controller {
 			$this->load->view('akun/edit', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			if(empty($data['role'])){
+				$this->session->set_flashdata('msg', 'error');
+				redirect('edit-akun/'.$id_akun);
+			}
 			if(!empty($data['password'])){
 				$data_akun	= [
 					'id_akun'		=> $id_akun,
