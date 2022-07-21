@@ -15,7 +15,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Data Hasil Kegiatan</h4>
+              <h4>Data Hasil Kegiatan <?= $a['nama_agenda'] ?></h4>
               <div class="card-header-action">
                 <?php if ($tgl_sekarang < $a['tenggat_agenda']) { ?>
                   <a href="<?= base_url('tambah-detail-agenda/'.$id_agenda);?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>

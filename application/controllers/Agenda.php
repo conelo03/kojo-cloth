@@ -111,6 +111,7 @@ class Agenda extends CI_Controller {
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Agenda';
 			$data['id_agenda'] = $id_agenda;
+			$data['a']	= $this->M_agenda->get_by_id($id_agenda);
 			$this->load->view('detail-agenda/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
@@ -137,6 +138,7 @@ class Agenda extends CI_Controller {
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Agenda';
 			$data['id_agenda'] = $id_agenda;
+			$data['a']	= $this->M_agenda->get_by_id($id_agenda);
 			$data['agenda']	= $this->M_detail_agenda->get_by_id($id_detail_agenda);
 			$this->load->view('detail-agenda/edit', $data);
 		} else {

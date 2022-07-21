@@ -17,7 +17,7 @@
           <div class="card">
             <form action="<?= base_url('tambah-detail-agenda/'.$id_agenda); ?>" method="post" enctype="multipart/form-data">
               <div class="card-header">
-                <h4>Form Tambah Hasil Kegiatan</h4>
+                <h4>Form Tambah Hasil Kegiatan <?= $a['nama_agenda'] ?></h4>
               </div>
               <div class="card-body">
                 <div class="form-group">
