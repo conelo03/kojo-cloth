@@ -42,7 +42,7 @@ class Pegawai extends CI_Controller {
 				'foto'			=> $foto,
 			];
 			if ($this->M_pegawai->insert($data_user)) {
-				$this->session->set_flashdata('msg', 'error');
+				$this->session->set_flashdata('msg', 'error'); 
 				redirect('tambah-pegawai');
 			} else {
 				$this->session->set_flashdata('msg', 'success');
