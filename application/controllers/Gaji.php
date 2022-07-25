@@ -122,7 +122,7 @@ class Gaji extends CI_Controller {
 	{
     $data['title']		= 'Data Gaji';
 		$data['gp'] = $this->M_gaji->get_by_id($id_gaji);
-		$data['gaji']		= $this->db->select('*')
+		$data['gaji']		= $this->db->select('*, tb_detail_gaji.gaji_pokok')
 		->from('tb_detail_gaji')
 		->join('tb_pegawai', 'tb_pegawai.id_pegawai=tb_detail_gaji.id_pegawai')
 		->where('tb_detail_gaji.id_gaji', $id_gaji)
