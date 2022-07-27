@@ -186,7 +186,7 @@
                         </h6>
                       </div>
                     </div>
-                    <?php if(is_admin() || is_keuangan()):?> 
+                    <?php if(is_admin() || (is_keuangan() && $order['status_order'] != 4)):?> 
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
                       <div class="col-md-8 text-right"><h6><button type="submit" class="btn btn-info"><i class="fas fa-save"></i> Update</button></h6></div>
@@ -247,7 +247,7 @@
                         </h6>
                       </div>
                     </div>
-                    <?php if(is_admin() || is_purchase()):?> 
+                    <?php if(is_admin() || (is_purchase() && $order['status_order'] != 4)):?> 
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
                       <div class="col-md-8 text-right"><h6><button type="submit" class="btn btn-info"><i class="fas fa-save"></i> Update</button></h6></div>
@@ -308,7 +308,7 @@
                         </h6>
                       </div>
                     </div>
-                    <?php if(is_admin() || is_produksi()):?> 
+                    <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?> 
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
                       <div class="col-md-8 text-right"><h6><button type="submit" class="btn btn-info"><i class="fas fa-save"></i> Update</button></h6></div>
@@ -321,7 +321,7 @@
                       <h5>Data Pegawai Cutting</h5>
                     </div>
                     <div class="col-md-6 text-right">
-                      <?php if(is_admin() || is_produksi()):?>
+                      <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                       <a href="#" data-toggle="modal" data-target="#modal-add-cutting" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
                       <?php endif;?>
                     </div>
@@ -362,7 +362,7 @@
                             <td><?= $u['catatan_potongan'] ?></td>
                             <td><?= $u['tgl_cair'] ?></td>
                             <td class="text-center">
-                              <?php if(is_admin() || is_produksi()):?>
+                              <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                               <button type="button" data-toggle="modal" data-target="#modal-edit-cutting<?= $u['id_pegawai_cutting'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
                               <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_cutting/'.$order['id_order'].'/'.$u['id_pegawai_cutting']); ?>';"><i class="fa fa-trash"></i></button>
                               <?php endif;?>
@@ -426,7 +426,7 @@
                         </h6>
                       </div>
                     </div>
-                    <?php if(is_admin() || is_produksi()):?>
+                    <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
                       <div class="col-md-8 text-right"><h6><button type="submit" class="btn btn-info"><i class="fas fa-save"></i> Update</button></h6></div>
@@ -487,7 +487,7 @@
                         </h6>
                       </div>
                     </div>
-                    <?php if(is_admin() || is_produksi()):?>
+                    <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
                       <div class="col-md-8 text-right"><h6><button type="submit" class="btn btn-info"><i class="fas fa-save"></i> Update</button></h6></div>
@@ -500,7 +500,7 @@
                       <h5>Data Pegawai Jahit</h5>
                     </div>
                     <div class="col-md-6 text-right">
-                      <?php if(is_admin() || is_produksi()):?>
+                      <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                       <a href="#" data-toggle="modal" data-target="#modal-add-jahit" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
                       <?php endif;?>
                     </div>
@@ -539,7 +539,7 @@
                             <td><?= number_format(($u['jumlah']*$u['harga'])-$u['kasbon'], 0, ',', '.') ?></td>
                             <td><?= $u['tgl_cair'] ?></td>
                             <td class="text-center">
-                              <?php if(is_admin() || is_produksi()):?>
+                              <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                               <button type="button" data-toggle="modal" data-target="#modal-edit-jahit<?= $u['id_pegawai_jahit'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
                               <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_jahit/'.$order['id_order'].'/'.$u['id_pegawai_jahit']); ?>';"><i class="fa fa-trash"></i></button>
                               <?php endif;?>
@@ -603,7 +603,7 @@
                         </h6>
                       </div>
                     </div>
-                    <?php if(is_admin() || is_produksi()):?>
+                    <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
                       <div class="col-md-8 text-right"><h6><button type="submit" class="btn btn-info"><i class="fas fa-save"></i> Update</button></h6></div>
@@ -616,7 +616,7 @@
                       <h5>Data Pegawai QC & Packaging</h5>
                     </div>
                     <div class="col-md-6 text-right">
-                      <?php if(is_admin() || is_produksi()):?>
+                      <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                       <a href="#" data-toggle="modal" data-target="#modal-add-qc" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
                       <?php endif;?>
                     </div>
@@ -655,7 +655,7 @@
                             <td><?= number_format(($u['jumlah']*$u['harga'])-$u['kasbon'], 0, ',', '.') ?></td>
                             <td><?= $u['tgl_cair'] ?></td>
                             <td class="text-center">
-                              <?php if(is_admin() || is_produksi()):?>
+                              <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                               <button type="button" data-toggle="modal" data-target="#modal-edit-qc<?= $u['id_pegawai_qc'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
                               <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_qc/'.$order['id_order'].'/'.$u['id_pegawai_qc']); ?>';"><i class="fa fa-trash"></i></button>
                               <?php endif;?>
@@ -719,7 +719,7 @@
                         </h6>
                       </div>
                     </div>
-                    <?php if(is_admin() || is_produksi()):?>
+                    <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
                       <div class="col-md-8 text-right"><h6><button type="submit" class="btn btn-info"><i class="fas fa-save"></i> Update</button></h6></div>

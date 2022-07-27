@@ -53,6 +53,10 @@ class Pengajuan extends CI_Controller {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('tambah-pengajuan');
 			} else {
+				$judul = "Notifikasi Kojo Cloth";
+				$konten = "Ada 1 Pengajuan Baru!";
+				$url = "https://kojo-cloth.elearningpolsub.com/pengajuan";
+				$response = $this->send_message($judul, $konten, $url);
 				$this->session->set_flashdata('msg', 'success');
 				redirect('pengajuan');
 			}
@@ -155,4 +159,45 @@ class Pengajuan extends CI_Controller {
 
 		return $this->upload->data('file_name');
 	}
+
+	private function send_message($judul, $konten, $url) {
+    $content      = array(
+        "en" => $konten
+    );
+    $heading =array(
+        "en" => $judul
+    );
+
+    $fields = array(
+        'app_id' => "bebe38a0-12a2-434c-b4e5-8b54ffeb6b28",
+        'included_segments' => array(
+            'All'
+        ),
+        'contents' => $content,
+        'headings' => $heading,
+        'url' => $url
+    );
+
+    $fields = json_encode($fields);
+    
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        "Content-Type: application/json; charset=utf-8",
+        "Authorization: Basic YWFiNjE0MTMtNjQwNS00M2IyLWI2NWQtYjM0YzRmZThhZTlk"
+    ));
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_HEADER, FALSE);
+    curl_setopt($ch, CURLOPT_POST, TRUE);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_VERBOSE, TRUE);
+    curl_setopt($ch, CURLOPT_STDERR, fopen('php://stderr', 'w'));
+    
+    $response = curl_exec($ch);
+    curl_close($ch);
+ 
+    return $response;
+  }
 }

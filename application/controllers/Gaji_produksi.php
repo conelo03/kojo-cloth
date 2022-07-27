@@ -179,9 +179,9 @@ class Gaji_produksi extends CI_Controller {
     $data['title']		= 'Detail Gaji Produksi';
 		$data['id_gaji_produksi'] = $id_gaji_produksi;
 		$data['pegawai'] = $this->M_pegawai->get_by_id($id_pegawai);
-		$data['cutting'] = $this->db->query("SELECT * FROM tb_pegawai_cutting WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->result_array();
-		$data['jahit'] = $this->db->query("SELECT * FROM tb_pegawai_jahit WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->result_array();
-		$data['qc'] = $this->db->query("SELECT * FROM tb_pegawai_qc WHERE id_pegawai='$id_pegawai' AND tgl_cair='$tanggal_pencairan'")->result_array();
+		$data['cutting'] = $this->db->query("SELECT * FROM tb_pegawai_cutting, tb_order, tb_produk, tb_pelanggan WHERE tb_pegawai_cutting.id_order=tb_order.id_order AND tb_order.id_produk=tb_produk.id_produk AND tb_order.id_pelanggan=tb_pelanggan.id_pelanggan AND tb_pegawai_cutting.id_pegawai='$id_pegawai' AND tb_pegawai_cutting.tgl_cair='$tanggal_pencairan'")->result_array();
+		$data['jahit'] = $this->db->query("SELECT * FROM tb_pegawai_jahit, tb_order, tb_produk, tb_pelanggan WHERE tb_pegawai_jahit.id_order=tb_order.id_order AND tb_order.id_produk=tb_produk.id_produk AND tb_order.id_pelanggan=tb_pelanggan.id_pelanggan AND tb_pegawai_jahit.id_pegawai='$id_pegawai' AND tb_pegawai_jahit.tgl_cair='$tanggal_pencairan'")->result_array();
+		$data['qc'] = $this->db->query("SELECT * FROM tb_pegawai_qc, tb_order, tb_produk, tb_pelanggan WHERE tb_pegawai_qc.id_order=tb_order.id_order AND tb_order.id_produk=tb_produk.id_produk AND tb_order.id_pelanggan=tb_pelanggan.id_pelanggan AND tb_pegawai_qc.id_pegawai='$id_pegawai' AND tb_pegawai_qc.tgl_cair='$tanggal_pencairan'")->result_array();
 		$this->load->view('gaji_produksi/detail_gaji_by_pegawai', $data);
 	}
 

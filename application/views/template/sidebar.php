@@ -1,6 +1,9 @@
 <?php
 $id_pegawai = $this->session->userdata('id_pegawai');
 $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->row_array();
+$jml_pengajuan = $this->db->get_where('tb_pengajuan', ['status' => 0])->num_rows();
+$jml_gaji = $this->db->get_where('tb_gaji', ['status' => 0])->num_rows();
+$jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->num_rows();
 ?>
   <div id="app">
     <div class="main-wrapper">
@@ -100,18 +103,18 @@ $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->r
             <li class="menu-header">Data Transaksi</li>
             <li class="<?= $title == 'Data Pemasukan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pemasukan');?>"><i class="fas fa-download"></i> <span>Data Pemasukan</span></a></li> 
             <li class="<?= $title == 'Data Pengeluaran' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengeluaran');?>"><i class="fas fa-upload"></i> <span>Data Pengeluaran</span></a></li> 
-            <li class="<?= $title == 'Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('cash-flow');?>"><i class="fas fa-sync"></i> <span>Cash Flow</span></a></li>      
+            <!-- <li class="<?= $title == 'Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('cash-flow');?>"><i class="fas fa-sync"></i> <span>Cash Flow</span></a></li>       -->
             <?php endif;?>
 
 
             <?php if(is_owner()):?>
             <li class="menu-header">Data Gaji</li>       
-            <li class="<?= $title == 'Data Gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji</span></a></li> 
-            <li class="<?= $title == 'Data Gaji Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji-produksi');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji Produksi</span></a></li> 
+            <li class="<?= $title == 'Data Gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji<?= $jml_gaji == 0 ? '': '<span class="badge badge-warning" style="max-width: 40px;">'.$jml_gaji.'</span>' ?></span></a></li> 
+            <li class="<?= $title == 'Data Gaji Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji-produksi');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji Produksi<?= $jml_gaji_produksi == 0 ? '': '<span class="badge badge-warning" style="max-width: 40px;">'.$jml_gaji_produksi.'</span>' ?></span></a></li> 
             <li class="menu-header">Data Pengajuan</li>       
-            <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan</span></a></li> 
-            <li class="menu-header">Data Transaksi</li>
-            <li class="<?= $title == 'Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('cash-flow');?>"><i class="fas fa-sync"></i> <span>Cash Flow</span></a></li>      
+            <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan<?= $jml_pengajuan == 0 ? '': '<span class="badge badge-warning" style="max-width: 40px;">'.$jml_pengajuan.'</span>' ?></span></a></li> 
+            <!-- <li class="menu-header">Data Transaksi</li>
+            <li class="<?= $title == 'Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('cash-flow');?>"><i class="fas fa-sync"></i> <span>Cash Flow</span></a></li>       -->
             <?php endif;?>
 
             <?php if(is_marketing()):?>

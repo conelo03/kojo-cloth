@@ -18,6 +18,18 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/components.css">
+    <?php if($this->session->userdata('login') == TRUE) {?>
+		<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        <script>
+            window.OneSignal = window.OneSignal || [];
+            OneSignal.push(function() {
+                OneSignal.init({
+                appId: "bebe38a0-12a2-434c-b4e5-8b54ffeb6b28",
+                });
+            });
+        </script>
+	<?php } ?>
+    
 </head>
 
 <body>

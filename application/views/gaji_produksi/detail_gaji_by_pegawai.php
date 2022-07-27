@@ -72,6 +72,7 @@
                   <thead>
                   <tr>
                     <th class="text-center">#</th>
+                    <th>Order</th>
                     <th>Pola Potongan</th>
                     <th>Detail Ukuran</th>
                     <th>Jumlah</th>
@@ -84,9 +85,11 @@
                   <tbody>
                     <?php 
                     $no = 1;
-                    foreach ($cutting as $u): ?>
+                    foreach ($cutting as $u): 
+                    ?>
                       <tr>
                         <td><?= $no++ ?></td>
+                        <td><?= $u['nama_produk'] ?> - <?= $u['instansi'] ?></td>
                         <td><?= $u['pola_potongan'] ?></td>
                         <td><?= $u['detail_ukuran'] ?></td>
                         <td><?= $u['jumlah'] ?></td>
@@ -118,6 +121,7 @@
                   <thead>
                   <tr>
                     <th class="text-center">#</th>
+                    <th>Order</th>
                     <th>Ukuran Pendek</th>
                     <th>Ukuran Panjang</th>
                     <th>Jumlah</th>
@@ -133,6 +137,7 @@
                     foreach ($jahit as $u): ?>
                       <tr>
                         <td><?= $no++ ?></td>
+                        <td><?= $u['nama_produk'] ?> - <?= $u['instansi'] ?></td>
                         <td><?= $u['ukuran_pendek'] ?></td>
                         <td><?= $u['ukuran_panjang'] ?></td>
                         <td><?= $u['jumlah'] ?></td>
@@ -164,6 +169,7 @@
                   <thead>
                   <tr>
                     <th class="text-center">#</th>
+                    <th>Order</th>
                     <th>Ukuran Pendek</th>
                     <th>Ukuran Panjang</th>
                     <th>Jumlah</th>
@@ -179,6 +185,7 @@
                     foreach ($qc as $u): ?>
                       <tr>
                         <td><?= $no++ ?></td>
+                        <td><?= $u['nama_produk'] ?> - <?= $u['instansi'] ?></td>
                         <td><?= $u['ukuran_pendek'] ?></td>
                         <td><?= $u['ukuran_panjang'] ?></td>
                         <td><?= $u['jumlah'] ?></td>
