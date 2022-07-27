@@ -61,6 +61,13 @@ class Order extends CI_Controller {
 		$this->load->view('order/data_riwayat', $data);
 	}
 
+	public function ulasan()
+	{
+    $data['title']		= 'Ulasan Order';
+		$data['order']		= $this->M_order->get_data_ulasan()->result_array();
+		$this->load->view('order/data_ulasan', $data);
+	}
+
 	public function laporan()
 	{
     $data['title']		= 'Laporan Order';

@@ -6,8 +6,8 @@
     <div class="section-header">
       <h1><?= $title?></h1>
       <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Kelola Hasil Kegiatan</a></div>
-        <div class="breadcrumb-item">Edit Hasil Kegiatan</div>
+        <div class="breadcrumb-item active"><a href="#">Kelola Hasil Agenda</a></div>
+        <div class="breadcrumb-item">Edit Hasil Agenda</div>
       </div>
     </div>
 
@@ -17,11 +17,11 @@
           <div class="card">
             <form action="<?= base_url('edit-detail-agenda/'.$id_agenda.'/'.$agenda['id_detail_agenda']); ?>" method="post" enctype="multipart/form-data">
               <div class="card-header">
-                <h4>Form Edit Hasil Kegiatan <?= $a['nama_agenda'] ?></h4>
+                <h4>Form Edit Hasil Agenda <?= $a['nama_agenda'] ?></h4>
               </div>
               <div class="card-body">
                 <div class="form-group">
-                  <label>Foto Kegiatan</label>
+                  <label>Foto Agenda</label>
                   <input type="hidden" name="foto_agenda_old" class="form-control" value="<?= $agenda['foto_agenda'] ?>" required="">
                   <input type="file" name="foto_agenda" class="form-control" >
                 </div>  

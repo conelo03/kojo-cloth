@@ -6,7 +6,7 @@
     <div class="section-header">
       <h1><?= $title?></h1>
       <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Kelola Hasil Kegiatan</a></div>
+        <div class="breadcrumb-item active"><a href="#">Kelola Hasil Agenda</a></div>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Data Hasil Kegiatan <?= $a['nama_agenda'] ?></h4>
+              <h4>Data Hasil Agenda <?= $a['nama_agenda'] ?></h4>
               <div class="card-header-action">
                 <?php if ($tgl_sekarang < $a['tenggat_agenda']) { ?>
                   <a href="<?= base_url('tambah-detail-agenda/'.$id_agenda);?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
@@ -29,7 +29,7 @@
                   <thead>
                     <tr>
                       <th class="text-center">#</th>
-                      <th>Hasil Kegiatan</th>
+                      <th>Hasil Agenda</th>
                       <th>Tautan</th>
                       <th>Keterangan</th>
                       <th class="text-center" style="width: 250px;">Aksi</th>

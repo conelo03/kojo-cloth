@@ -15,7 +15,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Data Riwayat Order</h4>
+              <h4>Data Rekapitulasi Order</h4>
               <div class="card-header-action">
               </div>
             </div>
@@ -39,7 +39,9 @@
                   </div>
                 </div>
               </form>
-              <?php foreach ($list_all_data as $index => $value) { ?>
+              <?php 
+              if(is_admin()){
+                foreach ($list_all_data as $index => $value) { ?>
 
                 Centeroid <?= $index + 1 ?>
                 <table class="centeroid table table-striped">
@@ -121,7 +123,8 @@
                 <br>
                 <br>
 
-              <?php } ?>
+              <?php }
+              } ?>
               <table class="iteration table table-striped">
               <tr>
                 <th colspan="8">
@@ -236,6 +239,32 @@
                 </tr>
               <?php } ?>
 
+            </table>
+            <br>
+            <br>
+            <br>
+            
+            <table class="iteration table table-striped">
+              <tr>
+                <th>
+                  Dari data hasil klasterisasi yang telah dilakukan, maka dapat ditentukan beberapa strategi promosi yang dilakukan oleh pihak marketing CV kojo group Indonesia, yaitu:
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <b>Cluster 1</b> : Promosi dilakukan dengan memberikan diskon 5% dan bonus 1 pcs karena telah melakukan pemesanan yang paling banyak
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Cluster 2</b> : Promosi dilakukan dengan memberikan diskon Rp. 1.000/pcs karena masuk dalam kategori orderan sedang
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Cluster 3</b> : Promosi dilakukan dengan memberi promo harga khusus seperti promo tanggal cantik, promo hari besar dll.
+                </td>
+              </tr>
             </table>
 
             <br>

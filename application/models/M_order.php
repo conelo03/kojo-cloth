@@ -64,6 +64,17 @@ class M_order extends CI_Model {
 		return $this->db->get();
 	}
 
+	public function get_data_ulasan()
+	{
+		$this->db->select('*');
+		$this->db->select_avg('tb_order.rate');
+		$this->db->from($this->table);
+		$this->db->join('tb_produk', 'tb_produk.id_produk=tb_order.id_produk');
+		$this->db->where('tb_order.status_order', 4);
+		$this->db->group_by('tb_order.id_produk');
+		return $this->db->get();
+	}
+
 	public function get_by_role($role)
 	{
 		return $this->db->get_where($this->table, ['role' => $role])->result_array();

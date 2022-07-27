@@ -120,6 +120,7 @@ $route['hapus-order/(:any)']    	= 'Order/hapus/$1';
 $route['detail-order/(:any)']		= 'Order/detail/$1';
 $route['cetak-order/(:any)']		= 'Order/cetak/$1';
 $route['riwayat-order']		= 'Order/riwayat';
+$route['ulasan-order']		= 'Order/ulasan';
 $route['laporan-order']		= 'Order/laporan';
 $route['cetak-bom-list/(:any)']		= 'Order/cetak_bom_list/$1';
 

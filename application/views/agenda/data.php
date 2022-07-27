@@ -28,7 +28,7 @@
                   <thead>
                     <tr>
                       <th class="text-center">#</th>
-                      <th>Nama Kegiatan</th>
+                      <th>Nama Agenda</th>
                       <th>Tanggal</th>
                       <th>Tenggat Waktu</th>
                       <th>Tempat</th>

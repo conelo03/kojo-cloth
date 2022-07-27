@@ -76,6 +76,7 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
               </ul>
             </li> 
             <li class="<?= $title == 'Riwayat Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('riwayat-order');?>"><i class="fas fa-list"></i> <span>Riwayat Order</span></a></li>    
+            <li class="<?= $title == 'Ulasan Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('ulasan-order');?>"><i class="fas fa-list"></i> <span>Ulasan Order</span></a></li>    
             
             <?php if(is_admin() || is_k_marketing()):?>  
               <li class="<?= $title == 'Rekapitulasi Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('rekapitulasi-order');?>"><i class="fas fa-calendar"></i> <span>Rekapitulasi Order</span></a></li> 
