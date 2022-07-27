@@ -18,6 +18,9 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/components.css">
+
+    <link href="<?= base_url(); ?>assets/vendor/full-calendar/main.css" rel="stylesheet" />
+    <script src="<?= base_url(); ?>assets/vendor/full-calendar/main.js"></script>
     <?php if($this->session->userdata('login') == TRUE) {?>
 		<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
         <script>
