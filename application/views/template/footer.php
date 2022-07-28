@@ -218,6 +218,14 @@
           position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
       });
     </script>
+  <?php elseif($this->session->flashdata('msg')=='ajukan'):?>
+    <script type="text/javascript">
+      iziToast.success({
+          title: 'Sukses!',
+          message: 'Data berhasil Diajukan!',
+          position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+      });
+    </script>
   <?php elseif($this->session->flashdata('msg')=='update-status'):?>
     <script type="text/javascript">
       iziToast.success({

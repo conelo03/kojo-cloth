@@ -183,6 +183,20 @@ $route['hapus-pengajuan/(:any)']    	= 'Pengajuan/hapus/$1';
 $route['posting-pengajuan/(:any)']    	= 'Pengajuan/posting/$1';
 $route['approve-pengajuan/(:any)']    	= 'Pengajuan/approve/$1';
 
+$route['pengajuan-hpp'] 				    = 'Pengajuan_hpp';
+$route['tambah-pengajuan-hpp'] 	        = 'Pengajuan_hpp/tambah';
+$route['edit-pengajuan-hpp/(:any)'] 	    = 'Pengajuan_hpp/edit/$1';
+$route['hapus-pengajuan-hpp/(:any)']    	= 'Pengajuan_hpp/hapus/$1';
+$route['ajukan-pengajuan-hpp/(:any)']    	= 'Pengajuan_hpp/ajukan/$1';
+$route['batal-pengajuan-hpp/(:any)']    	= 'Pengajuan_hpp/batal/$1';
+$route['posting-pengajuan-hpp/(:any)']    	= 'Pengajuan_hpp/posting/$1';
+$route['approve-pengajuan-hpp/(:any)']    	= 'Pengajuan_hpp/approve/$1';
+
+$route['detail-pengajuan-hpp/(:any)'] 				    = 'Pengajuan_hpp/detail/$1';
+$route['tambah-detail-pengajuan-hpp/(:any)'] 	        = 'Pengajuan_hpp/tambah_detail/$1';
+$route['edit-detail-pengajuan-hpp/(:any)/(:any)'] 	    = 'Pengajuan_hpp/edit_detail/$1/$2';
+$route['hapus-detail-pengajuan-hpp/(:any)/(:any)']    	= 'Pengajuan_hpp/hapus_detail/$1/$2';
+
 $route['pendapatan-order'] 				    = 'Pendapatan_order';
 $route['tambah-pendapatan-order'] 	        = 'Pendapatan_order/tambah';
 $route['edit-pendapatan-order/(:any)'] 	    = 'Pendapatan_order/edit/$1';

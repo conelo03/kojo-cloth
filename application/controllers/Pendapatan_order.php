@@ -129,7 +129,7 @@ class Pendapatan_order extends CI_Controller {
 		$order = $this->M_order->get_by_id($id_order);
 
 		$data = [
-			'keterangan' => 'Pembayaran Order '.$order['nama_produk'].' - '.$order['instansi'],
+			'keterangan' => 'Order '.$order['nama_produk'].' - '.$order['instansi'],
 		];
 		
 		$response = [

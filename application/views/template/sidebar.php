@@ -2,6 +2,7 @@
 $id_pegawai = $this->session->userdata('id_pegawai');
 $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->row_array();
 $jml_pengajuan = $this->db->get_where('tb_pengajuan', ['status' => 0])->num_rows();
+$jml_pengajuan_hpp = $this->db->get_where('tb_pengajuan_hpp', ['status' => 1])->num_rows();
 $jml_gaji = $this->db->get_where('tb_gaji', ['status' => 0])->num_rows();
 $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->num_rows();
 ?>
@@ -88,7 +89,10 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
             <?php endif;?>
 
             <?php if(is_produksi() || is_marketing() || is_purchase() || is_k_marketing()):?>
-            <li class="menu-header">Data Pengajuan</li>       
+            <li class="menu-header">Data Pengajuan</li>    
+              <?php if(is_produksi() || is_purchase()):?>
+              <li class="<?= $title == 'Data Pengajuan HPP' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan HPP</span></a></li>    
+              <?php endif;?>
             <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Pengajuanku</span></a></li> 
             <?php endif;?>
 
@@ -98,6 +102,7 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
             <li class="<?= $title == 'Data Gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji</span></a></li> 
             <li class="<?= $title == 'Data Gaji Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji-produksi');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji Produksi</span></a></li> 
             <li class="menu-header">Data Pengajuan</li>
+            <li class="<?= $title == 'Data Pengajuan HPP' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan HPP</span></a></li> 
             <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan</span></a></li> 
             <li class="menu-header">Data Pendapatan</li>
             <li class="<?= $title == 'Data Pendapatan Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pendapatan-order');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pendapatan Order</span></a></li> 
@@ -110,10 +115,11 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
 
             <?php if(is_owner()):?>
             <li class="menu-header">Data Gaji</li>       
-            <li class="<?= $title == 'Data Gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji<?= $jml_gaji == 0 ? '': '<span class="badge badge-warning" style="max-width: 40px;">'.$jml_gaji.'</span>' ?></span></a></li> 
-            <li class="<?= $title == 'Data Gaji Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji-produksi');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji Produksi<?= $jml_gaji_produksi == 0 ? '': '<span class="badge badge-warning" style="max-width: 40px;">'.$jml_gaji_produksi.'</span>' ?></span></a></li> 
-            <li class="menu-header">Data Pengajuan</li>       
-            <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan<?= $jml_pengajuan == 0 ? '': '<span class="badge badge-warning" style="max-width: 40px;">'.$jml_pengajuan.'</span>' ?></span></a></li> 
+            <li class="<?= $title == 'Data Gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji<?= $jml_gaji == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_gaji.'</span>' ?></span></a></li> 
+            <li class="<?= $title == 'Data Gaji Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji-produksi');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji Produksi<?= $jml_gaji_produksi == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_gaji_produksi.'</span>' ?></span></a></li> 
+            <li class="menu-header">Data Pengajuan</li>    
+            <li class="<?= $title == 'Data Pengajuan HPP' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan HPP<?= $jml_pengajuan_hpp == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_pengajuan_hpp.'</span>' ?></span></a></li>       
+            <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan<?= $jml_pengajuan == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_pengajuan.'</span>' ?></span></a></li> 
             <!-- <li class="menu-header">Data Transaksi</li>
             <li class="<?= $title == 'Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('cash-flow');?>"><i class="fas fa-sync"></i> <span>Cash Flow</span></a></li>       -->
             <?php endif;?>
