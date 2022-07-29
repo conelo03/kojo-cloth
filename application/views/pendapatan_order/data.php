@@ -17,7 +17,9 @@
             <div class="card-header">
               <h4>Data Pendapatan Order</h4>
               <div class="card-header-action">
+                <?php if(is_marketing() || is_k_marketing() || is_admin()): ?>
                 <a href="<?= base_url('tambah-pendapatan-order');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                <?php endif; ?>
               </div>
             </div>
             <div class="card-body">
@@ -59,8 +61,10 @@
                           <?php if(is_keuangan() || is_admin()): ?>
                             <button class="btn btn-success" data-confirm="Anda yakin ingin posting pendapatan order?|Data yang sudah diposting tidak akan bisa dibatalkan." data-confirm-yes="document.location.href='<?= base_url('posting-pendapatan-order/'.$u['id_pendapatan_order']); ?>';"><i class="fa fa-paper-plane"></i> Posting</button>
                           <?php endif; ?>
-                          <a href="<?= base_url('edit-pendapatan-order/'.$u['id_pendapatan_order']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
-                          <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-pendapatan-order/'.$u['id_pendapatan_order']); ?>';"><i class="fa fa-trash"></i> Delete</button>
+                          <?php if(is_marketing() || is_k_marketing() || is_admin()): ?>
+                            <a href="<?= base_url('edit-pendapatan-order/'.$u['id_pendapatan_order']);?>" class="btn btn-info"><i class="fa fa-edit"></i> Edit</a>
+                            <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('hapus-pendapatan-order/'.$u['id_pendapatan_order']); ?>';"><i class="fa fa-trash"></i> Delete</button>
+                          <?php endif; ?>
                           
                         <?php elseif($u['status'] == 1): ?>
                           <?php if(is_keuangan() || is_admin()): ?>
