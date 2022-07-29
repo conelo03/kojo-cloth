@@ -215,7 +215,7 @@ class Pengajuan extends CI_Controller {
       CURLOPT_SSL_VERIFYPEER => 0,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => "token=y7bhoiqsgp28soe9&to=+6289604359031&body=Ada 1 Pengajuan Baru! Cek segera tautan dibawah ini.
+      CURLOPT_POSTFIELDS => "token=y7bhoiqsgp28soe9&to=+6285936570953&body=Ada 1 Pengajuan Baru! Cek segera tautan dibawah ini.
     https://kojo-cloth.elearningpolsub.com/pengajuan&priority=1&referenceId=",
       CURLOPT_HTTPHEADER => array(
         "content-type: application/x-www-form-urlencoded"
