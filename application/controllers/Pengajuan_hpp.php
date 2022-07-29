@@ -119,6 +119,7 @@ class Pengajuan_hpp extends CI_Controller {
 		$konten = "Ada 1 Pengajuan HPP Baru!";
 		$url = "https://kojo-cloth.elearningpolsub.com/pengajuan-hpp";
 		$response = $this->send_message($judul, $konten, $url);
+		$this->send_notif_wa();
 		$this->session->set_flashdata('msg', 'ajukan');
 		redirect('pengajuan-hpp');
 	}
@@ -314,5 +315,34 @@ class Pengajuan_hpp extends CI_Controller {
     curl_close($ch);
  
     return $response;
+  }
+
+	private function send_notif_wa(){
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://api.ultramsg.com/instance13308/messages/chat",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_SSL_VERIFYHOST => 0,
+      CURLOPT_SSL_VERIFYPEER => 0,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_POSTFIELDS => "token=y7bhoiqsgp28soe9&to=+6289604359031&body=Ada 1 Pengajuan Baru! Cek segera tautan dibawah ini.
+    https://kojo-cloth.elearningpolsub.com/pengajuan&priority=1&referenceId=",
+      CURLOPT_HTTPHEADER => array(
+        "content-type: application/x-www-form-urlencoded"
+      ),
+    ));
+
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+
+    return true;
+    
   }
 }
