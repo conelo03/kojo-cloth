@@ -23,6 +23,7 @@ class M_order extends CI_Model {
 		}elseif($confirm == false){
 			$this->db->where('tb_order.id_pegawai =', null);
 		}
+		$this->db->order_by('DATE(tb_order.tgl_order)', 'DESC');
     return $this->db->get();
 	}
 
@@ -61,6 +62,7 @@ class M_order extends CI_Model {
 		$this->db->join('tb_pegawai', 'tb_pegawai.id_pegawai=tb_order.id_pegawai');
 		$this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan=tb_order.id_pelanggan');
 		$this->db->where('tb_order.status_order', 4);
+		$this->db->order_by('DATE(tb_order.tgl_order)', 'DESC');
 		return $this->db->get();
 	}
 
