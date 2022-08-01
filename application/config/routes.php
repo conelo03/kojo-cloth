@@ -101,6 +101,11 @@ $route['tambah-pelanggan'] 	        = 'Pelanggan/tambah';
 $route['edit-pelanggan/(:any)'] 	    = 'Pelanggan/edit/$1';
 $route['hapus-pelanggan/(:any)']    	= 'Pelanggan/hapus/$1';
 
+$route['rekening'] 				    = 'Rekening';
+$route['tambah-rekening'] 	        = 'Rekening/tambah';
+$route['edit-rekening/(:any)'] 	    = 'Rekening/edit/$1';
+$route['hapus-rekening/(:any)']    	= 'Rekening/hapus/$1';
+
 $route['jenis-pemasukan'] 				    = 'Jenis_pemasukan';
 $route['tambah-jenis-pemasukan'] 	        = 'Jenis_pemasukan/tambah';
 $route['edit-jenis-pemasukan/(:any)'] 	    = 'Jenis_pemasukan/edit/$1';

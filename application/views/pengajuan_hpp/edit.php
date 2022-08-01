@@ -60,20 +60,17 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-2 form-group">
-                    <label>Bank</label>
-                    <input type="text" name="bank" class="form-control" value="<?= set_value('bank', $p['bank']); ?>" required="">
-                    <?= form_error('bank', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
-                  <div class="col-md-5 form-group">
-                    <label>No. Rekening</label>
-                    <input type="text" name="no_rekening" class="form-control" value="<?= set_value('no_rekening', $p['no_rekening']); ?>" required="">
-                    <?= form_error('no_rekening', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
-                  <div class="col-md-5 form-group">
-                    <label>Nama Rekening</label>
-                    <input type="text" name="nama_rekening" class="form-control" value="<?= set_value('nama_rekening', $p['nama_rekening']); ?>" required="">
-                    <?= form_error('nama_rekening', '<span class="text-danger small">', '</span>'); ?>
+                  <div class="col-md-12 form-group">
+                    <label>Rekening Penerima</label>
+                    <select name="id_rekening" class="form-control" id="select-pelanggan" data-live-search="true" required>
+                      <option selected disabled>-- Pilih No Rekening --</option>
+                      <?php 
+                        foreach ($rekening as $key) { ?>
+                          <option value="<?= $key['id_rekening'] ?>" <?= set_value('id_rekening', $p['no_rekening']) == $key['no_rekening'] ? 'selected' : '' ?>><?= $key['no_rekening'] ?> A/N <?= $key['nama_rekening'] ?> (<?= $key['bank'] ?>) </option>
+                      <?php  }
+                      ?>
+                    </select>
+                    <?= form_error('id_rekening', '<span class="text-danger small">', '</span>'); ?>
                   </div>
                 </div>
                 

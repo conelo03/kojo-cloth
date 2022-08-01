@@ -63,6 +63,7 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
             <?php endif;?>
 
             <?php if(is_admin() || is_keuangan()):?>
+              <li class="<?= $title == 'Data Rekening' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('rekening');?>"><i class="fas fa-building"></i> <span>Data Rekening</span></a></li> 
             <li class="<?= $title == 'Data Jenis Pemasukan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('jenis-pemasukan');?>"><i class="fas fa-download"></i> <span>Data Jenis Pemasukan</span></a></li>
             <li class="<?= $title == 'Data Jenis Pengeluaran' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('jenis-pengeluaran');?>"><i class="fas fa-upload"></i> <span>Data Jenis Pengeluaran</span></a></li> 
             <?php endif;?>

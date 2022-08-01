@@ -28,17 +28,19 @@ class Pengajuan_hpp extends CI_Controller {
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Pengajuan HPP';
 			$data['jenis_pengeluaran'] = $this->db->get('tb_jenis_pengeluaran')->result_array();
+			$data['rekening'] = $this->db->get('tb_rekening')->result_array();
 			$data['order'] = $this->M_order->get_data(null, null, true)->result_array();
 			$this->load->view('pengajuan_hpp/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			$rek = $this->M_rekening->get_by_id($data['id_rekening']);
 			$data_user	= [
 				'tanggal'			=> $data['tanggal'],
 				'id_jenis_pengeluaran'			=> $data['id_jenis_pengeluaran'],
 				'id_order'			=> $data['id_order'],
-				'bank'			=> $data['bank'],
-				'no_rekening'			=> $data['no_rekening'],
-				'nama_rekening'			=> $data['nama_rekening'],
+				'bank'			=> $rek['bank'],
+				'no_rekening'			=> $rek['no_rekening'],
+				'nama_rekening'			=> $rek['nama_rekening'],
 				'keterangan'			=> $data['keterangan'],
 				'id_pegawai'			=> $this->session->userdata('id_pegawai'),
 			];
@@ -59,20 +61,21 @@ class Pengajuan_hpp extends CI_Controller {
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Pengajuan HPP';
 			$data['jenis_pengeluaran'] = $this->db->get('tb_jenis_pengeluaran')->result_array();
+			$data['rekening'] = $this->db->get('tb_rekening')->result_array();
 			$data['order'] = $this->M_order->get_data(null, null, true)->result_array();
 			$data['p']	= $this->M_pengajuan_hpp->get_by_id($id_pengajuan_hpp);
 			$this->load->view('pengajuan_hpp/edit', $data);
 		} else {
 			$data		= $this->input->post(null, true);
-
+			$rek = $this->M_rekening->get_by_id($data['id_rekening']);
 			$data_user	= [
 				'id_pengajuan_hpp'		=> $id_pengajuan_hpp,
 				'tanggal'			=> $data['tanggal'],
 				'id_jenis_pengeluaran'			=> $data['id_jenis_pengeluaran'],
 				'id_order'			=> $data['id_order'],
-				'bank'			=> $data['bank'],
-				'no_rekening'			=> $data['no_rekening'],
-				'nama_rekening'			=> $data['nama_rekening'],
+				'bank'			=> $rek['bank'],
+				'no_rekening'			=> $rek['no_rekening'],
+				'nama_rekening'			=> $rek['nama_rekening'],
 				'keterangan'			=> $data['keterangan'],
 				'id_pegawai'			=> $this->session->userdata('id_pegawai'),
 			];
@@ -92,9 +95,7 @@ class Pengajuan_hpp extends CI_Controller {
 		$this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim');
 		$this->form_validation->set_rules('id_jenis_pengeluaran', 'Jenis pengeluaran', 'required|trim');
 		$this->form_validation->set_rules('id_order', 'ID Order', 'required|trim');
-		$this->form_validation->set_rules('bank', 'Bank', 'required|trim');
-		$this->form_validation->set_rules('no_rekening', 'No Rekening', 'required|trim');
-		$this->form_validation->set_rules('nama_rekening', 'Nama Rekening', 'required|trim');
+		$this->form_validation->set_rules('id_rekening', 'Rekening Penerima', 'required|trim');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
 	}
 
