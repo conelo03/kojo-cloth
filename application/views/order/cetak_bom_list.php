@@ -53,31 +53,41 @@
                 <h6>Jumlah Order :</h6>
                 <table width="100%" border="1">
                   <tr class="text-center">
-                    <th>Ukuran</th>
-                    <th>Jumlah</th>
+                    <th class="text-center" rowspan="2">Ukuran</th>
+                    <th class="text-center" colspan="2">Jumlah</th>
+                  </tr>
+                  <tr class="text-center">
+                    <th class="text-center">Lengan Pendek</th>
+                    <th class="text-center">Lengan Panjang</th>
                   </tr>
                   <tr class="text-center">
                     <td>S</td>
                     <td><?= $order['jumlah_ukuran_s'] ?></td>
+                    <td><?= $order['jumlah_ukuran_s_p'] ?></td>
                   </tr>
                   <tr class="text-center">
                     <td>M</td>
                     <td><?= $order['jumlah_ukuran_m'] ?></td>
+                    <td><?= $order['jumlah_ukuran_m_p'] ?></td>
                   </tr>
                   <tr class="text-center">
                     <td>L</td>
                     <td><?= $order['jumlah_ukuran_l'] ?></td>
+                    <td><?= $order['jumlah_ukuran_l_p'] ?></td>
                   </tr>
                   <tr class="text-center">
                     <td>XL</td>
                     <td><?= $order['jumlah_ukuran_xl'] ?></td>
+                    <td><?= $order['jumlah_ukuran_xl_p'] ?></td>
                   </tr>
                   <tr class="text-center">
                     <td>XXL</td>
                     <td><?= $order['jumlah_ukuran_xxl'] ?></td>
+                    <td><?= $order['jumlah_ukuran_xxl_p'] ?></td>
                   </tr>
                 </table>
 
+                <?php if($total_harga_kain != 0): ?>
                 <br>
                 <h6>Kebutuhan Kain :</h6>
                 <table width="100%" border="1">
@@ -117,7 +127,9 @@
                     <th class="text-right">Rp <?= number_format($total_harga_kain, '2', ',', '.')  ?></th>
                   </tr>
                 </table>
-
+                <?php endif; ?>
+                
+                <?php if($total_harga_kancing != 0): ?>
                 <br>
                 <h6>Kebutuhan Kancing :</h6>
                 <table width="100%" border="1">
@@ -157,7 +169,9 @@
                     <th class="text-right">Rp <?= number_format($total_harga_kancing, '2', ',', '.')  ?></th>
                   </tr>
                 </table>
+                <?php endif; ?>
 
+                <?php if($total_harga_resleting != 0): ?>
                 <br>
                 <h6>Kebutuhan Resleting :</h6>
                 <table width="100%" border="1">
@@ -197,7 +211,9 @@
                     <th class="text-right">Rp <?= number_format($total_harga_resleting, '2', ',', '.')  ?></th>
                   </tr>
                 </table>
-
+                <?php endif; ?>
+                
+                <?php if($total_harga_prepet != 0): ?>
                 <br>
                 <h6>Kebutuhan Prepet :</h6>
                 <table width="100%" border="1">
@@ -237,6 +253,9 @@
                     <th class="text-right">Rp <?= number_format($total_harga_prepet, '2', ',', '.')  ?></th>
                   </tr>
                 </table>
+                <?php endif; ?>
+
+                <?php if($total_harga_rib != 0): ?>
                 <br>
                 <h6>Kebutuhan RIB :</h6>
                 <table width="100%" border="1">
@@ -276,6 +295,7 @@
                     <th class="text-right">Rp <?= number_format($total_harga_rib, '2', ',', '.')  ?></th>
                   </tr>
                 </table>
+                <?php endif; ?>
               </div>
             </div>
           </div>

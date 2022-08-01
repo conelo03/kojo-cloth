@@ -268,11 +268,11 @@ class Order extends CI_Controller {
 		$order		= $this->M_order->get_by_id($id_order);
 		$produk		= $this->M_produk->get_by_id($data['order']['id_produk']);
 
-		$data['jml_kain_s'] = $order['jumlah_ukuran_s'] * $produk['pnj_kain_s'];
-		$data['jml_kain_m'] = $order['jumlah_ukuran_m'] * $produk['pnj_kain_m'];
-		$data['jml_kain_l'] = $order['jumlah_ukuran_l'] * $produk['pnj_kain_l'];
-		$data['jml_kain_xl'] = $order['jumlah_ukuran_xl'] * $produk['pnj_kain_xl'];
-		$data['jml_kain_xxl'] = $order['jumlah_ukuran_xxl'] * $produk['pnj_kain_xxl'];
+		$data['jml_kain_s'] = ($order['jumlah_ukuran_s'] * $produk['pnj_kain_s']) + ($order['jumlah_ukuran_s_p'] * $produk['pnj_kain_s_p']);
+		$data['jml_kain_m'] = ($order['jumlah_ukuran_m'] * $produk['pnj_kain_m']) + ($order['jumlah_ukuran_m_p'] * $produk['pnj_kain_m_p']);
+		$data['jml_kain_l'] = ($order['jumlah_ukuran_l'] * $produk['pnj_kain_l']) + ($order['jumlah_ukuran_l_p'] * $produk['pnj_kain_l_p']);
+		$data['jml_kain_xl'] = ($order['jumlah_ukuran_xl'] * $produk['pnj_kain_xl']) + ($order['jumlah_ukuran_xl_p'] * $produk['pnj_kain_xl_p']);
+		$data['jml_kain_xxl'] = ($order['jumlah_ukuran_xxl'] * $produk['pnj_kain_xxl']) + ($order['jumlah_ukuran_xxl_p'] * $produk['pnj_kain_xxl_p']);
 		$data['total_harga_kain'] = ($data['jml_kain_s'] * $produk['harga_kain']) + 
 		($data['jml_kain_m'] * $produk['harga_kain']) + 
 		($data['jml_kain_l'] * $produk['harga_kain']) + 
