@@ -325,6 +325,27 @@
                         </h6>
                       </div>
                     </div>
+                    <div class="row mb-2">
+                      <div class="col-12">
+                        <h6>Jumlah Order</h6>
+                      </div>
+                      <div class="col-12">
+                        <table width="100%" border="1">
+                          <tr>
+                            <th class="text-center">Pola Potongan</th>
+                            <th class="text-center">Jumlah yg Sudah Dikerjakan</th>
+                            <th class="text-center">Sisa</th>
+                          </tr>
+                          <?php foreach ($jml_cutting as $key) { ?>
+                            <tr>
+                              <th class=""><?= $key['pola_potongan'] ?></th>
+                              <th class="text-center"><?= $key['jumlah'] ?> pcs</th>
+                              <th class="text-center text-danger"><?= $jumlah_order - $key['jumlah'] ?> pcs</th>
+                            </tr>
+                          <?php } ?>
+                        </table>
+                      </div>
+                    </div>
                     <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?> 
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
@@ -504,6 +525,39 @@
                         </h6>
                       </div>
                     </div>
+                    <div class="row mb-2">
+                      <div class="col-12">
+                        <h6>Jumlah Order</h6>
+                      </div>
+                      <div class="col-12">
+                        <table width="100%" border="1">
+                          <tr>
+                            <th class="text-center">Keterangan</th>
+                            <th class="text-center">Lengan Pendek</th>
+                            <th class="text-center">Lengan Panjang</th>
+                            <th class="text-center">Total</th>
+                          </tr>
+                          <tr>
+                            <th class="">Total Jumlah Order</th>
+                            <th class="text-center"><?= $jumlah_order_pendek ?> pcs</th>
+                            <th class="text-center"><?= $jumlah_order_panjang ?> pcs</th>
+                            <th class="text-center"><?= $jumlah_order_pendek + $jumlah_order_panjang ?> pcs</th>
+                          </tr>
+                          <tr>
+                            <th class="">Jumlah Order yg Sudah Dikerjakan</th>
+                            <th class="text-center"><?= $jml_jahit['jml_ukuran_pendek'] ?> pcs</th>
+                            <th class="text-center"><?= $jml_jahit['jml_ukuran_panjang'] ?> pcs</th>
+                            <th class="text-center"><?= $jml_jahit['jml_total'] ?> pcs</th>
+                          </tr>
+                          <tr>
+                            <th class=" text-danger">Jumlah Order yg Belum Dikerjakan</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_pendek - $jml_jahit['jml_ukuran_pendek'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_panjang - $jml_jahit['jml_ukuran_panjang'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_pendek + $jumlah_order_panjang - $jml_jahit['jml_total'] ?> pcs</th>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
                     <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
@@ -517,7 +571,7 @@
                       <h5>Data Pegawai Jahit</h5>
                     </div>
                     <div class="col-md-6 text-right">
-                      <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
+                      <?php if(is_admin() || (is_produksi() && $jahit['status_jahit'] != 4)):?>
                       <a href="#" data-toggle="modal" data-target="#modal-add-jahit" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
                       <?php endif;?>
                     </div>
@@ -620,6 +674,39 @@
                         </h6>
                       </div>
                     </div>
+                    <div class="row mb-2">
+                      <div class="col-12">
+                        <h6>Jumlah Order</h6>
+                      </div>
+                      <div class="col-12">
+                        <table width="100%" border="1">
+                          <tr>
+                            <th class="text-center">Keterangan</th>
+                            <th class="text-center">Lengan Pendek</th>
+                            <th class="text-center">Lengan Panjang</th>
+                            <th class="text-center">Total</th>
+                          </tr>
+                          <tr>
+                            <th class="">Total Jumlah Order</th>
+                            <th class="text-center"><?= $jumlah_order_pendek ?> pcs</th>
+                            <th class="text-center"><?= $jumlah_order_panjang ?> pcs</th>
+                            <th class="text-center"><?= $jumlah_order_pendek + $jumlah_order_panjang ?> pcs</th>
+                          </tr>
+                          <tr>
+                            <th class="">Jumlah Order yg Sudah Dikerjakan</th>
+                            <th class="text-center"><?= $jml_qc['jml_ukuran_pendek'] ?> pcs</th>
+                            <th class="text-center"><?= $jml_qc['jml_ukuran_panjang'] ?> pcs</th>
+                            <th class="text-center"><?= $jml_qc['jml_total'] ?> pcs</th>
+                          </tr>
+                          <tr>
+                            <th class=" text-danger">Jumlah Order yg Belum Dikerjakan</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_pendek - $jml_qc['jml_ukuran_pendek'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_panjang - $jml_qc['jml_ukuran_panjang'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_pendek + $jumlah_order_panjang - $jml_qc['jml_total'] ?> pcs</th>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
                     <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
                     <div class="row">
                       <div class="col-md-4"><h6></h6></div>
@@ -633,7 +720,7 @@
                       <h5>Data Pegawai QC & Packaging</h5>
                     </div>
                     <div class="col-md-6 text-right">
-                      <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
+                      <?php if(is_admin() || (is_produksi() && $qc['status_qc'] != 4)):?>
                       <a href="#" data-toggle="modal" data-target="#modal-add-qc" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
                       <?php endif;?>
                     </div>
@@ -652,6 +739,8 @@
                         <th>Total Harga</th>
                         <th>Kasbon</th>
                         <th>Total Bayar</th>
+                        <th>Ket</th>
+                        <th>Catatan</th>
                         <th>Tgl Pencairan</th>
                         <th class="text-center" style="width: 30px;">Aksi</th>
                       </tr>
@@ -670,9 +759,11 @@
                             <td><?= number_format($u['jumlah']*$u['harga'], 0, ',', '.') ?></td>
                             <td><?= number_format($u['kasbon'], 0, ',', '.') ?></td>
                             <td><?= number_format(($u['jumlah']*$u['harga'])-$u['kasbon'], 0, ',', '.') ?></td>
+                            <td><?= $u['keterangan'] ?></td>
+                            <td><?= $u['catatan_revisi'] ?></td>
                             <td><?= $u['tgl_cair'] ?></td>
                             <td class="text-center">
-                              <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
+                              <?php if(is_admin() || (is_produksi() && $qc['status_qc'] != 4)):?>
                               <button type="button" data-toggle="modal" data-target="#modal-edit-qc<?= $u['id_pegawai_qc'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
                               <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_qc/'.$order['id_order'].'/'.$u['id_pegawai_qc']); ?>';"><i class="fa fa-trash"></i></button>
                               <?php endif;?>

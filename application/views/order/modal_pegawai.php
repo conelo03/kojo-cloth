@@ -250,11 +250,11 @@
         </div>
         <div class="form-group">
           <label for="1">Ukuran (pendek)</label>
-          <input type="text" class="form-control" id="1" name="ukuran_pendek" value="" required="">
+          <input type="number" class="form-control" id="1" name="ukuran_pendek" value="" required="">
         </div>
         <div class="form-group">
           <label for="1">Ukuran (panjang)</label>
-          <input type="text" class="form-control" id="1" name="ukuran_panjang" value="" required="">
+          <input type="number" class="form-control" id="1" name="ukuran_panjang" value="" required="">
         </div>
         <div class="form-group">
           <label for="1">Jumlah</label>
@@ -271,6 +271,25 @@
         <div class="form-group">
           <label for="1">Tanggal Pencairan</label>
           <input type="date" class="form-control" id="1" name="tgl_cair" value="" required="">
+        </div>
+        <div class="form-group">
+          <label class="d-block">Keterangan</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="keterangan" value="Lolos" id="exampleRadios3" checked>
+            <label class="form-check-label" for="exampleRadios3">
+              Lolos
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="keterangan" value="Tidak Lolos" id="exampleRadios4"  >
+            <label class="form-check-label" for="exampleRadios4">
+              Tidak Lolos
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="1">Catatan Revisi</label>
+          <textarea type="text" class="form-control" id="1" name="catatan_revisi" value="" required=""></textarea>
         </div>
       </div>
       <div class="modal-footer justify-content-between">
@@ -306,11 +325,11 @@
         </div>
         <div class="form-group">
           <label for="1">Ukuran (pendek)</label>
-          <input type="text" class="form-control" id="1" name="ukuran_pendek" value="<?= $u['ukuran_pendek'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="ukuran_pendek" value="<?= $u['ukuran_pendek'] ?>" required="">
         </div>
         <div class="form-group">
           <label for="1">Ukuran (panjang)</label>
-          <input type="text" class="form-control" id="1" name="ukuran_panjang" value="<?= $u['ukuran_panjang'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="ukuran_panjang" value="<?= $u['ukuran_panjang'] ?>" required="">
         </div>
         <div class="form-group">
           <label for="1">Jumlah</label>
@@ -327,6 +346,25 @@
         <div class="form-group">
           <label for="1">Tanggal Pencairan</label>
           <input type="date" class="form-control" id="1" name="tgl_cair" value="<?= $u['tgl_cair'] ?>" required="">
+        </div>
+        <div class="form-group">
+          <label class="d-block">Keterangan</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="keterangan" value="Lolos" id="exampleRadios3" <?= $u['keterangan'] == "Lolos" ? 'checked' : '' ?>>
+            <label class="form-check-label" for="exampleRadios3">
+              Lolos
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="keterangan" value="Tidak Lolos" id="exampleRadios4"  <?= $u['keterangan'] == "Tidak Lolos" ? 'checked' : '' ?>>
+            <label class="form-check-label" for="exampleRadios4">
+              Tidak Lolos
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="1">Catatan Revisi</label>
+          <textarea type="text" class="form-control" id="1" name="catatan_revisi" value="" required=""><?= $u['catatan_revisi'] ?></textarea>
         </div>
       </div>
       <div class="modal-footer justify-content-between">

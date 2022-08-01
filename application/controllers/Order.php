@@ -210,6 +210,8 @@ class Order extends CI_Controller {
 	{
     $data['title']		= 'Data Order';
 		$data['order']		= $this->M_order->get_by_id($id_order);
+		$data['jumlah_order_pendek']		= $data['order']['jumlah_ukuran_s'] + $data['order']['jumlah_ukuran_m'] + $data['order']['jumlah_ukuran_l'] + $data['order']['jumlah_ukuran_xl'] + $data['order']['jumlah_ukuran_xxl'];
+		$data['jumlah_order_panjang']		= $data['order']['jumlah_ukuran_s_p'] + $data['order']['jumlah_ukuran_m_p'] + $data['order']['jumlah_ukuran_l_p'] + $data['order']['jumlah_ukuran_xl_p'] + $data['order']['jumlah_ukuran_xxl_p'];
 		$data['keuangan']		= $this->db->get_where('tb_keuangan', ['id_order' => $id_order])->row_array();
 		$data['purchase']		= $this->db->get_where('tb_purchase', ['id_order' => $id_order])->row_array();
 		$data['cutting']		= $this->db->get_where('tb_cutting', ['id_order' => $id_order])->row_array();
@@ -232,6 +234,10 @@ class Order extends CI_Controller {
 		$data['upah_cutting'] = $upah_cutting['upah_cutting'];
 		$data['upah_jahit'] = $upah_jahit['upah_jahit'];
 		$data['upah_qc'] = $upah_qc['upah_qc'];
+
+		$data['jml_cutting'] = $this->db->query("SELECT SUM(jumlah) as jumlah, pola_potongan FROM `tb_pegawai_cutting` where id_order='$id_order' GROUP BY pola_potongan")->result_array();
+		$data['jml_jahit'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml_ukuran_pendek, SUM(ukuran_panjang) as jml_ukuran_panjang, SUM(jumlah) as jml_total FROM `tb_pegawai_jahit`where id_order='$id_order' GROUP BY id_order")->row_array();
+		$data['jml_qc'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml_ukuran_pendek, SUM(ukuran_panjang) as jml_ukuran_panjang, SUM(jumlah) as jml_total FROM `tb_pegawai_qc`where id_order='$id_order' GROUP BY id_order")->row_array();
 		$this->load->view('order/detail', $data);
 	}
 
@@ -673,6 +679,8 @@ class Order extends CI_Controller {
 			'tgl_cair' => $data['tgl_cair'],
 			'ukuran_pendek' => $data['ukuran_pendek'],
 			'ukuran_panjang' => $data['ukuran_panjang'],
+			'keterangan' => $data['keterangan'],
+			'catatan_revisi' => $data['catatan_revisi'],
 			'created_at' => date('Y-m-d H:i:s')
 		];
 
@@ -694,6 +702,8 @@ class Order extends CI_Controller {
 			'tgl_cair' => $data['tgl_cair'],
 			'ukuran_pendek' => $data['ukuran_pendek'],
 			'ukuran_panjang' => $data['ukuran_panjang'],
+			'keterangan' => $data['keterangan'],
+			'catatan_revisi' => $data['catatan_revisi'],
 		];
 
 		$this->db->where('id_pegawai_qc', $id_pegawai_qc);
