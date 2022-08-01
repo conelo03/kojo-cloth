@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['home-pelanggan']				= 'HomePelanggan';
+$route['ulasan-pelanggan']				= 'HomePelanggan/ulasan';
 $route['registrasi-pelanggan']				= 'HomePelanggan/registrasi';
 
 //pelanggan

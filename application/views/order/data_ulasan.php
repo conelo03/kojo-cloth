@@ -26,6 +26,7 @@
                     <tr>
                       <th class="text-center">#</th>
                       <th>Produk</th>
+                      <th>Terjual</th>
                       <th>Ulasan</th>
                     </tr>
                   </thead>
@@ -36,6 +37,7 @@
                     <tr>
                       <td class="text-center"><?= $no++;?></td>
                       <td><?= $u['nama_produk'];?></td>
+                      <td><?= $u['terjual'];?></td>
                       <td>
                         <?php 
                           if ($u['rate'] != 0 || $u['rate'] != NULL) {

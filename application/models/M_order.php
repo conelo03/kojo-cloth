@@ -66,7 +66,7 @@ class M_order extends CI_Model {
 
 	public function get_data_ulasan()
 	{
-		$this->db->select('*');
+		$this->db->select('*, count(tb_order.id_order) as terjual');
 		$this->db->select_avg('tb_order.rate');
 		$this->db->from($this->table);
 		$this->db->join('tb_produk', 'tb_produk.id_produk=tb_order.id_produk');

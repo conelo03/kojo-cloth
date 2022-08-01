@@ -26,12 +26,12 @@
                   <?= form_error('nama_agenda', '<span class="text-danger small">', '</span>'); ?>
                 </div>  
                 <div class="form-group">
-                  <label>Tanggal Agenda</label>
+                  <label>Tanggal Penugasan Agenda</label>
                   <input type="date" name="tanggal_agenda" class="form-control" value="<?= set_value('tanggal_agenda'); ?>" required="">
                   <?= form_error('tanggal_agenda', '<span class="text-danger small">', '</span>'); ?>
                 </div>
                 <div class="form-group">
-                  <label>Tenggat Tanggal Agenda</label>
+                  <label>Deadline Penugasan Agenda</label>
                   <input type="date" name="tenggat_agenda" class="form-control" value="<?= set_value('tenggat_agenda'); ?>" required="">
                   <?= form_error('tenggat_agenda', '<span class="text-danger small">', '</span>'); ?>
                 </div>
@@ -49,6 +49,16 @@
                   <label>Keterangan</label>
                   <input type="text" name="keterangan" class="form-control" value="<?= set_value('keterangan'); ?>" required="">
                   <?= form_error('keterangan', '<span class="text-danger small">', '</span>'); ?>
+                </div>
+                <div class="form-group">
+                  <label>Penanggung Jawab</label>
+                  <select name="id_pegawai" class="form-control" id="select-produk" data-live-search="true">
+                    <option disabled="" selected="">-- Pilih Pegawai --</option>
+                    <?php foreach ($pegawai as $key) { ?>
+                      <option value="<?= $key['id_pegawai'] ?>" <?= set_value('id_pegawai') == $key['id_pegawai'] ? 'selected' : '' ?>><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
+                    <?php } ?>
+                  </select>
+                  <?= form_error('id_pegawai', '<span class="text-danger small">', '</span>'); ?>
                 </div>
               </div>
 

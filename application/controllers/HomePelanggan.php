@@ -61,4 +61,11 @@ class HomePelanggan extends CI_Controller {
 		$this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]');
 		
 	}
+
+	public function ulasan()
+	{
+    $data['title']		= 'Ulasan';
+		$data['order']		= $this->M_order->get_data_ulasan()->result_array();
+		$this->load->view('pelanggan-page/ulasan', $data);
+	}
 }

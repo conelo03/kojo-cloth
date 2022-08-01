@@ -81,11 +81,12 @@
                     <tr>
                       <th class="text-center">#</th>
                       <th>Nama Agenda</th>
-                      <th>Tanggal</th>
-                      <th>Tenggat Waktu</th>
+                      <th>Tanggal Penugasan</th>
+                      <th>Deadline Penugasan</th>
                       <th>Tempat</th>
                       <th>Waktu</th>
                       <th>Keterangan</th>
+                      <th>Penanggung Jawab</th>
                       <th class="text-center" style="width: 250px;">Aksi</th>
                     </tr>
                   </thead>
@@ -101,6 +102,7 @@
                       <td><?= $u['tempat'];?></td>
                       <td><?= $u['waktu'];?></td>
                       <td><?= $u['keterangan'];?></td>
+                      <td><?= $u['nama'];?></td>
                       <td class="text-center">
                         <a href="<?= base_url('detail-agenda/'.$u['id_agenda']);?>" class="btn btn-light"><i class="fa fa-list"></i> Hasil</a>
                         <?php if (is_admin() || is_k_marketing()) { ?>

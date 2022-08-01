@@ -28,7 +28,12 @@ class Pendapatan_order extends CI_Controller {
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Pendapatan Order';
 			$id_pegawai = $this->session->userdata('id_pegawai');
-			$data['order'] = $this->M_order->get_data($id_pegawai, null, true)->result_array();
+			if(is_keuangan() || is_admin()){
+				$data['order'] = $this->M_order->get_data(null, null, true)->result_array();
+			}else{
+				$data['order'] = $this->M_order->get_data($id_pegawai, null, true)->result_array();
+			}
+			
 			$this->load->view('pendapatan_order/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);

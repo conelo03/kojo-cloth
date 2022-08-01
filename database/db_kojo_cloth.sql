@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2022 at 07:09 PM
+-- Generation Time: Jul 31, 2022 at 03:10 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.2.33
 
@@ -35,17 +35,18 @@ CREATE TABLE `tb_agenda` (
   `tenggat_agenda` date NOT NULL,
   `tempat` varchar(100) NOT NULL,
   `waktu` varchar(50) NOT NULL,
-  `keterangan` text NOT NULL
+  `keterangan` text NOT NULL,
+  `id_pegawai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_agenda`
 --
 
-INSERT INTO `tb_agenda` (`id_agenda`, `nama_agenda`, `tanggal_agenda`, `tenggat_agenda`, `tempat`, `waktu`, `keterangan`) VALUES
-(2, 'Webinar kojo', '2022-06-27', '2022-06-28', 'SMKN 4 Padalarang', '13:30', 'Pembahasan mengenai pengembangan bisnis'),
-(3, 'Promosi ke polsub', '2022-06-28', '2022-06-28', 'Polsub', '14:00', 'Sesuai ke dengan kegiatan'),
-(4, 'promosi di alun-alun', '2022-06-30', '2022-07-01', 'alun-alun', '13:00', 'Cfd');
+INSERT INTO `tb_agenda` (`id_agenda`, `nama_agenda`, `tanggal_agenda`, `tenggat_agenda`, `tempat`, `waktu`, `keterangan`, `id_pegawai`) VALUES
+(2, 'Webinar kojo', '2022-06-27', '2022-06-28', 'SMKN 4 Padalarang', '13:30', 'Pembahasan mengenai pengembangan bisnis', 4),
+(3, 'Promosi ke polsub', '2022-06-28', '2022-06-28', 'Polsub', '14:00', 'Sesuai ke dengan kegiatan', 4),
+(4, 'promosi di alun-alun', '2022-06-30', '2022-07-01', 'alun-alun', '13:00', 'Cfd', 4);
 
 -- --------------------------------------------------------
 
@@ -1780,7 +1781,7 @@ ALTER TABLE `tb_detail_gaji_produksi`
 -- AUTO_INCREMENT for table `tb_detail_pengajuan_hpp`
 --
 ALTER TABLE `tb_detail_pengajuan_hpp`
-  MODIFY `id_detail_pengajuan_hpp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_detail_pengajuan_hpp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_gaji`
@@ -1894,7 +1895,7 @@ ALTER TABLE `tb_pengajuan`
 -- AUTO_INCREMENT for table `tb_pengajuan_hpp`
 --
 ALTER TABLE `tb_pengajuan_hpp`
-  MODIFY `id_pengajuan_hpp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pengajuan_hpp` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_pengeluaran`

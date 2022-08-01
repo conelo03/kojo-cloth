@@ -9,6 +9,7 @@ class M_agenda extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from($this->table);
+		$this->db->join('tb_pegawai', 'tb_pegawai.id_pegawai=tb_agenda.id_pegawai');
     return $this->db->get();
 	}
 

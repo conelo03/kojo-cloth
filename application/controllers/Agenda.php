@@ -27,6 +27,7 @@ class Agenda extends CI_Controller {
 		$this->validation();
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Agenda';
+			$data['pegawai'] = $this->db->get_where('tb_pegawai', ['jabatan' => 'Staff Marketing'])->result_array();
 			$this->load->view('agenda/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
@@ -36,7 +37,8 @@ class Agenda extends CI_Controller {
 				'tenggat_agenda'		=> $data['tenggat_agenda'],
 				'waktu'		=> $data['waktu'],
 				'tempat'		=> $data['tempat'],
-				'keterangan'		=> $data['keterangan']
+				'keterangan'		=> $data['keterangan'],
+				'id_pegawai'		=> $data['id_pegawai']
 			];
 			if ($this->M_agenda->insert($data_akun)) {
 				$this->session->set_flashdata('msg', 'error');
@@ -53,6 +55,7 @@ class Agenda extends CI_Controller {
 		$this->validation();
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Agenda';
+			$data['pegawai'] = $this->db->get_where('tb_pegawai', ['jabatan' => 'Staff Marketing'])->result_array();
 			$data['agenda']	= $this->M_agenda->get_by_id($id_agenda);
 			$this->load->view('agenda/edit', $data);
 		} else {
@@ -64,7 +67,8 @@ class Agenda extends CI_Controller {
 				'tenggat_agenda'		=> $data['tenggat_agenda'],
 				'waktu'		=> $data['waktu'],
 				'tempat'		=> $data['tempat'],
-				'keterangan'		=> $data['keterangan']
+				'keterangan'		=> $data['keterangan'],
+				'id_pegawai'		=> $data['id_pegawai']
 			];
 			
 			if ($this->M_agenda->update($data_akun)) {
@@ -85,7 +89,7 @@ class Agenda extends CI_Controller {
 		$this->form_validation->set_rules('tempat', 'Tempat', 'required|trim');
 		$this->form_validation->set_rules('waktu', 'Waktu', 'required|trim');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
-		
+		$this->form_validation->set_rules('id_pegawai', 'Penanggung Jawab', 'required|trim');
 	}
 
 	public function hapus($id_agenda)

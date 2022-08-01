@@ -12,6 +12,7 @@
         </a>
         <ul class="navbar-nav">
           <li class="nav-item <?= $title == 'Home' ? 'active' : '' ?>"><a href="<?= base_url('home-pelanggan') ?>" class="nav-link">Home</a></li>
+          <li class="nav-item <?= $title == 'Ulasan' ? 'active' : '' ?>"><a href="<?= base_url('ulasan-pelanggan') ?>" class="nav-link">Ulasan</a></li>
          </ul>
       </div>
       <ul class="ml-auto navbar-nav navbar-right">
