@@ -31,45 +31,72 @@
                     <input type="text" name="" class="form-control" value="<?= $nama_pelanggan; ?>" disabled>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <label>Produk</label>
-                    <select name="id_produk" class="form-control" id="select-produk" data-live-search="true">
-                      <option disabled="" selected="">-- Pilih Produk --</option>
-                      <?php foreach ($produk as $key) { ?>
-                        <option value="<?= $key['id_produk'] ?>" <?= set_value('id_produk', $id_produk) == $key['id_produk'] ? 'selected' : '' ?>><?= $key['nama_produk'] ?> - <?= $key['jenis_produk'] ?></option>
-                      <?php } ?>
-                    </select>
-                    <?= form_error('id_produk', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <label>Jumlah (Ukuran S)</label>
-                    <input type="number" name="jumlah_ukuran_s" class="form-control" value="<?= set_value('jumlah_ukuran_s'); ?>" required="">
-                    <?= form_error('jumlah_ukuran_s', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
+                <div class="form-group">
+                  <label>Produk</label>
+                  <select name="id_produk" class="form-control" id="select-produk" data-live-search="true">
+                    <option disabled="" selected="">-- Pilih Produk --</option>
+                    <?php foreach ($produk as $key) { ?>
+                      <option value="<?= $key['id_produk'] ?>" <?= set_value('id_produk') == $key['id_produk'] ? 'selected' : '' ?>><?= $key['nama_produk'] ?> - <?= $key['jenis_produk'] ?></option>
+                    <?php } ?>
+                  </select>
+                  <?= form_error('id_produk', '<span class="text-danger small">', '</span>'); ?>
                 </div>
                 <div class="row">
-                  <div class="col-md-6 form-group">
-                    <label>Jumlah (Ukuran M)</label>
-                    <input type="number" name="jumlah_ukuran_m" class="form-control" value="<?= set_value('jumlah_ukuran_m'); ?>" required="">
-                    <?= form_error('jumlah_ukuran_m', '<span class="text-danger small">', '</span>'); ?>
+                  <div class="col-md-6">
+                    <b>Pendek : </b>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran S)</label>
+                      <input type="number" name="jumlah_ukuran_s" class="form-control" value="<?= set_value('jumlah_ukuran_s'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_s', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran M)</label>
+                      <input type="number" name="jumlah_ukuran_m" class="form-control" value="<?= set_value('jumlah_ukuran_m'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_m', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran L)</label>
+                      <input type="number" name="jumlah_ukuran_l" class="form-control" value="<?= set_value('jumlah_ukuran_l'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_l', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran XL)</label>
+                      <input type="number" name="jumlah_ukuran_xl" class="form-control" value="<?= set_value('jumlah_ukuran_xl'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_xl', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran XXL)</label>
+                      <input type="number" name="jumlah_ukuran_xxl" class="form-control" value="<?= set_value('jumlah_ukuran_xxl'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_xxl', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
                   </div>
-                  <div class="col-md-6 form-group">
-                    <label>Jumlah (Ukuran L)</label>
-                    <input type="number" name="jumlah_ukuran_l" class="form-control" value="<?= set_value('jumlah_ukuran_l'); ?>" required="">
-                    <?= form_error('jumlah_ukuran_l', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <label>Jumlah (Ukuran XL)</label>
-                    <input type="number" name="jumlah_ukuran_xl" class="form-control" value="<?= set_value('jumlah_ukuran_xl'); ?>" required="">
-                    <?= form_error('jumlah_ukuran_xl', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <label>Jumlah (Ukuran XXL)</label>
-                    <input type="number" name="jumlah_ukuran_xxl" class="form-control" value="<?= set_value('jumlah_ukuran_xxl'); ?>" required="">
-                    <?= form_error('jumlah_ukuran_xxl', '<span class="text-danger small">', '</span>'); ?>
+                  <div class="col-md-6">
+                    <b>Panjang : </b>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran S)</label>
+                      <input type="number" name="jumlah_ukuran_s_p" class="form-control" value="<?= set_value('jumlah_ukuran_s_p'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_s_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran M)</label>
+                      <input type="number" name="jumlah_ukuran_m_p" class="form-control" value="<?= set_value('jumlah_ukuran_m_p'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_m_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran L)</label>
+                      <input type="number" name="jumlah_ukuran_l_p" class="form-control" value="<?= set_value('jumlah_ukuran_l_p'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_l_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran XL)</label>
+                      <input type="number" name="jumlah_ukuran_xl_p" class="form-control" value="<?= set_value('jumlah_ukuran_xl_p'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_xl_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Jumlah (Ukuran XXL)</label>
+                      <input type="number" name="jumlah_ukuran_xxl_p" class="form-control" value="<?= set_value('jumlah_ukuran_xxl_p'); ?>" required="">
+                      <?= form_error('jumlah_ukuran_xxl_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
                   </div>
                 </div>
                 <div class="form-group">

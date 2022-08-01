@@ -147,6 +147,11 @@ class DashboardPelanggan extends CI_Controller {
 				'jumlah_ukuran_l'			=> $data['jumlah_ukuran_l'],
 				'jumlah_ukuran_xl'			=> $data['jumlah_ukuran_xl'],
 				'jumlah_ukuran_xxl'			=> $data['jumlah_ukuran_xxl'],
+				'jumlah_ukuran_s_p'			=> $data['jumlah_ukuran_s_p'],
+				'jumlah_ukuran_m_p'			=> $data['jumlah_ukuran_m_p'],
+				'jumlah_ukuran_l_p'			=> $data['jumlah_ukuran_l_p'],
+				'jumlah_ukuran_xl_p'			=> $data['jumlah_ukuran_xl_p'],
+				'jumlah_ukuran_xxl_p'			=> $data['jumlah_ukuran_xxl_p'],
 				'design_order'		=> $file,
 				'catatan'			=> $data['catatan']
 			];
@@ -177,6 +182,11 @@ class DashboardPelanggan extends CI_Controller {
 		$this->form_validation->set_rules('jumlah_ukuran_l', 'Jumlah', 'required|trim');
 		$this->form_validation->set_rules('jumlah_ukuran_xl', 'Jumlah', 'required|trim');
 		$this->form_validation->set_rules('jumlah_ukuran_xxl', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_s_p', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_m_p', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_l_p', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_xl_p', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_xxl_p', 'Jumlah', 'required|trim');
 		$this->form_validation->set_rules('catatan', 'Catatan', 'required|trim');
 		
 	} 

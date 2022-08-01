@@ -50,28 +50,37 @@
                 <h4>Jumlah Order :</h4>
                 <table width="100%" border="1">
                   <tr class="text-center">
-                    <th>Ukuran</th>
-                    <th>Jumlah</th>
+                    <th class="text-center" rowspan="2">Ukuran</th>
+                    <th class="text-center" colspan="2">Jumlah</th>
+                  </tr>
+                  <tr class="text-center">
+                    <th class="text-center">Lengan Pendek</th>
+                    <th class="text-center">Lengan Panjang</th>
                   </tr>
                   <tr class="text-center">
                     <td>S</td>
                     <td><?= $order['jumlah_ukuran_s'] ?></td>
+                    <td><?= $order['jumlah_ukuran_s_p'] ?></td>
                   </tr>
                   <tr class="text-center">
                     <td>M</td>
                     <td><?= $order['jumlah_ukuran_m'] ?></td>
+                    <td><?= $order['jumlah_ukuran_m_p'] ?></td>
                   </tr>
                   <tr class="text-center">
                     <td>L</td>
                     <td><?= $order['jumlah_ukuran_l'] ?></td>
+                    <td><?= $order['jumlah_ukuran_l_p'] ?></td>
                   </tr>
                   <tr class="text-center">
                     <td>XL</td>
                     <td><?= $order['jumlah_ukuran_xl'] ?></td>
+                    <td><?= $order['jumlah_ukuran_xl_p'] ?></td>
                   </tr>
                   <tr class="text-center">
                     <td>XXL</td>
                     <td><?= $order['jumlah_ukuran_xxl'] ?></td>
+                    <td><?= $order['jumlah_ukuran_xxl_p'] ?></td>
                   </tr>
                 </table>
 

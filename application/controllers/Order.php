@@ -95,6 +95,11 @@ class Order extends CI_Controller {
 				'jumlah_ukuran_l'			=> $data['jumlah_ukuran_l'],
 				'jumlah_ukuran_xl'			=> $data['jumlah_ukuran_xl'],
 				'jumlah_ukuran_xxl'			=> $data['jumlah_ukuran_xxl'],
+				'jumlah_ukuran_s_p'			=> $data['jumlah_ukuran_s_p'],
+				'jumlah_ukuran_m_p'			=> $data['jumlah_ukuran_m_p'],
+				'jumlah_ukuran_l_p'			=> $data['jumlah_ukuran_l_p'],
+				'jumlah_ukuran_xl_p'			=> $data['jumlah_ukuran_xl_p'],
+				'jumlah_ukuran_xxl_p'			=> $data['jumlah_ukuran_xxl_p'],
 				'design_order'		=> $file,
 				'catatan'			=> $data['catatan'],
 				'id_pegawai' => $this->session->userdata('id_pegawai'),
@@ -142,6 +147,11 @@ class Order extends CI_Controller {
 				'jumlah_ukuran_l'			=> $data['jumlah_ukuran_l'],
 				'jumlah_ukuran_xl'			=> $data['jumlah_ukuran_xl'],
 				'jumlah_ukuran_xxl'			=> $data['jumlah_ukuran_xxl'],
+				'jumlah_ukuran_s_p'			=> $data['jumlah_ukuran_s_p'],
+				'jumlah_ukuran_m_p'			=> $data['jumlah_ukuran_m_p'],
+				'jumlah_ukuran_l_p'			=> $data['jumlah_ukuran_l_p'],
+				'jumlah_ukuran_xl_p'			=> $data['jumlah_ukuran_xl_p'],
+				'jumlah_ukuran_xxl_p'			=> $data['jumlah_ukuran_xxl_p'],
 				'design_order'		=> $file,
 				'catatan'			=> $data['catatan'],
 				'status_order'			=> $data['status_order']
@@ -167,6 +177,11 @@ class Order extends CI_Controller {
 		$this->form_validation->set_rules('jumlah_ukuran_l', 'Jumlah', 'required|trim');
 		$this->form_validation->set_rules('jumlah_ukuran_xl', 'Jumlah', 'required|trim');
 		$this->form_validation->set_rules('jumlah_ukuran_xxl', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_s_p', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_m_p', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_l_p', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_xl_p', 'Jumlah', 'required|trim');
+		$this->form_validation->set_rules('jumlah_ukuran_xxl_p', 'Jumlah', 'required|trim');
 		$this->form_validation->set_rules('catatan', 'Catatan', 'required|trim');
 		
 	} 
@@ -209,7 +224,8 @@ class Order extends CI_Controller {
 		$data['pegawai_jahit']		= $this->db->get()->result_array();
 		$this->db->select('*, tb_pegawai_qc.id_pegawai as id_pegawai')->from('tb_pegawai_qc')->join('tb_pegawai', 'tb_pegawai.id_pegawai=tb_pegawai_qc.id_pegawai')->join('tb_order', 'tb_order.id_order=tb_pegawai_qc.id_order')->where('tb_pegawai_qc.id_order', $id_order);
 		$data['pegawai_qc']		= $this->db->get()->result_array();
-		$data['jumlah_order'] = $data['order']['jumlah_ukuran_s'] + $data['order']['jumlah_ukuran_m'] + $data['order']['jumlah_ukuran_l'] + $data['order']['jumlah_ukuran_xl'] + $data['order']['jumlah_ukuran_xxl'];
+		$data['jumlah_order'] = $data['order']['jumlah_ukuran_s'] + $data['order']['jumlah_ukuran_m'] + $data['order']['jumlah_ukuran_l'] + $data['order']['jumlah_ukuran_xl'] + $data['order']['jumlah_ukuran_xxl']
+		+ $data['order']['jumlah_ukuran_s_p'] + $data['order']['jumlah_ukuran_m_p'] + $data['order']['jumlah_ukuran_l_p'] + $data['order']['jumlah_ukuran_xl_p'] + $data['order']['jumlah_ukuran_xxl_p'];
 		$upah_cutting = $this->db->get_where('tb_upah_cutting', ['id_upah_cutting' => 1])->row_array();
 		$upah_jahit = $this->db->get_where('tb_upah_jahit', ['id_upah_jahit' => 1])->row_array();
 		$upah_qc = $this->db->get_where('tb_upah_qc', ['id_upah_qc' => 1])->row_array();

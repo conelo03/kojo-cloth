@@ -81,24 +81,41 @@
                     <div class="col-md-8"><h6>: <?= $order['nama_produk'] ?></h6></div>
                   </div>
                   <div class="row">
-                    <div class="col-md-4"><h6>Jumlah</h6></div>
-                    <div class="col-md-8"><h6>: Ukuran S : <?= $order['jumlah_ukuran_s'] ?> pcs</h6></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8"><h6>: Ukuran M : <?= $order['jumlah_ukuran_m'] ?> pcs</h6></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8"><h6>: Ukuran L : <?= $order['jumlah_ukuran_l'] ?> pcs</h6></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8"><h6>: Ukuran XL : <?= $order['jumlah_ukuran_xl'] ?> pcs</h6></div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-8"><h6>: Ukuran XXL : <?= $order['jumlah_ukuran_xxl'] ?> pcs</h6></div>
+                    <div class="col-md-4"><h6>Jumlah Order</h6></div>
+                    <div class="col-md-8">
+                      <table width="100%" border="1">
+                        <tr>
+                          <th class="text-center">Ukuran</th>
+                          <th class="text-center">Lengan Pendek</th>
+                          <th class="text-center">Lengan Panjang</th>
+                        </tr>
+                        <tr>
+                          <th class="text-center">S</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_s'] ?> pcs</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_s_p'] ?> pcs</th>
+                        </tr>
+                        <tr>
+                          <th class="text-center">M</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_m'] ?> pcs</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_m_p'] ?> pcs</th>
+                        </tr>
+                        <tr>
+                          <th class="text-center">L</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_l'] ?> pcs</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_l_p'] ?> pcs</th>
+                        </tr>
+                        <tr>
+                          <th class="text-center">XL</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_xl'] ?> pcs</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_xl_p'] ?> pcs</th>
+                        </tr>
+                        <tr>
+                          <th class="text-center">XXL</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_xxl'] ?> pcs</th>
+                          <th class="text-center"><?= $order['jumlah_ukuran_xxl_p'] ?> pcs</th>
+                        </tr>
+                      </table>
+                    </div>
                   </div>
                   <div class="row">
                     <div class="col-md-4"><h6>Nama Marketing</h6></div>

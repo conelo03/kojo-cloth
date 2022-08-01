@@ -24,13 +24,17 @@
             <table class="table table-striped" id="datatables-user">
               <thead>
                 <tr>
-                  <th class="text-center">#</th>
-                  <th>Desain Order</th>
-                  <th>Produk</th>
-                  <th>Tgl Order</th>
-                  <th>Klien</th>
-                  <th>Jumlah</th>
-                  <th class="text-center" style="width: 250px;">Aksi</th>
+                  <th rowspan="2" class="text-center">#</th>
+                  <th rowspan="2">Desain Order</th>
+                  <th rowspan="2">Produk</th>
+                  <th rowspan="2">Tgl Order</th>
+                  <th rowspan="2">Klien</th>
+                  <th colspan="2" class="text-center">Jumlah</th>
+                  <th rowspan="2" class="text-center" style="width: 250px;">Aksi</th>
+                </tr>
+                <tr>
+                  <th class="text-center">Pendek</th>
+                  <th class="text-center">Panjang</th>
                 </tr>
               </thead>
               <tbody>
@@ -53,6 +57,13 @@
                     L : <?= $u['jumlah_ukuran_l'];?><br>
                     XL : <?= $u['jumlah_ukuran_xl'];?><br>
                     XXL : <?= $u['jumlah_ukuran_xxl'];?>
+                  </td>
+                  <td>
+                    S : <?= $u['jumlah_ukuran_s_p'];?><br>
+                    M : <?= $u['jumlah_ukuran_m_p'];?><br>
+                    L : <?= $u['jumlah_ukuran_l_p'];?><br>
+                    XL : <?= $u['jumlah_ukuran_xl_p'];?><br>
+                    XXL : <?= $u['jumlah_ukuran_xxl_p'];?>
                   </td>
                   <td class="text-center">
                     <?php if($u['id_pegawai'] == 0):?> 

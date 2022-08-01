@@ -42,6 +42,11 @@ class Produk extends CI_Controller {
 				'pnj_kain_l'			=> $data['pnj_kain_l'],
 				'pnj_kain_xl'			=> $data['pnj_kain_xl'],
 				'pnj_kain_xxl'			=> $data['pnj_kain_xxl'],
+				'pnj_kain_s_p'			=> $data['pnj_kain_s_p'],
+				'pnj_kain_m_p'			=> $data['pnj_kain_m_p'],
+				'pnj_kain_l_p'			=> $data['pnj_kain_l_p'],
+				'pnj_kain_xl_p'			=> $data['pnj_kain_xl_p'],
+				'pnj_kain_xxl_p'			=> $data['pnj_kain_xxl_p'],
 				'harga_kain'			=> $data['harga_kain'],
 
 				'jml_kancing_s'			=> $data['jml_kancing_s'],
@@ -109,6 +114,11 @@ class Produk extends CI_Controller {
 				'pnj_kain_l'			=> $data['pnj_kain_l'],
 				'pnj_kain_xl'			=> $data['pnj_kain_xl'],
 				'pnj_kain_xxl'			=> $data['pnj_kain_xxl'],
+				'pnj_kain_s_p'			=> $data['pnj_kain_s_p'],
+				'pnj_kain_m_p'			=> $data['pnj_kain_m_p'],
+				'pnj_kain_l_p'			=> $data['pnj_kain_l_p'],
+				'pnj_kain_xl_p'			=> $data['pnj_kain_xl_p'],
+				'pnj_kain_xxl_p'			=> $data['pnj_kain_xxl_p'],
 				'harga_kain'			=> $data['harga_kain'],
 
 				'jml_kancing_s'			=> $data['jml_kancing_s'],

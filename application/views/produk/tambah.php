@@ -23,7 +23,14 @@
                 <div class="row">
                   <div class="col-md-6 form-group">
                     <label>Jenis Produk</label>
-                    <input type="text" name="jenis_produk" class="form-control" value="<?= set_value('jenis_produk'); ?>" required="">
+                    <select name="jenis_produk" class="form-control">
+                      <option>-- Pilih Jenis Produk --</option>
+                      <option value="Jaket" <?= set_value('jenis_produk') == "Jaket" ? 'selected' : '' ?>>Jaket</option>
+                      <option value="Jas" <?= set_value('jenis_produk') == "Jas" ? 'selected' : '' ?>>Jas</option>
+                      <option value="Kaos" <?= set_value('jenis_produk') == "Kaos" ? 'selected' : '' ?>>Kaos</option>
+                      <option value="Kemeja" <?= set_value('jenis_produk') == "Kemeja" ? 'selected' : '' ?>>Kemeja</option>
+                      <option value="Sweater" <?= set_value('jenis_produk') == "Sweater" ? 'selected' : '' ?>>Sweater</option>
+                    </select>
                     <?= form_error('jenis_produk', '<span class="text-danger small">', '</span>'); ?>
                   </div>
                   <div class="col-md-6 form-group">
@@ -46,36 +53,65 @@
 
                 <h6>Kebutuhan Kain :</h6>
                 <div class="row">
-                  <div class="col-md-6 form-group">
-                    <label>Panjang Kain ukuran S (meter)</label>
-                    <input type="text" name="pnj_kain_s" class="form-control" value="<?= set_value('pnj_kain_s', 0); ?>" required="">
-                    <?= form_error('pnj_kain_s', '<span class="text-danger small">', '</span>'); ?>
+                  <div class="col-md-6">
+                    <h6 class="text-center">Lengan Pendek</h6>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran S (meter)</label>
+                      <input type="text" name="pnj_kain_s" class="form-control" value="<?= set_value('pnj_kain_s', 0); ?>" required="">
+                      <?= form_error('pnj_kain_s', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran M (meter)</label>
+                      <input type="text" name="pnj_kain_m" class="form-control" value="<?= set_value('pnj_kain_m', 0); ?>" required="">
+                      <?= form_error('pnj_kain_m', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran L (meter)</label>
+                      <input type="text" name="pnj_kain_l" class="form-control" value="<?= set_value('pnj_kain_l', 0); ?>" required="">
+                      <?= form_error('pnj_kain_l', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran XL (meter)</label>
+                      <input type="text" name="pnj_kain_xl" class="form-control" value="<?= set_value('pnj_kain_xl', 0); ?>" required="">
+                      <?= form_error('pnj_kain_xl', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran XXL (meter)</label>
+                      <input type="text" name="pnj_kain_xxl" class="form-control" value="<?= set_value('pnj_kain_xxl', 0); ?>" required="">
+                      <?= form_error('pnj_kain_xxl', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
                   </div>
-                  <div class="col-md-6 form-group">
-                    <label>Panjang Kain ukuran XL (meter)</label>
-                    <input type="text" name="pnj_kain_xl" class="form-control" value="<?= set_value('pnj_kain_xl', 0); ?>" required="">
-                    <?= form_error('pnj_kain_xl', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
+                  <div class="col-md-6">
+                    <h6 class="text-center">Lengan Panjang</h6>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran S (meter)</label>
+                      <input type="text" name="pnj_kain_s_p" class="form-control" value="<?= set_value('pnj_kain_s_p', 0); ?>" required="">
+                      <?= form_error('pnj_kain_s_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran M (meter)</label>
+                      <input type="text" name="pnj_kain_m_p" class="form-control" value="<?= set_value('pnj_kain_m_p', 0); ?>" required="">
+                      <?= form_error('pnj_kain_m_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran L (meter)</label>
+                      <input type="text" name="pnj_kain_l_p" class="form-control" value="<?= set_value('pnj_kain_l_p', 0); ?>" required="">
+                      <?= form_error('pnj_kain_l_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran XL (meter)</label>
+                      <input type="text" name="pnj_kain_xl_p" class="form-control" value="<?= set_value('pnj_kain_xl_p', 0); ?>" required="">
+                      <?= form_error('pnj_kain_xl_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                    <div class="form-group">
+                      <label>Panjang Kain ukuran XXL (meter)</label>
+                      <input type="text" name="pnj_kain_xxl_p" class="form-control" value="<?= set_value('pnj_kain_xxl_p', 0); ?>" required="">
+                      <?= form_error('pnj_kain_xxl_p', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                  </div>                  
                 </div>
                 <div class="row">
-                  <div class="col-md-6 form-group">
-                    <label>Panjang Kain ukuran M (meter)</label>
-                    <input type="text" name="pnj_kain_m" class="form-control" value="<?= set_value('pnj_kain_m', 0); ?>" required="">
-                    <?= form_error('pnj_kain_m', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
-                  <div class="col-md-6 form-group">
-                    <label>Panjang Kain ukuran XXL (meter)</label>
-                    <input type="text" name="pnj_kain_xxl" class="form-control" value="<?= set_value('pnj_kain_xxl', 0); ?>" required="">
-                    <?= form_error('pnj_kain_xxl', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <label>Panjang Kain ukuran L (meter)</label>
-                    <input type="text" name="pnj_kain_l" class="form-control" value="<?= set_value('pnj_kain_l', 0); ?>" required="">
-                    <?= form_error('pnj_kain_l', '<span class="text-danger small">', '</span>'); ?>
-                  </div>
-                  <div class="col-md-6 form-group">
+                  <div class="col-md-12 form-group">
                     <label>Harga Kain per Meter</label>
                     <input type="text" name="harga_kain" class="form-control" value="<?= set_value('harga_kain', 0); ?>" required="">
                     <?= form_error('harga_kain', '<span class="text-danger small">', '</span>'); ?>
