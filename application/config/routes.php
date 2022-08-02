@@ -96,6 +96,16 @@ $route['tambah-produk'] 	        = 'Produk/tambah';
 $route['edit-produk/(:any)'] 	    = 'Produk/edit/$1';
 $route['hapus-produk/(:any)']    	= 'Produk/hapus/$1';
 
+$route['vendor'] 				    = 'Vendor';
+$route['tambah-vendor'] 	        = 'Vendor/tambah';
+$route['edit-vendor/(:any)'] 	    = 'Vendor/edit/$1';
+$route['hapus-vendor/(:any)']    	= 'Vendor/hapus/$1';
+
+$route['detail-vendor/(:any)'] 				    = 'Vendor/detail/$1';
+$route['tambah-detail-vendor/(:any)'] 	        = 'Vendor/tambah_detail/$1';
+$route['edit-detail-vendor/(:any)/(:any)'] 	    = 'Vendor/edit_detail/$1/$2';
+$route['hapus-detail-vendor/(:any)/(:any)']    	= 'Vendor/hapus_detail/$1/$2';
+
 $route['pelanggan'] 				    = 'Pelanggan';
 $route['tambah-pelanggan'] 	        = 'Pelanggan/tambah';
 $route['edit-pelanggan/(:any)'] 	    = 'Pelanggan/edit/$1';
