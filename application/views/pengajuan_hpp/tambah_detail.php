@@ -22,30 +22,40 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <label>Nama Bahan</label>
-                    <input type="text" name="nama_bahan" class="form-control" value="<?= set_value('nama_bahan'); ?>" required="">
-                    <?= form_error('nama_bahan', '<span class="text-danger small">', '</span>'); ?>
+                    <label>Vendor</label>
+                    <select name="id_vendor" class="form-control" id="select-vendor" data-live-search="true" required>
+                      <option selected disabled>-- Pilih Vendor --</option>
+                      <?php 
+                        foreach ($vendor as $key) { ?>
+                          <option value="<?= $key['id_vendor'] ?>" <?= set_value('id_vendor') == $key['id_vendor'] ? 'selected' : '' ?>><?= $key['nama_vendor'] ?></option>
+                      <?php  }
+                      ?>
+                    </select>
+                    <?= form_error('id_vendor', '<span class="text-danger small">', '</span>'); ?>
                   </div>
                   <div class="col-md-6 form-group">
-                    <label>Vendor</label>
-                    <input type="text" name="vendor" class="form-control" value="<?= set_value('vendor'); ?>" required="">
-                    <?= form_error('vendor', '<span class="text-danger small">', '</span>'); ?>
+                    <label>Pilih Item</label>
+                    <select name="id_detail_vendor" class="form-control" id="select-detail-vendor" data-live-search="true" required>
+
+                    </select>
+                    <?= form_error('id_detail_vendor', '<span class="text-danger small">', '</span>'); ?>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-3 form-group">
                     <label>Satuan</label>
-                    <input type="text" name="satuan" class="form-control" value="<?= set_value('satuan'); ?>" required="">
+                    <input type="text" name="satuan" id="satuan" class="form-control" value="<?= set_value('satuan'); ?>" required="">
                     <?= form_error('satuan', '<span class="text-danger small">', '</span>'); ?>
                   </div>
                   <div class="col-md-3 form-group">
                     <label>Jumlah</label>
                     <input type="text" name="jumlah" class="form-control" value="<?= set_value('jumlah'); ?>" required="">
+                    <span class="text-danger small" id="jumlah-item"></span>
                     <?= form_error('jumlah', '<span class="text-danger small">', '</span>'); ?>
                   </div>
                   <div class="col-md-6 form-group">
                     <label>Harga Satuan</label>
-                    <input type="number" name="harga" class="form-control" value="<?= set_value('harga'); ?>" required="">
+                    <input type="number" name="harga" id="harga" class="form-control" value="<?= set_value('harga'); ?>" required="">
                     <?= form_error('harga', '<span class="text-danger small">', '</span>'); ?>
                   </div>
                 </div>

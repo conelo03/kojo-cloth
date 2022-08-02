@@ -177,4 +177,40 @@ class Vendor extends CI_Controller {
 		$this->form_validation->set_rules('harga_satuan', 'Harga Satuan', 'required|trim');
 		
 	}
+
+	public function get_katalog()
+	{
+    $id_vendor = $this->input->post('id_vendor');
+		$katalog = $this->M_detail_vendor->get_data($id_vendor)->result_array();
+		
+		$html = "<option disabled selected>-- Pilih Item --</option>";
+		foreach($katalog as $data){ // Ambil semua data dari hasil eksekusi $sql
+			$html .= "<option value='".$data['id_detail_vendor']."'> Item : ".$data['nama_bahan']." || Warna : ".$data['warna']." || Satuan : ".$data['satuan']."</option>"; // Tambahkan tag option ke variabel $html
+		}
+		$callback = array('data'=>$html); // Masukan variabel html tadi ke dalam array $callback dengan index array : data_kota
+		$response = [
+			'response' => true,
+			'data_katalog'	=> $callback
+
+		]; 
+		echo json_encode($response);
+	}
+
+	public function get_detail_katalog()
+	{
+		$id_detail_vendor = $this->input->post('id_detail_vendor');
+		$dv = $this->M_detail_vendor->get_by_id($id_detail_vendor);
+
+		$data = [
+			'satuan' => $dv['satuan'],
+			'harga' => $dv['harga_satuan'],
+		];
+		
+		$response = [
+			'response' => true,
+			'data'	=> $data
+
+		]; 
+		echo json_encode($response);
+	}
 }

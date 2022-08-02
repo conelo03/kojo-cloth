@@ -298,6 +298,8 @@ DROP TABLE IF EXISTS `tb_detail_pengajuan_hpp`;
 CREATE TABLE `tb_detail_pengajuan_hpp` (
   `id_detail_pengajuan_hpp` int(11) NOT NULL AUTO_INCREMENT,
   `id_pengajuan_hpp` int(11) NOT NULL,
+  `id_vendor` int(11) NOT NULL,
+  `id_detail_vendor` int(11) NOT NULL,
   `nama_bahan` varchar(100) NOT NULL,
   `vendor` varchar(100) NOT NULL,
   `satuan` varchar(10) NOT NULL,
@@ -307,10 +309,10 @@ CREATE TABLE `tb_detail_pengajuan_hpp` (
   PRIMARY KEY (`id_detail_pengajuan_hpp`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
-INSERT INTO `tb_detail_pengajuan_hpp` (`id_detail_pengajuan_hpp`, `id_pengajuan_hpp`, `nama_bahan`, `vendor`, `satuan`, `jumlah`, `harga`, `total`) VALUES (6, 6, 'Kain  drill', 'PT. Zhiva', 'Meter', '57', '30000', '1710000');
-INSERT INTO `tb_detail_pengajuan_hpp` (`id_detail_pengajuan_hpp`, `id_pengajuan_hpp`, `nama_bahan`, `vendor`, `satuan`, `jumlah`, `harga`, `total`) VALUES (7, 6, 'Kancing Besi Premium', 'PT. Zhiva', 'Buah', '262', '100', '26200');
-INSERT INTO `tb_detail_pengajuan_hpp` (`id_detail_pengajuan_hpp`, `id_pengajuan_hpp`, `nama_bahan`, `vendor`, `satuan`, `jumlah`, `harga`, `total`) VALUES (8, 7, 'Drill', 'PT. Zahra', 'Meter', '60', '50000', '3000000');
-INSERT INTO `tb_detail_pengajuan_hpp` (`id_detail_pengajuan_hpp`, `id_pengajuan_hpp`, `nama_bahan`, `vendor`, `satuan`, `jumlah`, `harga`, `total`) VALUES (9, 7, 'Rib leher', 'PT. Zahra', 'Meter', '125', '5000', '625000');
+INSERT INTO `tb_detail_pengajuan_hpp` (`id_detail_pengajuan_hpp`, `id_pengajuan_hpp`, `id_vendor`, `id_detail_vendor`, `nama_bahan`, `vendor`, `satuan`, `jumlah`, `harga`, `total`) VALUES (6, 6, 0, 0, 'Kain  drill', 'PT. Zhiva', 'Meter', '57', '30000', '1710000');
+INSERT INTO `tb_detail_pengajuan_hpp` (`id_detail_pengajuan_hpp`, `id_pengajuan_hpp`, `id_vendor`, `id_detail_vendor`, `nama_bahan`, `vendor`, `satuan`, `jumlah`, `harga`, `total`) VALUES (7, 6, 0, 0, 'Kancing Besi Premium', 'PT. Zhiva', 'Buah', '262', '100', '26200');
+INSERT INTO `tb_detail_pengajuan_hpp` (`id_detail_pengajuan_hpp`, `id_pengajuan_hpp`, `id_vendor`, `id_detail_vendor`, `nama_bahan`, `vendor`, `satuan`, `jumlah`, `harga`, `total`) VALUES (8, 7, 0, 0, 'Drill', 'PT. Zahra', 'Meter', '60', '50000', '3000000');
+INSERT INTO `tb_detail_pengajuan_hpp` (`id_detail_pengajuan_hpp`, `id_pengajuan_hpp`, `id_vendor`, `id_detail_vendor`, `nama_bahan`, `vendor`, `satuan`, `jumlah`, `harga`, `total`) VALUES (9, 7, 0, 0, 'Rib leher', 'PT. Zahra', 'Meter', '125', '5000', '625000');
 
 
 #
@@ -327,9 +329,10 @@ CREATE TABLE `tb_detail_vendor` (
   `satuan` varchar(20) NOT NULL,
   `harga_satuan` double NOT NULL,
   PRIMARY KEY (`id_detail_vendor`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 INSERT INTO `tb_detail_vendor` (`id_detail_vendor`, `id_vendor`, `nama_bahan`, `warna`, `satuan`, `harga_satuan`) VALUES (1, 1, 'Drill', 'Merah', 'Meter', '50000');
+INSERT INTO `tb_detail_vendor` (`id_detail_vendor`, `id_vendor`, `nama_bahan`, `warna`, `satuan`, `harga_satuan`) VALUES (2, 1, 'Drill', 'Merah', 'Roll', '500000');
 
 
 #

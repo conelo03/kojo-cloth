@@ -188,13 +188,18 @@ class Pengajuan_hpp extends CI_Controller {
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Pengajuan Hpp';
 			$data['id_pengajuan_hpp'] = $id_pengajuan_hpp;
+			$data['vendor']	= $this->M_vendor->get_data()->result_array();
 			$this->load->view('pengajuan_hpp/tambah_detail', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			$v = $this->M_vendor->get_by_id($data['id_vendor']);
+			$dv = $this->M_detail_vendor->get_by_id($data['id_detail_vendor']);
 			$data_user	= [
 				'id_pengajuan_hpp' => $id_pengajuan_hpp,
-				'nama_bahan'			=> $data['nama_bahan'],
-				'vendor'			=> $data['vendor'],
+				'id_vendor'			=> $data['id_vendor'],
+				'id_detail_vendor'			=> $data['id_detail_vendor'],
+				'nama_bahan'			=> $dv['nama_bahan'].' - '.$dv['warna'],
+				'vendor'			=> $v['nama_vendor'],
 				'satuan'			=> $data['satuan'],
 				'jumlah'			=> $data['jumlah'],
 				'harga'			=> $data['harga'],
@@ -217,16 +222,22 @@ class Pengajuan_hpp extends CI_Controller {
 		$this->validation_detail();
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Pengajuan Hpp';
+			$data['vendor']	= $this->M_vendor->get_data()->result_array();
 			$data['p'] = $this->db->get_where('tb_detail_pengajuan_hpp', ['id_detail_pengajuan_hpp' => $id_detail_pengajuan_hpp])->row_array();
+			$data['dv'] = $this->db->select('*')->from('tb_detail_vendor')->where('id_vendor', $data['p']['id_vendor'])->get()->result_array();
 			$data['id_pengajuan_hpp'] = $id_pengajuan_hpp;
 			$this->load->view('pengajuan_hpp/edit_detail', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			$v = $this->M_vendor->get_by_id($data['id_vendor']);
+			$dv = $this->M_detail_vendor->get_by_id($data['id_detail_vendor']);
 			$data_user	= [
 				'id_detail_pengajuan_hpp' => $id_detail_pengajuan_hpp,
 				'id_pengajuan_hpp' => $id_pengajuan_hpp,
-				'nama_bahan'			=> $data['nama_bahan'],
-				'vendor'			=> $data['vendor'],
+				'id_vendor'			=> $data['id_vendor'],
+				'id_detail_vendor'			=> $data['id_detail_vendor'],
+				'nama_bahan'			=> $dv['nama_bahan'].' - '.$dv['warna'],
+				'vendor'			=> $v['nama_vendor'],
 				'satuan'			=> $data['satuan'],
 				'jumlah'			=> $data['jumlah'],
 				'harga'			=> $data['harga'],
@@ -257,8 +268,8 @@ class Pengajuan_hpp extends CI_Controller {
 
 	private function validation_detail()
 	{
-		$this->form_validation->set_rules('nama_bahan', 'Nama Bahan', 'required|trim');
-		$this->form_validation->set_rules('vendor', 'Vendor', 'required');
+		$this->form_validation->set_rules('id_vendor', 'Vendor', 'required|trim');
+		$this->form_validation->set_rules('id_detail_vendor', 'Pilih Item', 'required');
 		$this->form_validation->set_rules('satuan', 'satuan', 'required');
 		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required|trim');
 		$this->form_validation->set_rules('harga', 'Harga Satuan', 'required|trim');

@@ -73,6 +73,48 @@
           }, 
         });
       });
+
+      // $("#select-detail-vendor").hide();
+
+      $("#select-vendor").change(function(){ 
+        
+        $.ajax({
+          type: "POST", 
+          url: "<?= base_url("Vendor/get_katalog"); ?>", 
+          data: {id_vendor : $("#select-vendor").val()}, 
+          async : true,
+          dataType: "JSON",
+          success: function(res) {
+            if(res.response === true){
+              $("#select-detail-vendor").html(res.data_katalog.data).show();
+              document.getElementById("satuan").setAttribute('value', '');
+              document.getElementById("harga").setAttribute('value', '');
+            } else {
+              $('#item-error').html('Katalog tidak ditemukan!');
+            }
+          }, 
+        });
+      });
+
+      $("#select-detail-vendor").change(function(){ 
+        
+        $.ajax({
+          type: "POST", 
+          url: "<?= base_url("Vendor/get_detail_katalog"); ?>", 
+          data: {id_detail_vendor : $("#select-detail-vendor").val()}, 
+          async : true,
+          dataType: "JSON",
+          success: function(res) {
+            if(res.response === true){
+              document.getElementById("satuan").setAttribute('value',res.data.satuan);
+              document.getElementById("harga").setAttribute('value',res.data.harga);
+              $('#jumlah-item').html('Masukan Jumlah!').show();
+            } else {
+              $('#item-error').html('Katalog tidak ditemukan!');
+            }
+          }, 
+        });
+      });
     });
 
     $(document).ready( function () {
@@ -127,6 +169,7 @@
       $('#select-order').selectpicker({
         search : true,
       });
+      
     });
 
   </script>
