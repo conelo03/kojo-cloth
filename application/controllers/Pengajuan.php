@@ -206,7 +206,7 @@ class Pengajuan extends CI_Controller {
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => "https://api.ultramsg.com/instance13308/messages/chat",
+      CURLOPT_URL => "https://api.ultramsg.com/instance13688/messages/chat",
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => "",
       CURLOPT_MAXREDIRS => 10,
@@ -215,7 +215,7 @@ class Pengajuan extends CI_Controller {
       CURLOPT_SSL_VERIFYPEER => 0,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => "POST",
-      CURLOPT_POSTFIELDS => "token=y7bhoiqsgp28soe9&to=+6285936570953&body=Ada 1 Pengajuan Baru! Cek segera tautan dibawah ini.
+      CURLOPT_POSTFIELDS => "token=q4s6bv4r3q9s9mbg&to=+6285936570953&body=Ada 1 Pengajuan Baru! Cek segera tautan dibawah ini.
     https://kojo-cloth.elearningpolsub.com/pengajuan&priority=1&referenceId=",
       CURLOPT_HTTPHEADER => array(
         "content-type: application/x-www-form-urlencoded"
