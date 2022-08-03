@@ -1,7 +1,7 @@
 <?php
 
 $content      = array(
-	"en" => "Apakah ada transaksi yang di lakukan pada tiga hari sebelumnya dan transaksi tersebut tidak diketahui oleh bagian keuangan ? Mohon untuk melakukan input data dengan memilih menu pengajuan. jika ada transaksi yang tidak di laporkan kepada bagian keuangan karena sangat berpengaruh terhadap arus kas jika kejadian tersebut terjadi"
+	"en" => "Apakah ada transaksi yang di lakukan pada hari sebelumnya dan transaksi tersebut tidak diketahui oleh bagian keuangan ? Mohon untuk melakukan input data dengan memilih menu pengajuan karena sangat berpengaruh terhadap arus kas"
 );
 $heading =array(
 	"en" => "Notifikasi Keuangan"
