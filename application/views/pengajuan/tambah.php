@@ -56,6 +56,20 @@
                   <input type="number" name="jumlah" class="form-control" value="<?= set_value('jumlah'); ?>" required="">
                   <?= form_error('jumlah', '<span class="text-danger small">', '</span>'); ?>
                 </div>
+                <div class="row">
+                  <div class="col-md-12 form-group">
+                    <label>Rekening Penerima</label>
+                    <select name="id_rekening" class="form-control" id="select-pelanggan" data-live-search="true" required>
+                      <option selected disabled>-- Pilih No Rekening --</option>
+                      <?php 
+                        foreach ($rekening as $key) { ?>
+                          <option value="<?= $key['id_rekening'] ?>" <?= set_value('id_rekening') == $key['id_rekening'] ? 'selected' : '' ?>><?= $key['no_rekening'] ?> A/N <?= $key['nama_rekening'] ?> (<?= $key['bank'] ?>) </option>
+                      <?php  }
+                      ?>
+                    </select>
+                    <?= form_error('id_rekening', '<span class="text-danger small">', '</span>'); ?>
+                  </div>
+                </div>
               </div>
               
 

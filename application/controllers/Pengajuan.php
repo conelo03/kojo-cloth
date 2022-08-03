@@ -35,16 +35,21 @@ class Pengajuan extends CI_Controller {
 		$this->validation();
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Pengajuan';
+			$data['rekening'] = $this->db->get('tb_rekening')->result_array();
 			$data['jenis_pengeluaran'] = $this->db->get('tb_jenis_pengeluaran')->result_array();
 			$this->load->view('pengajuan/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
 			$file = $this->upload_file('bukti_pengajuan');
+			$rek = $this->M_rekening->get_by_id($data['id_rekening']);
 			$data_user	= [
 				'tanggal'			=> $data['tanggal'],
 				'id_jenis_pengeluaran'			=> $data['id_jenis_pengeluaran'],
 				'keterangan'			=> $data['keterangan'],
 				'id_pegawai'			=> $this->session->userdata('id_pegawai'),
+				'bank'			=> $rek['bank'],
+				'no_rekening'			=> $rek['no_rekening'],
+				'nama_rekening'			=> $rek['nama_rekening'],
 				'jumlah'			=> $data['jumlah'],
 				'bukti_pengajuan' => $file
 			];
@@ -69,6 +74,7 @@ class Pengajuan extends CI_Controller {
 		$this->validation();
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Pengajuan';
+			$data['rekening'] = $this->db->get('tb_rekening')->result_array();
 			$data['jenis_pengeluaran'] = $this->db->get('tb_jenis_pengeluaran')->result_array();
 			$data['p']	= $this->M_pengajuan->get_by_id($id_pengajuan);
 			$this->load->view('pengajuan/edit', $data);
@@ -79,12 +85,16 @@ class Pengajuan extends CI_Controller {
 			}else{
 				$file = $this->upload_file('bukti_pengajuan');
 			}
+			$rek = $this->M_rekening->get_by_id($data['id_rekening']);
 			$data_user	= [
 				'id_pengajuan'		=> $id_pengajuan,
 				'tanggal'			=> $data['tanggal'],
 				'id_jenis_pengeluaran'			=> $data['id_jenis_pengeluaran'],
 				'keterangan'			=> $data['keterangan'],
 				'jumlah'			=> $data['jumlah'],
+				'bank'			=> $rek['bank'],
+				'no_rekening'			=> $rek['no_rekening'],
+				'nama_rekening'			=> $rek['nama_rekening'],
 				'bukti_pengajuan' => $file
 			];
 			
@@ -102,6 +112,7 @@ class Pengajuan extends CI_Controller {
 	{
 		$this->form_validation->set_rules('tanggal', 'Tanggal', 'required|trim');
 		$this->form_validation->set_rules('id_jenis_pengeluaran', 'Jenis pengeluaran', 'required|trim');
+		$this->form_validation->set_rules('id_rekening', 'Rekening Penerima', 'required|trim');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
 		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required|trim');
 	}

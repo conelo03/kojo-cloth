@@ -44,7 +44,7 @@
                       <td class="text-center"><?= $no++;?></td>
                       <td><?= $u['tanggal'];?></td>
                       <td><?= $u['keterangan'];?></td>
-                      <td><?= $u['no_rekening'];?> a/n <?= $u['nama_rekening'];?> (<?= $u['bank'];?>)</td>
+                      <td><?= $u['no_rekening'];?> A/N <?= $u['nama_rekening'];?> (<?= $u['bank'];?>)</td>
                       <td>Rp <?= number_format($u['jumlah'], '2',',','.' );?></td>
                       <td>
                         <?php

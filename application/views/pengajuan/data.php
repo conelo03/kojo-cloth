@@ -31,6 +31,7 @@
                       <th>Keterangan</th>
                       <th>Jumlah</th>
                       <th>Pegawai</th>
+                      <th>Rekening Penerima</th>
                       <th>Status</th>
                       <th class="text-center" style="width: 350px;">Aksi</th>
                     </tr>
@@ -46,6 +47,7 @@
                       <td><?= $u['keterangan'];?></td>
                       <td>Rp <?= number_format($u['jumlah'], '2',',','.' );?></td>
                       <td><?= $u['nama'];?></td>
+                      <td><?= $u['no_rekening'];?> A/N <?= $u['nama_rekening'];?> (<?= $u['bank'];?>)</td>
                       <td>
                         <?php
                           if($u['status'] == 0){
