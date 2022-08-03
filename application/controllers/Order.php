@@ -285,44 +285,44 @@ class Order extends CI_Controller {
 		($data['jml_kain_xl'] * $produk['harga_kain']) + 
 		($data['jml_kain_xxl'] * $produk['harga_kain']);
 
-		$data['jml_kancing_s'] = $order['jumlah_ukuran_s'] * $produk['jml_kancing_s'];
-		$data['jml_kancing_m'] = $order['jumlah_ukuran_m'] * $produk['jml_kancing_m'];
-		$data['jml_kancing_l'] = $order['jumlah_ukuran_l'] * $produk['jml_kancing_l'];
-		$data['jml_kancing_xl'] = $order['jumlah_ukuran_xl'] * $produk['jml_kancing_xl'];
-		$data['jml_kancing_xxl'] = $order['jumlah_ukuran_xxl'] * $produk['jml_kancing_xxl'];
+		$data['jml_kancing_s'] = ($order['jumlah_ukuran_s'] + $order['jumlah_ukuran_s_p']) * $produk['jml_kancing_s'];
+		$data['jml_kancing_m'] = ($order['jumlah_ukuran_m'] + $order['jumlah_ukuran_m_p']) * $produk['jml_kancing_m'];
+		$data['jml_kancing_l'] = ($order['jumlah_ukuran_l'] + $order['jumlah_ukuran_l_p']) * $produk['jml_kancing_l'];
+		$data['jml_kancing_xl'] = ($order['jumlah_ukuran_xl'] + $order['jumlah_ukuran_xl_p']) * $produk['jml_kancing_xl'];
+		$data['jml_kancing_xxl'] = ($order['jumlah_ukuran_xxl'] + $order['jumlah_ukuran_xxl_p']) * $produk['jml_kancing_xxl'];
 		$data['total_harga_kancing'] = ($data['jml_kancing_s'] * $produk['harga_kancing']) + 
 		($data['jml_kancing_m'] * $produk['harga_kancing']) + 
 		($data['jml_kancing_l'] * $produk['harga_kancing']) + 
 		($data['jml_kancing_xl'] * $produk['harga_kancing']) + 
 		($data['jml_kancing_xxl'] * $produk['harga_kancing']);
 
-		$data['jml_resleting_s'] = $order['jumlah_ukuran_s'] * $produk['pnj_resleting_s'];
-		$data['jml_resleting_m'] = $order['jumlah_ukuran_m'] * $produk['pnj_resleting_m'];
-		$data['jml_resleting_l'] = $order['jumlah_ukuran_l'] * $produk['pnj_resleting_l'];
-		$data['jml_resleting_xl'] = $order['jumlah_ukuran_xl'] * $produk['pnj_resleting_xl'];
-		$data['jml_resleting_xxl'] = $order['jumlah_ukuran_xxl'] * $produk['pnj_resleting_xxl'];
+		$data['jml_resleting_s'] = ($order['jumlah_ukuran_s'] + $order['jumlah_ukuran_s_p']) * $produk['pnj_resleting_s'];
+		$data['jml_resleting_m'] = ($order['jumlah_ukuran_m'] + $order['jumlah_ukuran_m_p']) * $produk['pnj_resleting_m'];
+		$data['jml_resleting_l'] = ($order['jumlah_ukuran_l'] + $order['jumlah_ukuran_l_p']) * $produk['pnj_resleting_l'];
+		$data['jml_resleting_xl'] = ($order['jumlah_ukuran_xl'] + $order['jumlah_ukuran_xl_p']) * $produk['pnj_resleting_xl'];
+		$data['jml_resleting_xxl'] = ($order['jumlah_ukuran_xxl'] + $order['jumlah_ukuran_xxl_p']) * $produk['pnj_resleting_xxl'];
 		$data['total_harga_resleting'] = ($data['jml_resleting_s'] * $produk['harga_resleting']) + 
 		($data['jml_resleting_m'] * $produk['harga_resleting']) + 
 		($data['jml_resleting_l'] * $produk['harga_resleting']) + 
 		($data['jml_resleting_xl'] * $produk['harga_resleting']) + 
 		($data['jml_resleting_xxl'] * $produk['harga_resleting']);
 
-		$data['jml_prepet_s'] = $order['jumlah_ukuran_s'] * $produk['jml_prepet_s'];
-		$data['jml_prepet_m'] = $order['jumlah_ukuran_m'] * $produk['jml_prepet_m'];
-		$data['jml_prepet_l'] = $order['jumlah_ukuran_l'] * $produk['jml_prepet_l'];
-		$data['jml_prepet_xl'] = $order['jumlah_ukuran_xl'] * $produk['jml_prepet_xl'];
-		$data['jml_prepet_xxl'] = $order['jumlah_ukuran_xxl'] * $produk['jml_prepet_xxl'];
+		$data['jml_prepet_s'] = ($order['jumlah_ukuran_s'] + $order['jumlah_ukuran_s_p']) * $produk['jml_prepet_s'];
+		$data['jml_prepet_m'] = ($order['jumlah_ukuran_m'] + $order['jumlah_ukuran_m_p']) * $produk['jml_prepet_m'];
+		$data['jml_prepet_l'] = ($order['jumlah_ukuran_l'] + $order['jumlah_ukuran_l_p']) * $produk['jml_prepet_l'];
+		$data['jml_prepet_xl'] = ($order['jumlah_ukuran_xl'] + $order['jumlah_ukuran_xl_p']) * $produk['jml_prepet_xl'];
+		$data['jml_prepet_xxl'] = ($order['jumlah_ukuran_xxl'] + $order['jumlah_ukuran_xxl_p']) * $produk['jml_prepet_xxl'];
 		$data['total_harga_prepet'] = ($data['jml_prepet_s'] * $produk['harga_prepet']) + 
 		($data['jml_prepet_m'] * $produk['harga_prepet']) + 
 		($data['jml_prepet_l'] * $produk['harga_prepet']) + 
 		($data['jml_prepet_xl'] * $produk['harga_prepet']) + 
 		($data['jml_prepet_xxl'] * $produk['harga_prepet']);
 
-		$data['jml_rib_s'] = $order['jumlah_ukuran_s'] * $produk['pnj_rib_s'];
-		$data['jml_rib_m'] = $order['jumlah_ukuran_m'] * $produk['pnj_rib_m'];
-		$data['jml_rib_l'] = $order['jumlah_ukuran_l'] * $produk['pnj_rib_l'];
-		$data['jml_rib_xl'] = $order['jumlah_ukuran_xl'] * $produk['pnj_rib_xl'];
-		$data['jml_rib_xxl'] = $order['jumlah_ukuran_xxl'] * $produk['pnj_rib_xxl'];
+		$data['jml_rib_s'] = ($order['jumlah_ukuran_s'] + $order['jumlah_ukuran_s_p']) * $produk['pnj_rib_s'];
+		$data['jml_rib_m'] = ($order['jumlah_ukuran_m'] + $order['jumlah_ukuran_m_p']) * $produk['pnj_rib_m'];
+		$data['jml_rib_l'] = ($order['jumlah_ukuran_l'] + $order['jumlah_ukuran_l_p']) * $produk['pnj_rib_l'];
+		$data['jml_rib_xl'] = ($order['jumlah_ukuran_xl'] + $order['jumlah_ukuran_xl_p']) * $produk['pnj_rib_xl'];
+		$data['jml_rib_xxl'] = ($order['jumlah_ukuran_xxl'] + $order['jumlah_ukuran_xxl_p']) * $produk['pnj_rib_xxl'];
 		$data['total_harga_rib'] = ($data['jml_rib_s'] * $produk['harga_rib']) + 
 		($data['jml_rib_m'] * $produk['harga_rib']) + 
 		($data['jml_rib_l'] * $produk['harga_rib']) + 
