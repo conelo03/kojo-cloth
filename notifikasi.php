@@ -49,7 +49,7 @@ curl_setopt_array($curl, array(
 	CURLOPT_SSL_VERIFYPEER => 0,
 	CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 	CURLOPT_CUSTOMREQUEST => "POST",
-	CURLOPT_POSTFIELDS => "token=q4s6bv4r3q9s9mbg&to=+6285936570953&body=Apakah ada transaksi yang di lakukan pada tiga hari sebelumnya dan transaksi tersebut tidak diketahui oleh bagian keuangan ? Mohon untuk melakukan input data dengan memilih menu pengajuan. jika ada transaksi yang tidak di laporkan kepada bagian keuangan karena sangat berpengaruh terhadap arus kas jika kejadian tersebut terjadi.
+	CURLOPT_POSTFIELDS => "token=q4s6bv4r3q9s9mbg&to=+6289604359031&body=Apakah ada transaksi yang di lakukan pada hari sebelumnya dan transaksi tersebut tidak diketahui oleh bagian keuangan ? Mohon untuk melakukan input data dengan memilih menu pengajuan karena sangat berpengaruh terhadap arus kas.
 https://kojo-cloth.elearningpolsub.com/pengajuan&priority=1&referenceId=",
 	CURLOPT_HTTPHEADER => array(
 		"content-type: application/x-www-form-urlencoded"
