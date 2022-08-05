@@ -114,6 +114,10 @@
                           <th class="text-center"><?= $order['jumlah_ukuran_xxl'] ?> pcs</th>
                           <th class="text-center"><?= $order['jumlah_ukuran_xxl_p'] ?> pcs</th>
                         </tr>
+                        <tr>
+                          <th class="text-center">TOTAL</th>
+                          <th class="text-center" colspan="2"><?= $jumlah_order ?> pcs</th>
+                        </tr>
                       </table>
                     </div>
                   </div>
@@ -186,7 +190,8 @@
                     </div>
                     <div class="row mb-2">
                       <div class="col-md-4"><h6>Upload File</h6></div>
-                      <div class="col-md-8"><input type="file" name="file_keuangan" class="form-control"></div>
+                      <div class="col-md-8"><input type="file" name="file_keuangan" class="form-control">
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span></div>
                     </div>
                     <input type="hidden" name="file_keuangan_old" value="<?= $keuangan['file_keuangan'] ?>" class="form-control">
                     <div class="row mb-2">
@@ -247,7 +252,8 @@
                     </div>
                     <div class="row mb-2">
                       <div class="col-md-4"><h6>Upload File</h6></div>
-                      <div class="col-md-8"><input type="file" name="file_purchase" class="form-control"></div>
+                      <div class="col-md-8"><input type="file" name="file_purchase" class="form-control">
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span></div>
                     </div>
                     <input type="hidden" name="file_purchase_old" value="<?= $purchase['file_purchase'] ?>" class="form-control">
                     <div class="row mb-2">
@@ -308,7 +314,8 @@
                     </div>
                     <div class="row mb-2">
                       <div class="col-md-4"><h6>Upload File</h6></div>
-                      <div class="col-md-8"><input type="file" name="file_cutting" class="form-control"></div>
+                      <div class="col-md-8"><input type="file" name="file_cutting" class="form-control">
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span></div>
                     </div>
                     <input type="hidden" name="file_cutting_old" value="<?= $cutting['file_cutting'] ?>" class="form-control">
                     <div class="row mb-2">
@@ -447,7 +454,8 @@
                     </div>
                     <div class="row mb-2">
                       <div class="col-md-4"><h6>Upload File</h6></div>
-                      <div class="col-md-8"><input type="file" name="file_bordir" class="form-control"></div>
+                      <div class="col-md-8"><input type="file" name="file_bordir" class="form-control">
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span></div>
                     </div>
                     <input type="hidden" name="file_bordir_old" value="<?= $bordir['file_bordir'] ?>" class="form-control">
                     <div class="row mb-2">
@@ -508,7 +516,8 @@
                     </div>
                     <div class="row mb-2">
                       <div class="col-md-4"><h6>Upload File</h6></div>
-                      <div class="col-md-8"><input type="file" name="file_jahit" class="form-control"></div>
+                      <div class="col-md-8"><input type="file" name="file_jahit" class="form-control">
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span></div>
                     </div>
                     <input type="hidden" name="file_jahit_old" value="<?= $jahit['file_jahit'] ?>" class="form-control">
                     <div class="row mb-2">
@@ -657,7 +666,8 @@
                     </div>
                     <div class="row mb-2">
                       <div class="col-md-4"><h6>Upload File</h6></div>
-                      <div class="col-md-8"><input type="file" name="file_qc" class="form-control"></div>
+                      <div class="col-md-8"><input type="file" name="file_qc" class="form-control">
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span></div>
                     </div>
                     <input type="hidden" name="file_qc_old" value="<?= $qc['file_qc'] ?>" class="form-control">
                     <div class="row mb-2">
@@ -810,7 +820,8 @@
                     </div>
                     <div class="row mb-2">
                       <div class="col-md-4"><h6>Upload File</h6></div>
-                      <div class="col-md-8"><input type="file" name="file_pengiriman" class="form-control"></div>
+                      <div class="col-md-8"><input type="file" name="file_pengiriman" class="form-control">
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span></div>
                     </div>
                     <input type="hidden" name="file_pengiriman_old" value="<?= $pengiriman['file_pengiriman'] ?>" class="form-control">
                     <div class="row mb-2">

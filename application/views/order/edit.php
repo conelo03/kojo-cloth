@@ -109,6 +109,7 @@
                   <label>Design Order</label>
                   <input type="file" name="design_order" class="form-control">
                   <input type="hidden" name="design_order_old" value="<?= $order['design_order'] ?>">
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span>
                   <?= form_error('design_order', '<span class="text-danger small">', '</span>'); ?>
                 </div>
                 <div class="row">  

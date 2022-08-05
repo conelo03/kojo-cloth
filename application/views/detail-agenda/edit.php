@@ -24,6 +24,7 @@
                   <label>Foto Agenda</label>
                   <input type="hidden" name="foto_agenda_old" class="form-control" value="<?= $agenda['foto_agenda'] ?>" required="">
                   <input type="file" name="foto_agenda" class="form-control" >
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span>
                 </div>  
                 <div class="form-group">
                   <label>Tautan</label>

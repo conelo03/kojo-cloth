@@ -75,6 +75,7 @@
                   <label>Foto</label>
                   <input type="hidden" name="foto_old" class="form-control" value="<?= $pegawai['foto']; ?>" required="">
                   <input type="file" name="foto" class="form-control" value="<?= set_value('foto'); ?>" >
+                  <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span>
                   <?= form_error('foto', '<span class="text-danger small">', '</span>'); ?>
                 </div>
               </div>
