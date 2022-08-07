@@ -87,6 +87,22 @@
                   </tr>
                 </table>
 
+                <br>
+                <h6>Kebutuhan Benang :</h6>
+                <table width="100%" border="1">
+                  <tr class="text-center">
+                    <th width="30%">Jumlah Benang</th>
+                    <th width="30%">Harga Satuan(roll)</th>
+                    <th>Biaya</th>
+                  </tr>
+                  <tr class="text-center">
+                    <td><?= $jml_benang ?></td>
+                    <td><?= $produk['harga_benang'] ?></td>
+                    <td class="text-right"><b>Rp <?= number_format($total_harga_benang, '2', ',', '.')  ?></b></td>
+                  </tr>
+                  
+                </table>
+
                 <?php if($total_harga_kain != 0): ?>
                 <br>
                 <h6>Kebutuhan Kain :</h6>

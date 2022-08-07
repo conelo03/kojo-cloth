@@ -27,7 +27,7 @@
                 <table class="table table-striped" id="datatables-user">
                   <thead>
                     <tr>
-                      <th class="text-center">#</th>
+                      <th class="text-center" style="width: 30px;">#</th>
                       <th>Tanggal</th>
                       <th>Keterangan</th>
                       <th>Rekening Penerima</th>
@@ -39,9 +39,11 @@
                   <tbody>
                     <?php
                     $no = 1; 
-                    foreach($pengajuan_hpp as $u):?>
+                    foreach($pengajuan_hpp as $u):
+                      $order = $this->db->get_where('tb_order', ['id_order' => $u['id_order']])->row_array();
+                    ?>
                     <tr>
-                      <td class="text-center"><?= $no++;?></td>
+                      <td class="text-center"><?= $no++;?> <?= $u['jumlah'] > $order['total_harga_bomlist'] ? '<i class="fas fa-times text-danger"></i>' : '' ?></td>
                       <td><?= $u['tanggal'];?></td>
                       <td><?= $u['keterangan'];?></td>
                       <td><?= $u['no_rekening'];?> A/N <?= $u['nama_rekening'];?> (<?= $u['bank'];?>)</td>
@@ -90,6 +92,7 @@
                   </tbody>
                 </table>
               </div>
+              Keterangan : <br><i class="fas fa-times text-danger"></i> : Total biaya Pengajuan Bahan Baku lebih besar dari total biaya BOM List
             </div>
           </div>
         </div>

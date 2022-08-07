@@ -52,6 +52,20 @@
                   </div>
                 </div>
 
+                <h6>Kebutuhan Benang :</h6>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <label>Jumlah Benang (dalam Roll)</label>
+                    <input type="text" name="jml_benang" class="form-control" value="<?= set_value('jml_benang', 0); ?>" required="">
+                    <?= form_error('jml_benang', '<span class="text-danger small">', '</span>'); ?>
+                  </div>
+                  <div class="col-md-6 form-group">
+                    <label>Harga Benang (dalam Roll)</label>
+                    <input type="text" name="harga_benang" class="form-control" value="<?= set_value('harga_benang', 0); ?>" required="">
+                    <?= form_error('harga_benang', '<span class="text-danger small">', '</span>'); ?>
+                  </div>
+                </div>
+
                 <div id="kain">
 
                 </div>

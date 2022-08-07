@@ -20,11 +20,22 @@
         </div>
         <div class="form-group">
           <label for="1">Pola Potongan</label>
-          <input type="text" class="form-control" id="1" name="pola_potongan" value="" required="">
+          <select name="pola_potongan" class="form-control" required="">
+            <option disabled="" selected="">-- Pilih Pola --</option>
+            <option value="Pola Kojo">Pola Kojo</option>
+            <option value="Pola Luar">Pola Luar</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="1">Detail Ukuran</label>
-          <input type="text" class="form-control" id="1" name="detail_ukuran" value="" required="">
+          <select name="detail_ukuran" class="form-control" required="">
+            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="1">Jumlah</label>
@@ -80,11 +91,22 @@
         </div>
         <div class="form-group">
           <label for="1">Pola Potongan</label>
-          <input type="text" class="form-control" id="1" name="pola_potongan" value="<?= $u['pola_potongan'] ?>" required="">
+          <select name="pola_potongan" class="form-control" required="">
+            <option disabled="" selected="">-- Pilih Pola --</option>
+            <option value="Pola Kojo" <?= $u['pola_potongan'] == 'Pola Kojo' ? 'selected' : '' ?>>Pola Kojo</option>
+            <option value="Pola Luar" <?= $u['pola_potongan'] == 'Pola Luar' ? 'selected' : '' ?>>Pola Luar</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="1">Detail Ukuran</label>
-          <input type="text" class="form-control" id="1" name="detail_ukuran" value="<?= $u['detail_ukuran'] ?>" required="">
+          <select name="detail_ukuran" class="form-control" required="">
+            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="S" <?= $u['detail_ukuran'] == 'S' ? 'selected' : '' ?>>S</option>
+            <option value="M" <?= $u['detail_ukuran'] == 'M' ? 'selected' : '' ?>>M</option>
+            <option value="L" <?= $u['detail_ukuran'] == 'L' ? 'selected' : '' ?>>L</option>
+            <option value="XL" <?= $u['detail_ukuran'] == 'XL' ? 'selected' : '' ?>>XL</option>
+            <option value="XXL" <?= $u['detail_ukuran'] == 'XXL' ? 'selected' : '' ?>>XXL</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="1">Jumlah</label>

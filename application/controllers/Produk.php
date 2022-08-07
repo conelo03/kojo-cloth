@@ -39,6 +39,8 @@ class Produk extends CI_Controller {
 				'nama_produk'			=> $data['nama_produk'],
 				'bahan'			=> $data['bahan'],
 				'foto_produk'			=> $file,
+				'jml_benang'			=> $data['jml_benang'],
+				'harga_benang'			=> $data['harga_benang'],
 				
 				'pnj_kain_s'			=> $data['pnj_kain_s'],
 				'pnj_kain_m'			=> $data['pnj_kain_m'],
@@ -114,6 +116,8 @@ class Produk extends CI_Controller {
 				'nama_produk'			=> $data['nama_produk'],
 				'bahan'			=> $data['bahan'],
 				'foto_produk'			=> $file,
+				'jml_benang'			=> $data['jml_benang'],
+				'harga_benang'			=> $data['harga_benang'],
 				
 				'pnj_kain_s'			=> $data['pnj_kain_s'],
 				'pnj_kain_m'			=> $data['pnj_kain_m'],

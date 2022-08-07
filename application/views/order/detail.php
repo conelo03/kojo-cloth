@@ -339,17 +339,53 @@
                       <div class="col-12">
                         <table width="100%" border="1">
                           <tr>
-                            <th class="text-center">Pola Potongan</th>
+                            <th class="text-center">Ukuran</th>
                             <th class="text-center">Jumlah yg Sudah Dikerjakan</th>
                             <th class="text-center">Sisa</th>
                           </tr>
-                          <?php foreach ($jml_cutting as $key) { ?>
-                            <tr>
-                              <th class=""><?= $key['pola_potongan'] ?></th>
-                              <th class="text-center"><?= $key['jumlah'] ?> pcs</th>
-                              <th class="text-center text-danger"><?= $jumlah_order - $key['jumlah'] ?> pcs</th>
-                            </tr>
-                          <?php } ?>
+                          <tr>
+                            <th class="text-center">S</th>
+                            <th class="text-center"><?= $jml_cutting_s['jumlah'] == null ? 0 : $jml_cutting_s['jumlah'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $order['jumlah_ukuran_s'] + $order['jumlah_ukuran_s_p'] - $jml_cutting_s['jumlah'] < 0 ? 0 : $order['jumlah_ukuran_s'] + $order['jumlah_ukuran_s_p'] - $jml_cutting_s['jumlah'] ?> pcs</th>
+                          </tr>
+                          <tr>
+                            <th class="text-center">M</th>
+                            <th class="text-center"><?= $jml_cutting_m['jumlah'] == null ? 0 : $jml_cutting_m['jumlah'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $order['jumlah_ukuran_m'] + $order['jumlah_ukuran_m_p'] - $jml_cutting_m['jumlah'] < 0 ? 0 : $order['jumlah_ukuran_m'] + $order['jumlah_ukuran_m_p'] - $jml_cutting_m['jumlah'] ?> pcs</th>
+                          </tr>
+                          <tr>
+                            <th class="text-center">L</th>
+                            <th class="text-center"><?= $jml_cutting_l['jumlah'] == null ? 0 : $jml_cutting_l['jumlah'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $order['jumlah_ukuran_l'] + $order['jumlah_ukuran_l_p'] - $jml_cutting_l['jumlah'] < 0 ? 0 : $order['jumlah_ukuran_l'] + $order['jumlah_ukuran_l_p'] - $jml_cutting_l['jumlah'] ?> pcs</th>
+                          </tr>
+                          <tr>
+                            <th class="text-center">XL</th>
+                            <th class="text-center"><?= $jml_cutting_xl['jumlah'] == null ? 0 : $jml_cutting_xl['jumlah'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $order['jumlah_ukuran_xl'] + $order['jumlah_ukuran_xl_p'] - $jml_cutting_xl['jumlah'] < 0 ? 0 : $order['jumlah_ukuran_xl'] + $order['jumlah_ukuran_xl_p'] - $jml_cutting_xl['jumlah'] ?> pcs</th>
+                          </tr>
+                          <tr>
+                            <th class="text-center">XXL</th>
+                            <th class="text-center"><?= $jml_cutting_xxl['jumlah'] == null ? 0 : $jml_cutting_xxl['jumlah'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $order['jumlah_ukuran_xxl'] + $order['jumlah_ukuran_xxl_p'] - $jml_cutting_xxl['jumlah'] < 0 ? 0 : $order['jumlah_ukuran_xxl'] + $order['jumlah_ukuran_xxl_p'] - $jml_cutting_xxl['jumlah'] ?> pcs</th>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="row mb-2">
+                      <div class="col-12">
+                        <h6>Jumlah Defect (Ganti)</h6>
+                      </div>
+                      <div class="col-12">
+                        <table width="100%" border="1">
+                          <tr>
+                            <th class="text-center">Jumlah yg Sudah Dikerjakan</th>
+                            <th class="text-center">Sisa</th>
+                          </tr>
+                          <tr>
+                            <th class="text-center"><?= $jml_all_cutting['jumlah'] - $jumlah_order < 0 ? 0 : $jml_all_cutting['jumlah'] - $jumlah_order ?> pcs</th>
+                            <th class="text-center text-danger">0 pcs</th>
+                          </tr>
                         </table>
                       </div>
                     </div>
@@ -554,15 +590,32 @@
                           </tr>
                           <tr>
                             <th class="">Jumlah Order yg Sudah Dikerjakan</th>
-                            <th class="text-center"><?= $jml_jahit['jml_ukuran_pendek'] ?> pcs</th>
-                            <th class="text-center"><?= $jml_jahit['jml_ukuran_panjang'] ?> pcs</th>
+                            <th class="text-center"><?= $jml_jahit['jml_ukuran_pendek'] > $jumlah_order_pendek ? $jumlah_order_pendek : $jml_jahit['jml_ukuran_pendek'] ?> pcs</th>
+                            <th class="text-center"><?= $jml_jahit['jml_ukuran_panjang'] > $jumlah_order_panjang ? $jumlah_order_panjang : $jml_jahit['jml_ukuran_panjang'] ?> pcs</th>
                             <th class="text-center"><?= $jml_jahit['jml_total'] ?> pcs</th>
                           </tr>
                           <tr>
                             <th class=" text-danger">Jumlah Order yg Belum Dikerjakan</th>
-                            <th class="text-center text-danger"><?= $jumlah_order_pendek - $jml_jahit['jml_ukuran_pendek'] ?> pcs</th>
-                            <th class="text-center text-danger"><?= $jumlah_order_panjang - $jml_jahit['jml_ukuran_panjang'] ?> pcs</th>
-                            <th class="text-center text-danger"><?= $jumlah_order_pendek + $jumlah_order_panjang - $jml_jahit['jml_total'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_pendek - $jml_jahit['jml_ukuran_pendek'] < 0 ? 0 : $jumlah_order_pendek - $jml_jahit['jml_ukuran_pendek'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_panjang - $jml_jahit['jml_ukuran_panjang'] < 0 ? 0 : $jumlah_order_panjang - $jml_jahit['jml_ukuran_panjang'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_pendek + $jumlah_order_panjang - $jml_jahit['jml_total'] < 0 ? 0 : $jumlah_order_pendek + $jumlah_order_panjang - $jml_jahit['jml_total'] ?> pcs</th>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <div class="col-12">
+                        <h6>Jumlah Defect (Ganti)</h6>
+                      </div>
+                      <div class="col-12">
+                        <table width="100%" border="1">
+                          <tr>
+                            <th class="text-center">Jumlah yg Sudah Dikerjakan</th>
+                            <th class="text-center">Sisa</th>
+                          </tr>
+                          <tr>
+                            <th class="text-center"><?= $jml_all_jahit['jumlah'] - $jumlah_order < 0 ? 0 : $jml_all_jahit['jumlah'] - $jumlah_order ?> pcs</th>
+                            <th class="text-center text-danger">0 pcs</th>
                           </tr>
                         </table>
                       </div>
@@ -710,9 +763,15 @@
                           </tr>
                           <tr>
                             <th class=" text-danger">Jumlah Order yg Belum Dikerjakan</th>
-                            <th class="text-center text-danger"><?= $jumlah_order_pendek - $jml_qc['jml_ukuran_pendek'] ?> pcs</th>
-                            <th class="text-center text-danger"><?= $jumlah_order_panjang - $jml_qc['jml_ukuran_panjang'] ?> pcs</th>
-                            <th class="text-center text-danger"><?= $jumlah_order_pendek + $jumlah_order_panjang - $jml_qc['jml_total'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_pendek - $jml_qc['jml_ukuran_pendek'] < 0 ? 0 : $jumlah_order_pendek - $jml_qc['jml_ukuran_pendek'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_panjang - $jml_qc['jml_ukuran_panjang'] < 0 ? 0 : $jumlah_order_panjang - $jml_qc['jml_ukuran_panjang'] ?> pcs</th>
+                            <th class="text-center text-danger"><?= $jumlah_order_pendek + $jumlah_order_panjang - $jml_qc['jml_total'] < 0 ? 0 : $jumlah_order_pendek + $jumlah_order_panjang - $jml_qc['jml_total'] ?> pcs</th>
+                          </tr>
+                          <tr>
+                            <th class="">Jumlah Order yg Sudah Dikerjakan (Tidak Lolos)</th>
+                            <th class="text-center"><?= $jml_qc_tl['jml_ukuran_pendek'] ?> pcs</th>
+                            <th class="text-center"><?= $jml_qc_tl['jml_ukuran_panjang'] ?> pcs</th>
+                            <th class="text-center"><?= $jml_qc_tl['jml_total'] ?> pcs</th>
                           </tr>
                         </table>
                       </div>
