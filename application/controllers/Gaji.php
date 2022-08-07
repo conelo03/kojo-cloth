@@ -149,6 +149,7 @@ class Gaji extends CI_Controller {
 				'kasbon'			=> $data['kasbon'],
 				'total'			=> $data['gaji_pokok']+$data['bonus']-$data['kasbon'],
 				'keterangan'			=> $data['keterangan'],
+				'rekening_penerima'			=> $data['rekening_penerima'],
 			];
 			$query = $this->db->insert('tb_detail_gaji', $data_user);
 			if (!$query) {
@@ -181,6 +182,7 @@ class Gaji extends CI_Controller {
 				'kasbon'			=> $data['kasbon'],
 				'total'			=> $data['gaji_pokok']+$data['bonus']-$data['kasbon'],
 				'keterangan'			=> $data['keterangan'],
+				'rekening_penerima'			=> $data['rekening_penerima'],
 			];
 
 			$this->db->where('id_detail_gaji', $id_detail_gaji);

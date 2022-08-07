@@ -51,6 +51,11 @@
                   <input type="text" name="keterangan" class="form-control" value="<?= set_value('keterangan', $dg['keterangan']); ?>" required="">
                   <?= form_error('keterangan', '<span class="text-danger small">', '</span>'); ?>
                 </div>
+                <div class="form-group">
+                  <label>Rekening Penerima</label>
+                  <input type="text" name="rekening_penerima" id="rekening_pegawai" class="form-control" value="<?= set_value('rekening_penerima', $dg['rekening_penerima']); ?>" required="">
+                  <?= form_error('rekening_penerima', '<span class="text-danger small">', '</span>'); ?>
+                </div>
               </div>
 
               <div class="card-footer text-right">

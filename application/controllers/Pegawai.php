@@ -40,6 +40,7 @@ class Pegawai extends CI_Controller {
 				'tanggal_lahir'			=> $data['tanggal_lahir'],
 				'jenis_kelamin'			=> $data['jenis_kelamin'],
 				'gaji_pokok'			=> $data['gaji_pokok'],
+				'rekening_pegawai'			=> $data['rekening_pegawai'],
 				'foto'			=> $foto,
 			];
 			if ($this->M_pegawai->insert($data_user)) {
@@ -76,6 +77,7 @@ class Pegawai extends CI_Controller {
 				'tanggal_lahir'			=> $data['tanggal_lahir'],
 				'jenis_kelamin'			=> $data['jenis_kelamin'],
 				'gaji_pokok'			=> $data['gaji_pokok'],
+				'rekening_pegawai'			=> $data['rekening_pegawai'],
 				'foto'			=> $foto,
 			];
 			
@@ -201,6 +203,7 @@ class Pegawai extends CI_Controller {
 		$this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
 		$this->form_validation->set_rules('alamat', 'Alamat', 'required|trim');
 		$this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required|trim');
+		$this->form_validation->set_rules('rekening_pegawai', 'Rekening Pegawai', 'required|trim');
 		$this->form_validation->set_rules('password', 'Password', 'trim');
 		$this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]');
 	}
@@ -212,6 +215,7 @@ class Pegawai extends CI_Controller {
 
 		$data = [
 			'gaji_pokok' => $pegawai['gaji_pokok'],
+			'rekening_pegawai' => $pegawai['rekening_pegawai']
 		];
 		
 		$response = [

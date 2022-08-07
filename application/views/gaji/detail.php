@@ -35,6 +35,7 @@
                       <th>Bonus</th>
                       <th>Kasbon</th>
                       <th>Total</th>
+                      <th>Rekening Penerima</th>
                       <th class="text-center" style="width: 270px;">Aksi</th>
                     </tr>
                   </thead>
@@ -49,6 +50,7 @@
                       <td>Rp <?= number_format($u['bonus'], '2',',','.' );?></td>
                       <td>Rp <?= number_format($u['kasbon'], '2',',','.' );?></td>
                       <td>Rp <?= number_format($u['total'], '2',',','.' );?></td>
+                      <td><?= $u['rekening_penerima'];?></td>
                       <td class="text-center">
                         <?php if(is_admin() || is_keuangan()): ?>
                           <a href="<?= base_url('cetak-slip-gaji/'.$u['id_detail_gaji']);?>" target="_blank" class="btn btn-light"><i class="fa fa-print"></i> Cetak Slip</a>

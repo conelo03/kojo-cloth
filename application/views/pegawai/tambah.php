@@ -72,6 +72,12 @@
                   <?= form_error('gaji_pokok', '<span class="text-danger small">', '</span>'); ?>
                 </div>
                 <div class="form-group">
+                  <label>Rekening Pegawai</label>
+                  <input type="text" name="rekening_pegawai" class="form-control" value="<?= set_value('rekening_pegawai'); ?>" required="">
+                  <span class="text-danger small">*) isilah dengan format [no. rekening A/N nama rekening (Bank). cth: 123xxx A/N Pegawai (BCA)</span>
+                  <?= form_error('rekening_pegawai', '<span class="text-danger small">', '</span>'); ?>
+                </div>
+                <div class="form-group">
                   <label>Foto</label>
                   <input type="file" name="foto" class="form-control" value="<?= set_value('foto'); ?>" required="">
                   <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span>

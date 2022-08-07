@@ -43,11 +43,13 @@
           success: function(res) {
             console.log(res);
             if(res.response === true){
-              document.getElementById("gaji_pokok").setAttribute('value',res.data.gaji_pokok);
+              document.getElementById("gaji_pokok").setAttribute('value', res.data.gaji_pokok);
+              document.getElementById("rekening_pegawai").setAttribute('value', res.data.rekening_pegawai);
               $('#item-error').html('');
             } else {
               $('#item-error').html('Item tidak ditemukan!');
               document.getElementById("gaji_pokok").setAttribute('value', '');
+              document.getElementById("rekening_pegawai").setAttribute('value', '');
             }
           }, 
         });
