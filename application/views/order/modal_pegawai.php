@@ -43,7 +43,8 @@
         </div>
         <div class="form-group">
           <label for="1">Harga</label>
-          <input type="number" class="form-control" id="1" name="harga" value="<?= $upah_cutting ?>" required="">
+          <input type="hidden" class="form-control" id="1" name="harga" value="<?= $upah_cutting['upah'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="harga" value="<?= $upah_cutting['upah'] ?>" readonly>
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
@@ -114,7 +115,8 @@
         </div>
         <div class="form-group">
           <label for="1">Harga</label>
-          <input type="number" class="form-control" id="1" name="harga" value="<?= $u['harga'] ?>" required="">
+          <input type="hidden" class="form-control" id="1" name="harga" value="<?= $upah_cutting['upah'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="harga" value="<?= $u['harga'] ?>" readonly>
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
@@ -173,7 +175,8 @@
         </div>
         <div class="form-group">
           <label for="1">Harga</label>
-          <input type="number" class="form-control" id="1" name="harga" value="<?= $upah_jahit ?>" required="">
+          <input type="hidden" class="form-control" id="1" name="harga" value="<?= $upah_jahit['upah'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="harga" value="<?= $upah_jahit['upah'] ?>" readonly>
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
@@ -229,7 +232,8 @@
         </div>
         <div class="form-group">
           <label for="1">Harga</label>
-          <input type="number" class="form-control" id="1" name="harga" value="<?= $u['harga'] ?>" required="">
+          <input type="hidden" class="form-control" id="1" name="harga" value="<?= $upah_jahit['upah'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="harga" value="<?= $u['harga'] ?>" readonly>
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
@@ -284,7 +288,8 @@
         </div>
         <div class="form-group">
           <label for="1">Harga</label>
-          <input type="number" class="form-control" id="1" name="harga" value="<?= $upah_qc ?>" required="">
+          <input type="hidden" class="form-control" id="1" name="harga" value="<?= $upah_qc['upah'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="harga" value="<?= $upah_qc['upah'] ?>" readonly>
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
@@ -359,7 +364,8 @@
         </div>
         <div class="form-group">
           <label for="1">Harga</label>
-          <input type="number" class="form-control" id="1" name="harga" value="<?= $u['harga'] ?>" required="">
+          <input type="hidden" class="form-control" id="1" name="harga" value="<?= $upah_qc['upah'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="harga" value="<?= $u['harga'] ?>" readonly>
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>

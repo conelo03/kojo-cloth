@@ -101,6 +101,10 @@ $route['tambah-vendor'] 	        = 'Vendor/tambah';
 $route['edit-vendor/(:any)'] 	    = 'Vendor/edit/$1';
 $route['hapus-vendor/(:any)']    	= 'Vendor/hapus/$1';
 
+$route['upah-produksi'] 				    = 'Upah_produksi';
+$route['tambah-upah-produksi'] 	        = 'Upah_produksi/tambah';
+$route['aktif-upah-produksi/(:any)'] 	    = 'Upah_produksi/aktif/$1';
+
 $route['detail-vendor/(:any)'] 				    = 'Vendor/detail/$1';
 $route['tambah-detail-vendor/(:any)'] 	        = 'Vendor/tambah_detail/$1';
 $route['edit-detail-vendor/(:any)/(:any)'] 	    = 'Vendor/edit_detail/$1/$2';

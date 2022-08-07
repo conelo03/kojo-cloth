@@ -210,6 +210,7 @@ class Order extends CI_Controller {
 	{
     $data['title']		= 'Data Order';
 		$data['order']		= $this->M_order->get_by_id($id_order);
+		$data['produk']		= $this->M_produk->get_by_id($data['order']['id_produk']);
 		$data['jumlah_order_pendek']		= $data['order']['jumlah_ukuran_s'] + $data['order']['jumlah_ukuran_m'] + $data['order']['jumlah_ukuran_l'] + $data['order']['jumlah_ukuran_xl'] + $data['order']['jumlah_ukuran_xxl'];
 		$data['jumlah_order_panjang']		= $data['order']['jumlah_ukuran_s_p'] + $data['order']['jumlah_ukuran_m_p'] + $data['order']['jumlah_ukuran_l_p'] + $data['order']['jumlah_ukuran_xl_p'] + $data['order']['jumlah_ukuran_xxl_p'];
 		$data['keuangan']		= $this->db->get_where('tb_keuangan', ['id_order' => $id_order])->row_array();
@@ -228,12 +229,9 @@ class Order extends CI_Controller {
 		$data['pegawai_qc']		= $this->db->get()->result_array();
 		$data['jumlah_order'] = $data['order']['jumlah_ukuran_s'] + $data['order']['jumlah_ukuran_m'] + $data['order']['jumlah_ukuran_l'] + $data['order']['jumlah_ukuran_xl'] + $data['order']['jumlah_ukuran_xxl']
 		+ $data['order']['jumlah_ukuran_s_p'] + $data['order']['jumlah_ukuran_m_p'] + $data['order']['jumlah_ukuran_l_p'] + $data['order']['jumlah_ukuran_xl_p'] + $data['order']['jumlah_ukuran_xxl_p'];
-		$upah_cutting = $this->db->get_where('tb_upah_cutting', ['id_upah_cutting' => 1])->row_array();
-		$upah_jahit = $this->db->get_where('tb_upah_jahit', ['id_upah_jahit' => 1])->row_array();
-		$upah_qc = $this->db->get_where('tb_upah_qc', ['id_upah_qc' => 1])->row_array();
-		$data['upah_cutting'] = $upah_cutting['upah_cutting'];
-		$data['upah_jahit'] = $upah_jahit['upah_jahit'];
-		$data['upah_qc'] = $upah_qc['upah_qc'];
+		$data['upah_cutting'] = $this->db->get_where('tb_upah_produksi', ['jenis_produk' => $data['produk']['jenis_produk'], 'jenis_pekerjaan' => 'Cutting', 'status' => 1])->row_array();
+		$data['upah_jahit'] = $this->db->get_where('tb_upah_produksi', ['jenis_produk' => $data['produk']['jenis_produk'], 'jenis_pekerjaan' => 'Jahit', 'status' => 1])->row_array();
+		$data['upah_qc'] = $this->db->get_where('tb_upah_produksi', ['jenis_produk' => $data['produk']['jenis_produk'], 'jenis_pekerjaan' => 'QC', 'status' => 1])->row_array();
 
 		$data['jml_all_cutting'] = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_cutting` where id_order='$id_order'")->row_array();
 		$data['jml_all_jahit'] = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_jahit` where id_order='$id_order'")->row_array();

@@ -57,6 +57,7 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
             <?php if(is_admin() || is_produksi()):?>
             <li class="<?= $title == 'Data Vendor' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('vendor');?>"><i class="fas fa-building"></i> <span>Data Vendor</span></a></li> 
             <li class="<?= $title == 'Data Produk' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('produk');?>"><i class="fas fa-box"></i> <span>Data Produk</span></a></li> 
+            <li class="<?= $title == 'Data Upah Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('upah-produksi');?>"><i class="fas fa-users"></i> <span>Data Upah Produksi</span></a></li> 
             <?php endif;?>
 
             <?php if(is_admin() || is_marketing() || is_k_marketing()):?>
