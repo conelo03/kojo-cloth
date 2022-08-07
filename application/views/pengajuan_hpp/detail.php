@@ -6,7 +6,7 @@
     <div class="section-header">
       <h1><?= $title?></h1>
       <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Kelola Pengajuan HPP</a></div>
+        <div class="breadcrumb-item active"><a href="#">Kelola Pengajuan Bahan Baku</a></div>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Detail Pengajuan <?= $p['keterangan'] ?></h4>
+              <h4>Detail Pengajuan Bahan Baku - <?= $p['keterangan'] ?></h4>
               <div class="card-header-action">
                 <?php if(is_admin() || is_produksi()): ?>
                   <?php if ($p['status'] == 0) { ?>

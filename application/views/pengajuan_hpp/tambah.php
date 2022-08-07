@@ -17,7 +17,7 @@
           <div class="card">
             <form action="<?= base_url('tambah-pengajuan-hpp'); ?>" method="post" enctype="multipart/form-data">
               <div class="card-header">
-                <h4>Form Tambah Pengajuan HPP</h4>
+                <h4>Form Tambah Pengajuan Bahan Baku</h4>
               </div>
               <div class="card-body">
               <div class="row">

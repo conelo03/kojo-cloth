@@ -6,7 +6,7 @@
     <div class="section-header">
       <h1><?= $title?></h1>
       <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Kelola Pengajuan HPP</a></div>
+        <div class="breadcrumb-item active"><a href="#">Kelola Pengajuan Bahan Baku</a></div>
       </div>
     </div>
 
@@ -15,7 +15,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h4>Data Pengajuan HPP</h4>
+              <h4>Data Pengajuan Bahan Baku</h4>
               <div class="card-header-action">
                 <?php if(is_produksi() || is_admin()): ?>
                 <a href="<?= base_url('tambah-pengajuan-hpp');?>" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>

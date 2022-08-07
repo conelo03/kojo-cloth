@@ -23,13 +23,11 @@
                 <div class="row">
                   <div class="col-md-6 form-group">
                     <label>Jenis Produk</label>
-                    <select name="jenis_produk" class="form-control">
+                    <select name="jenis_produk" class="form-control" id="select-jenis-produk-edit">
                       <option>-- Pilih Jenis Produk --</option>
-                      <option value="Jaket" <?= set_value('jenis_produk', $produk['jenis_produk']) == "Jaket" ? 'selected' : '' ?>>Jaket</option>
-                      <option value="Jas" <?= set_value('jenis_produk', $produk['jenis_produk']) == "Jas" ? 'selected' : '' ?>>Jas</option>
-                      <option value="Kaos" <?= set_value('jenis_produk', $produk['jenis_produk']) == "Kaos" ? 'selected' : '' ?>>Kaos</option>
-                      <option value="Kemeja" <?= set_value('jenis_produk', $produk['jenis_produk']) == "Kemeja" ? 'selected' : '' ?>>Kemeja</option>
-                      <option value="Sweater" <?= set_value('jenis_produk', $produk['jenis_produk']) == "Sweater" ? 'selected' : '' ?>>Sweater</option>
+                      <?php foreach ($jenis_produk as $key) { ?>
+                        <option value="<?= $key['jenis_produk'].'||'.$key['kebutuhan'] ?>" <?= set_value('jenis_produk', $produk['jenis_produk']) == $key['jenis_produk'] ? 'selected' : '' ?>><?= $key['jenis_produk'] ?></option>
+                      <?php } ?>
                     </select>
                     <?= form_error('jenis_produk', '<span class="text-danger small">', '</span>'); ?>
                   </div>
@@ -49,10 +47,31 @@
                     <label>Foto Produk</label>
                     <input type="hidden" name="foto_produk_old" class="form-control" value="<?= $produk['foto_produk']; ?>" required="">
                     <input type="file" name="foto_produk" class="form-control" value="<?= set_value('nama_produk'); ?>" >
+                    <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span>
                   </div>
                 </div>
 
-                <h6>Kebutuhan Kain :</h6>
+                <div id="kain">
+
+                </div>
+
+                <div id="kancing">
+
+                </div>
+
+                <div id="resleting">
+
+                </div>
+
+                <div id="prepet">
+
+                </div>
+
+                <div id="rib">
+
+                </div>
+
+                <!-- <h6>Kebutuhan Kain :</h6>
                 <div class="row">
                   <div class="col-md-6">
                     <h6 class="text-center">Lengan Pendek</h6>
@@ -269,7 +288,7 @@
                     <input type="text" name="harga_rib" class="form-control" value="<?= set_value('harga_rib', $produk['harga_rib']); ?>" required="">
                     <?= form_error('harga_rib', '<span class="text-danger small">', '</span>'); ?>
                   </div>
-                </div>
+                </div> -->
                 
               </div>
 

@@ -93,7 +93,7 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
             <?php if(is_produksi() || is_marketing() || is_purchase() || is_k_marketing()):?>
             <li class="menu-header">Data Pengajuan</li>    
               <?php if(is_produksi() || is_purchase()):?>
-              <li class="<?= $title == 'Data Pengajuan HPP' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan HPP</span></a></li>    
+              <li class="<?= $title == 'Data Pengajuan Bahan Baku' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan Bahan Baku</span></a></li>    
               <?php endif;?>
             <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Pengajuanku</span></a></li> 
             <?php endif;?>
@@ -104,7 +104,7 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
             <li class="<?= $title == 'Data Gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji</span></a></li> 
             <li class="<?= $title == 'Data Gaji Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji-produksi');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji Produksi</span></a></li> 
             <li class="menu-header">Data Pengajuan</li>
-            <li class="<?= $title == 'Data Pengajuan HPP' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan HPP</span></a></li> 
+            <li class="<?= $title == 'Data Pengajuan Bahan Baku' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan Bahan Baku</span></a></li> 
             <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan</span></a></li> 
             <li class="menu-header">Data Pendapatan</li>
             <li class="<?= $title == 'Data Pendapatan Order' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pendapatan-order');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pendapatan Order</span></a></li> 
@@ -120,7 +120,7 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
             <li class="<?= $title == 'Data Gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji<?= $jml_gaji == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_gaji.'</span>' ?></span></a></li> 
             <li class="<?= $title == 'Data Gaji Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji-produksi');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji Produksi<?= $jml_gaji_produksi == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_gaji_produksi.'</span>' ?></span></a></li> 
             <li class="menu-header">Data Pengajuan</li>    
-            <li class="<?= $title == 'Data Pengajuan HPP' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan HPP<?= $jml_pengajuan_hpp == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_pengajuan_hpp.'</span>' ?></span></a></li>       
+            <li class="<?= $title == 'Data Pengajuan Bahan Baku' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan Bahan Baku<?= $jml_pengajuan_hpp == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_pengajuan_hpp.'</span>' ?></span></a></li>       
             <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan<?= $jml_pengajuan == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_pengajuan.'</span>' ?></span></a></li> 
             <!-- <li class="menu-header">Data Transaksi</li>
             <li class="<?= $title == 'Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('cash-flow');?>"><i class="fas fa-sync"></i> <span>Cash Flow</span></a></li>       -->
@@ -141,7 +141,7 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
               <li class="<?= $title == 'Laporan Pemasukan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-pemasukan');?>"><i class="fas fa-file"></i> <span>Laporan Pemasukan</span></a></li> 
               <li class="<?= $title == 'Laporan Pengeluaran' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-pengeluaran');?>"><i class="fas fa-file"></i> <span>Laporan Pengeluaran</span></a></li> 
               <li class="<?= $title == 'Laporan Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-cash-flow');?>"><i class="fas fa-file"></i> <span>Laporan Cash Flow</span></a></li> 
-              <!-- <li class="<?= $title == 'Laporan Laba Rugi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-laba-rugi');?>"><i class="fas fa-file"></i> <span>Laporan Laba Rugi</span></a></li>  -->
+              <li class="<?= $title == 'Laporan Laba Rugi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('laporan-laba-rugi');?>"><i class="fas fa-file"></i> <span>Laporan Laba Rugi</span></a></li> 
             <?php endif;?>     
 
           </ul>

@@ -17,7 +17,7 @@ class Pengajuan_hpp extends CI_Controller {
 
 	public function index()
 	{
-    $data['title']		= 'Data Pengajuan HPP';
+    $data['title']		= 'Data Pengajuan Bahan Baku';
 		$data['pengajuan_hpp']		= $this->M_pengajuan_hpp->get_data()->result_array();
 		$this->load->view('pengajuan_hpp/data', $data);
 	}
@@ -26,7 +26,7 @@ class Pengajuan_hpp extends CI_Controller {
 	{
 		$this->validation();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Pengajuan HPP';
+			$data['title']		= 'Data Pengajuan Bahan Baku';
 			$data['jenis_pengeluaran'] = $this->db->get('tb_jenis_pengeluaran')->result_array();
 			$data['rekening'] = $this->db->get('tb_rekening')->result_array();
 			$data['order'] = $this->M_order->get_data(null, null, true)->result_array();
@@ -59,7 +59,7 @@ class Pengajuan_hpp extends CI_Controller {
 	{
 		$this->validation();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Pengajuan HPP';
+			$data['title']		= 'Data Pengajuan Bahan Baku';
 			$data['jenis_pengeluaran'] = $this->db->get('tb_jenis_pengeluaran')->result_array();
 			$data['rekening'] = $this->db->get('tb_rekening')->result_array();
 			$data['order'] = $this->M_order->get_data(null, null, true)->result_array();
@@ -117,7 +117,7 @@ class Pengajuan_hpp extends CI_Controller {
 
 		$this->M_pengajuan_hpp->update($data_user);
 		$judul = "Notifikasi Kojo Cloth";
-		$konten = "Ada 1 Pengajuan HPP Baru!";
+		$konten = "Ada 1 Pengajuan Bahan Baku Baru!";
 		$url = "https://kojo-cloth.elearningpolsub.com/pengajuan-hpp";
 		$response = $this->send_message($judul, $konten, $url);
 		$this->send_notif_wa();
@@ -171,7 +171,7 @@ class Pengajuan_hpp extends CI_Controller {
 
 	public function detail($id_pengajuan_hpp)
 	{
-    $data['title']		= 'Data Pengajuan HPP';
+    $data['title']		= 'Data Pengajuan Bahan Baku';
 		$data['p'] = $this->M_pengajuan_hpp->get_by_id($id_pengajuan_hpp);
 		$data['pengajuan_hpp']		= $this->db->select('*, tb_detail_pengajuan_hpp.jumlah as jumlah')
 		->from('tb_detail_pengajuan_hpp')
@@ -186,7 +186,7 @@ class Pengajuan_hpp extends CI_Controller {
 	{
 		$this->validation_detail();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Pengajuan Hpp';
+			$data['title']		= 'Data Pengajuan Bahan Baku';
 			$data['id_pengajuan_hpp'] = $id_pengajuan_hpp;
 			$data['vendor']	= $this->M_vendor->get_data()->result_array();
 			$this->load->view('pengajuan_hpp/tambah_detail', $data);
@@ -221,7 +221,7 @@ class Pengajuan_hpp extends CI_Controller {
 	{
 		$this->validation_detail();
 		if (!$this->form_validation->run()) {
-			$data['title']		= 'Data Pengajuan Hpp';
+			$data['title']		= 'Data Pengajuan Bahan Baku';
 			$data['vendor']	= $this->M_vendor->get_data()->result_array();
 			$data['p'] = $this->db->get_where('tb_detail_pengajuan_hpp', ['id_detail_pengajuan_hpp' => $id_detail_pengajuan_hpp])->row_array();
 			$data['dv'] = $this->db->select('*')->from('tb_detail_vendor')->where('id_vendor', $data['p']['id_vendor'])->get()->result_array();

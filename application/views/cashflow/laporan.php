@@ -18,6 +18,14 @@
               <h4>Laporan Cash Flow</h4>
             </div>
             <div class="card-body">
+              <div class="row">
+                <div class="col-4"><h6>Total Pemasukan</h6></div>
+                <div class="col-8">: <?= 'Rp '.number_format($pemasukan['jumlah'], 2, ',', '.'); ?></div>
+                <div class="col-4"><h6>Total Pengeluaran</h6></div>
+                <div class="col-8">: <?= 'Rp '.number_format($pengeluaran['jumlah'], 2, ',', '.'); ?></div>
+                <div class="col-4"><h6>Saldo Terakhir</h6></div>
+                <div class="col-8">: <?= 'Rp '.number_format($pemasukan['jumlah']-$pengeluaran['jumlah'], 2, ',', '.'); ?></div>
+              </div>
               <form action="<?= base_url('laporan-cash-flow'); ?>" method="post">
                 <div class="row">
                   <div class="col-md-6 form-group">

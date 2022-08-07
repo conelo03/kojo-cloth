@@ -27,16 +27,19 @@ class Produk extends CI_Controller {
 		$this->validation();
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Produk';
+			$data['jenis_produk'] = $this->db->get('tb_jenis_produk')->result_array();
 			$this->load->view('produk/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			
+			$jenis_produk = explode("||", $data['jenis_produk']);
 			$file = $this->upload_file('foto_produk');
 			$data_user	= [
-				'jenis_produk'			=> $data['jenis_produk'],
+				'jenis_produk'			=> $jenis_produk[0],
 				'nama_produk'			=> $data['nama_produk'],
 				'bahan'			=> $data['bahan'],
 				'foto_produk'			=> $file,
-
+				
 				'pnj_kain_s'			=> $data['pnj_kain_s'],
 				'pnj_kain_m'			=> $data['pnj_kain_m'],
 				'pnj_kain_l'			=> $data['pnj_kain_l'],
@@ -49,33 +52,33 @@ class Produk extends CI_Controller {
 				'pnj_kain_xxl_p'			=> $data['pnj_kain_xxl_p'],
 				'harga_kain'			=> $data['harga_kain'],
 
-				'jml_kancing_s'			=> $data['jml_kancing_s'],
-				'jml_kancing_m'			=> $data['jml_kancing_m'],
-				'jml_kancing_l'			=> $data['jml_kancing_l'],
-				'jml_kancing_xl'			=> $data['jml_kancing_xl'],
-				'jml_kancing_xxl'			=> $data['jml_kancing_xxl'],
-				'harga_kancing'			=> $data['harga_kancing'],
+				'jml_kancing_s'			=> isset($data['jml_kancing_s']) ? $data['jml_kancing_s'] : 0,
+				'jml_kancing_m'			=> isset($data['jml_kancing_m']) ? $data['jml_kancing_m'] : 0,
+				'jml_kancing_l'			=> isset($data['jml_kancing_l']) ? $data['jml_kancing_l'] : 0,
+				'jml_kancing_xl'			=> isset($data['jml_kancing_xl']) ? $data['jml_kancing_xl'] : 0,
+				'jml_kancing_xxl'			=> isset($data['jml_kancing_xxl']) ? $data['jml_kancing_xxl'] : 0,
+				'harga_kancing'			=> isset($data['harga_kancing']) ? $data['harga_kancing'] : 0,
 
-				'pnj_resleting_s'			=> $data['pnj_resleting_s'],
-				'pnj_resleting_m'			=> $data['pnj_resleting_m'],
-				'pnj_resleting_l'			=> $data['pnj_resleting_l'],
-				'pnj_resleting_xl'			=> $data['pnj_resleting_xl'],
-				'pnj_resleting_xxl'			=> $data['pnj_resleting_xxl'],
-				'harga_resleting'			=> $data['harga_resleting'],
+				'pnj_resleting_s'			=> isset($data['pnj_resleting_s']) ? $data['pnj_resleting_s'] : 0,
+				'pnj_resleting_m'			=> isset($data['pnj_resleting_m']) ? $data['pnj_resleting_m'] : 0,
+				'pnj_resleting_l'			=> isset($data['pnj_resleting_l']) ? $data['pnj_resleting_l'] : 0,
+				'pnj_resleting_xl'			=> isset($data['pnj_resleting_xl']) ? $data['pnj_resleting_xl'] : 0,
+				'pnj_resleting_xxl'			=> isset($data['pnj_resleting_xxl']) ? $data['pnj_resleting_xxl'] : 0,
+				'harga_resleting'			=> isset($data['harga_resleting']) ? $data['harga_resleting'] : 0,
 
-				'jml_prepet_s'			=> $data['jml_prepet_s'],
-				'jml_prepet_m'			=> $data['jml_prepet_m'],
-				'jml_prepet_l'			=> $data['jml_prepet_l'],
-				'jml_prepet_xl'			=> $data['jml_prepet_xl'],
-				'jml_prepet_xxl'			=> $data['jml_prepet_xxl'],
-				'harga_prepet'			=> $data['harga_prepet'],
+				'jml_prepet_s'			=> isset($data['jml_prepet_s']) ? $data['jml_prepet_s'] : 0,
+				'jml_prepet_m'			=> isset($data['jml_prepet_m']) ? $data['jml_prepet_m'] : 0,
+				'jml_prepet_l'			=> isset($data['jml_prepet_l']) ? $data['jml_prepet_l'] : 0,
+				'jml_prepet_xl'			=> isset($data['jml_prepet_xl']) ? $data['jml_prepet_xl'] : 0,
+				'jml_prepet_xxl'			=> isset($data['jml_prepet_xxl']) ? $data['jml_prepet_xxl'] : 0,
+				'harga_prepet'			=> isset($data['harga_prepet']) ? $data['harga_prepet'] : 0,
 
-				'pnj_rib_s'			=> $data['pnj_rib_s'],
-				'pnj_rib_m'			=> $data['pnj_rib_m'],
-				'pnj_rib_l'			=> $data['pnj_rib_l'],
-				'pnj_rib_xl'			=> $data['pnj_rib_xl'],
-				'pnj_rib_xxl'			=> $data['pnj_rib_xxl'],
-				'harga_rib'			=> $data['harga_rib'],
+				'pnj_rib_s'			=> isset($data['pnj_rib_s']) ? $data['pnj_rib_s'] : 0,
+				'pnj_rib_m'			=> isset($data['pnj_rib_m']) ? $data['pnj_rib_m'] : 0,
+				'pnj_rib_l'			=> isset($data['pnj_rib_l']) ? $data['pnj_rib_l'] : 0,
+				'pnj_rib_xl'			=> isset($data['pnj_rib_xl']) ? $data['pnj_rib_xl'] : 0,
+				'pnj_rib_xxl'			=> isset($data['pnj_rib_xxl']) ? $data['pnj_rib_xxl'] : 0,
+				'harga_rib'			=> isset($data['harga_rib']) ? $data['harga_rib'] : 0,
 			];
 
 			if ($this->M_produk->insert($data_user)) {
@@ -93,10 +96,13 @@ class Produk extends CI_Controller {
 		$this->validation();
 		if (!$this->form_validation->run()) {
 			$data['title']		= 'Data Produk';
+			$data['produk_segment'] = true;
+			$data['jenis_produk'] = $this->db->get('tb_jenis_produk')->result_array();
 			$data['produk']	= $this->M_produk->get_by_id($id_produk);
 			$this->load->view('produk/edit', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+			$jenis_produk = explode("||", $data['jenis_produk']);
 			if (empty($_FILES['foto_produk']['name'])) {
 				$file = $data['foto_produk_old'];
 			}else{
@@ -104,7 +110,7 @@ class Produk extends CI_Controller {
 			}
 			$data_user	= [
 				'id_produk'		=> $id_produk,
-				'jenis_produk'			=> $data['jenis_produk'],
+				'jenis_produk'			=> $jenis_produk[0],
 				'nama_produk'			=> $data['nama_produk'],
 				'bahan'			=> $data['bahan'],
 				'foto_produk'			=> $file,
@@ -121,33 +127,33 @@ class Produk extends CI_Controller {
 				'pnj_kain_xxl_p'			=> $data['pnj_kain_xxl_p'],
 				'harga_kain'			=> $data['harga_kain'],
 
-				'jml_kancing_s'			=> $data['jml_kancing_s'],
-				'jml_kancing_m'			=> $data['jml_kancing_m'],
-				'jml_kancing_l'			=> $data['jml_kancing_l'],
-				'jml_kancing_xl'			=> $data['jml_kancing_xl'],
-				'jml_kancing_xxl'			=> $data['jml_kancing_xxl'],
-				'harga_kancing'			=> $data['harga_kancing'],
+				'jml_kancing_s'			=> isset($data['jml_kancing_s']) ? $data['jml_kancing_s'] : 0,
+				'jml_kancing_m'			=> isset($data['jml_kancing_m']) ? $data['jml_kancing_m'] : 0,
+				'jml_kancing_l'			=> isset($data['jml_kancing_l']) ? $data['jml_kancing_l'] : 0,
+				'jml_kancing_xl'			=> isset($data['jml_kancing_xl']) ? $data['jml_kancing_xl'] : 0,
+				'jml_kancing_xxl'			=> isset($data['jml_kancing_xxl']) ? $data['jml_kancing_xxl'] : 0,
+				'harga_kancing'			=> isset($data['harga_kancing']) ? $data['harga_kancing'] : 0,
 
-				'pnj_resleting_s'			=> $data['pnj_resleting_s'],
-				'pnj_resleting_m'			=> $data['pnj_resleting_m'],
-				'pnj_resleting_l'			=> $data['pnj_resleting_l'],
-				'pnj_resleting_xl'			=> $data['pnj_resleting_xl'],
-				'pnj_resleting_xxl'			=> $data['pnj_resleting_xxl'],
-				'harga_resleting'			=> $data['harga_resleting'],
+				'pnj_resleting_s'			=> isset($data['pnj_resleting_s']) ? $data['pnj_resleting_s'] : 0,
+				'pnj_resleting_m'			=> isset($data['pnj_resleting_m']) ? $data['pnj_resleting_m'] : 0,
+				'pnj_resleting_l'			=> isset($data['pnj_resleting_l']) ? $data['pnj_resleting_l'] : 0,
+				'pnj_resleting_xl'			=> isset($data['pnj_resleting_xl']) ? $data['pnj_resleting_xl'] : 0,
+				'pnj_resleting_xxl'			=> isset($data['pnj_resleting_xxl']) ? $data['pnj_resleting_xxl'] : 0,
+				'harga_resleting'			=> isset($data['harga_resleting']) ? $data['harga_resleting'] : 0,
 
-				'jml_prepet_s'			=> $data['jml_prepet_s'],
-				'jml_prepet_m'			=> $data['jml_prepet_m'],
-				'jml_prepet_l'			=> $data['jml_prepet_l'],
-				'jml_prepet_xl'			=> $data['jml_prepet_xl'],
-				'jml_prepet_xxl'			=> $data['jml_prepet_xxl'],
-				'harga_prepet'			=> $data['harga_prepet'],
+				'jml_prepet_s'			=> isset($data['jml_prepet_s']) ? $data['jml_prepet_s'] : 0,
+				'jml_prepet_m'			=> isset($data['jml_prepet_m']) ? $data['jml_prepet_m'] : 0,
+				'jml_prepet_l'			=> isset($data['jml_prepet_l']) ? $data['jml_prepet_l'] : 0,
+				'jml_prepet_xl'			=> isset($data['jml_prepet_xl']) ? $data['jml_prepet_xl'] : 0,
+				'jml_prepet_xxl'			=> isset($data['jml_prepet_xxl']) ? $data['jml_prepet_xxl'] : 0,
+				'harga_prepet'			=> isset($data['harga_prepet']) ? $data['harga_prepet'] : 0,
 
-				'pnj_rib_s'			=> $data['pnj_rib_s'],
-				'pnj_rib_m'			=> $data['pnj_rib_m'],
-				'pnj_rib_l'			=> $data['pnj_rib_l'],
-				'pnj_rib_xl'			=> $data['pnj_rib_xl'],
-				'pnj_rib_xxl'			=> $data['pnj_rib_xxl'],
-				'harga_rib'			=> $data['harga_rib'],
+				'pnj_rib_s'			=> isset($data['pnj_rib_s']) ? $data['pnj_rib_s'] : 0,
+				'pnj_rib_m'			=> isset($data['pnj_rib_m']) ? $data['pnj_rib_m'] : 0,
+				'pnj_rib_l'			=> isset($data['pnj_rib_l']) ? $data['pnj_rib_l'] : 0,
+				'pnj_rib_xl'			=> isset($data['pnj_rib_xl']) ? $data['pnj_rib_xl'] : 0,
+				'pnj_rib_xxl'			=> isset($data['pnj_rib_xxl']) ? $data['pnj_rib_xxl'] : 0,
+				'harga_rib'			=> isset($data['harga_rib']) ? $data['harga_rib'] : 0,
 			];
 			
 			if ($this->M_produk->update($data_user)) {

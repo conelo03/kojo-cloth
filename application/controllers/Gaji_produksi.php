@@ -145,7 +145,7 @@ class Gaji_produksi extends CI_Controller {
 		$gp = $this->M_gaji_produksi->get_by_id($id_gaji_produksi);
 		$data = [
 			'tanggal' => $gp['tanggal_pencairan'],
-			'id_jenis_pengeluaran' => '2',
+			'id_jenis_pengeluaran' => '1',
 			'keterangan' => $gp['keterangan'],
 			'referensi' => '-',
 			'jumlah' => $gp['jumlah']

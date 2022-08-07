@@ -6,8 +6,8 @@
     <div class="section-header">
       <h1><?= $title?></h1>
       <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Kelola Pengajuan HPP</a></div>
-        <div class="breadcrumb-item">Edit Pengajuan HPP</div>
+        <div class="breadcrumb-item active"><a href="#">Kelola Pengajuan Bahan Baku</a></div>
+        <div class="breadcrumb-item">Edit Pengajuan Bahan Baku</div>
       </div>
     </div>
 
@@ -17,7 +17,7 @@
           <div class="card">
             <form action="<?= base_url('edit-pengajuan-hpp/'.$p['id_pengajuan_hpp']); ?>" method="post" enctype="multipart/form-data">
               <div class="card-header">
-                <h4>Form Edit Pengajuan HPP</h4>
+                <h4>Form Edit Pengajuan Bahan Baku</h4>
               </div>
               <div class="card-body">
                 <div class="row">
