@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group">
                   <label>Rekening Pegawai</label>
-                  <input type="text" name="rekening_pegawai" class="form-control" value="<?= set_value('rekening_pegawai'); ?>" required="">
+                  <input type="text" name="rekening_pegawai" class="form-control" value="<?= set_value('rekening_pegawai'); ?>" >
                   <span class="text-danger small">*) isilah dengan format [no. rekening A/N nama rekening (Bank). cth: 123xxx A/N Pegawai (BCA)</span>
                   <?= form_error('rekening_pegawai', '<span class="text-danger small">', '</span>'); ?>
                 </div>

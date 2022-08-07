@@ -241,9 +241,21 @@ class Order extends CI_Controller {
 		$data['jml_cutting_l'] = $this->db->query("SELECT SUM(jumlah) as jumlah, detail_ukuran FROM `tb_pegawai_cutting` where id_order='$id_order' AND detail_ukuran='L'")->row_array();
 		$data['jml_cutting_xl'] = $this->db->query("SELECT SUM(jumlah) as jumlah, detail_ukuran FROM `tb_pegawai_cutting` where id_order='$id_order' AND detail_ukuran='XL'")->row_array();
 		$data['jml_cutting_xxl'] = $this->db->query("SELECT SUM(jumlah) as jumlah, detail_ukuran FROM `tb_pegawai_cutting` where id_order='$id_order' AND detail_ukuran='XXL'")->row_array();
-		$data['jml_jahit'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml_ukuran_pendek, SUM(ukuran_panjang) as jml_ukuran_panjang, SUM(jumlah) as jml_total FROM `tb_pegawai_jahit`where id_order='$id_order' GROUP BY id_order")->row_array();
-		$data['jml_qc'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml_ukuran_pendek, SUM(ukuran_panjang) as jml_ukuran_panjang, SUM(jumlah) as jml_total FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Lolos' GROUP BY id_order")->row_array();
-		$data['jml_qc_tl'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml_ukuran_pendek, SUM(ukuran_panjang) as jml_ukuran_panjang, SUM(jumlah) as jml_total FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Tidak Lolos' GROUP BY id_order")->row_array();
+		$data['jml_jahit_s'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah, detail_ukuran FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='S'")->row_array();
+		$data['jml_jahit_m'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah, detail_ukuran FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='M'")->row_array();
+		$data['jml_jahit_l'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah, detail_ukuran FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='L'")->row_array();
+		$data['jml_jahit_xl'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah, detail_ukuran FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='XL'")->row_array();
+		$data['jml_jahit_xxl'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah, detail_ukuran FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='XXL'")->row_array();
+		$data['jml_qc_s'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Lolos' AND detail_ukuran='S' GROUP BY id_order")->row_array();
+		$data['jml_qc_m'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Lolos' AND detail_ukuran='M' GROUP BY id_order")->row_array();
+		$data['jml_qc_l'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Lolos' AND detail_ukuran='L' GROUP BY id_order")->row_array();
+		$data['jml_qc_xl'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Lolos' AND detail_ukuran='XL' GROUP BY id_order")->row_array();
+		$data['jml_qc_xxl'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Lolos' AND detail_ukuran='XXL' GROUP BY id_order")->row_array();
+		$data['jml_qc_tl_s'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Tidak Lolos' AND detail_ukuran='S' GROUP BY id_order")->row_array();
+		$data['jml_qc_tl_m'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Tidak Lolos' AND detail_ukuran='M' GROUP BY id_order")->row_array();
+		$data['jml_qc_tl_l'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Tidak Lolos' AND detail_ukuran='L' GROUP BY id_order")->row_array();
+		$data['jml_qc_tl_xl'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Tidak Lolos' AND detail_ukuran='XL' GROUP BY id_order")->row_array();
+		$data['jml_qc_tl_xxl'] = $this->db->query("SELECT SUM(ukuran_pendek) as jml, SUM(ukuran_panjang) as jml_p, SUM(jumlah) as jumlah FROM `tb_pegawai_qc`where id_order='$id_order' AND keterangan='Tidak Lolos' AND detail_ukuran='XXL' GROUP BY id_order")->row_array();
 		$this->load->view('order/detail', $data);
 	}
 
@@ -649,6 +661,7 @@ class Order extends CI_Controller {
 			'tgl_cair' => $data['tgl_cair'],
 			'ukuran_pendek' => $data['ukuran_pendek'],
 			'ukuran_panjang' => $data['ukuran_panjang'],
+			'detail_ukuran' => $data['detail_ukuran'],
 			'created_at' => date('Y-m-d H:i:s')
 		];
 
@@ -670,6 +683,7 @@ class Order extends CI_Controller {
 			'tgl_cair' => $data['tgl_cair'],
 			'ukuran_pendek' => $data['ukuran_pendek'],
 			'ukuran_panjang' => $data['ukuran_panjang'],
+			'detail_ukuran' => $data['detail_ukuran'],
 		];
 
 		$this->db->where('id_pegawai_jahit', $id_pegawai_jahit);
@@ -700,6 +714,7 @@ class Order extends CI_Controller {
 			'tgl_cair' => $data['tgl_cair'],
 			'ukuran_pendek' => $data['ukuran_pendek'],
 			'ukuran_panjang' => $data['ukuran_panjang'],
+			'detail_ukuran' => $data['detail_ukuran'],
 			'keterangan' => $data['keterangan'],
 			'catatan_revisi' => $data['catatan_revisi'],
 			'created_at' => date('Y-m-d H:i:s')
@@ -723,6 +738,7 @@ class Order extends CI_Controller {
 			'tgl_cair' => $data['tgl_cair'],
 			'ukuran_pendek' => $data['ukuran_pendek'],
 			'ukuran_panjang' => $data['ukuran_panjang'],
+			'detail_ukuran' => $data['detail_ukuran'],
 			'keterangan' => $data['keterangan'],
 			'catatan_revisi' => $data['catatan_revisi'],
 		];

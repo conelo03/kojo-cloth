@@ -162,6 +162,17 @@
           </select>
         </div>
         <div class="form-group">
+          <label for="1">Detail Ukuran</label>
+          <select name="detail_ukuran" class="form-control" required="">
+            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="1">Ukuran (pendek)</label>
           <input type="text" class="form-control" id="1" name="ukuran_pendek" value="" required="">
         </div>
@@ -219,6 +230,17 @@
           </select>
         </div>
         <div class="form-group">
+          <label for="1">Detail Ukuran</label>
+          <select name="detail_ukuran" class="form-control" required="">
+            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="1">Ukuran (pendek)</label>
           <input type="text" class="form-control" id="1" name="ukuran_pendek" value="<?= $u['ukuran_pendek'] ?>" required="">
         </div>
@@ -272,6 +294,17 @@
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>"><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
             <?php } ?>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="1">Detail Ukuran</label>
+          <select name="detail_ukuran" class="form-control" required="">
+            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
           </select>
         </div>
         <div class="form-group">
@@ -348,6 +381,17 @@
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>" <?= $u['id_pegawai'] == $key['id_pegawai'] ? 'selected' : '' ?>><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
             <?php } ?>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="1">Detail Ukuran</label>
+          <select name="detail_ukuran" class="form-control" required="">
+            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
           </select>
         </div>
         <div class="form-group">
