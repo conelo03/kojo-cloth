@@ -403,7 +403,9 @@
                     </div>
                     <div class="col-md-6 text-right">
                       <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
-                      <a href="#" data-toggle="modal" data-target="#modal-add-cutting" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                        <?php if(is_admin() || (is_produksi() && $cutting['status_cutting'] != 4)):?>
+                        <a href="#" data-toggle="modal" data-target="#modal-add-cutting" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                        <?php endif;?>
                       <?php endif;?>
                     </div>
                   </div>
@@ -444,8 +446,10 @@
                             <td><?= $u['tgl_cair'] ?></td>
                             <td class="text-center">
                               <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
-                              <button type="button" data-toggle="modal" data-target="#modal-edit-cutting<?= $u['id_pegawai_cutting'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
-                              <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_cutting/'.$order['id_order'].'/'.$u['id_pegawai_cutting']); ?>';"><i class="fa fa-trash"></i></button>
+                                <?php if(is_admin() || (is_produksi() && $cutting['status_cutting'] != 4)):?>
+                                <button type="button" data-toggle="modal" data-target="#modal-edit-cutting<?= $u['id_pegawai_cutting'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_cutting/'.$order['id_order'].'/'.$u['id_pegawai_cutting']); ?>';"><i class="fa fa-trash"></i></button>
+                                <?php endif;?>
                               <?php endif;?>
                             </td>
                           </tr>
@@ -737,8 +741,10 @@
                       <h5>Data Pegawai Jahit</h5>
                     </div>
                     <div class="col-md-6 text-right">
-                      <?php if(is_admin() || (is_produksi() && $jahit['status_jahit'] != 4)):?>
-                      <a href="#" data-toggle="modal" data-target="#modal-add-jahit" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                      <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
+                        <?php if(is_admin() || (is_produksi() && $jahit['status_jahit'] != 4)):?>
+                        <a href="#" data-toggle="modal" data-target="#modal-add-jahit" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                        <?php endif;?>
                       <?php endif;?>
                     </div>
                   </div>
@@ -779,8 +785,10 @@
                             <td><?= $u['tgl_cair'] ?></td>
                             <td class="text-center">
                               <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
-                              <button type="button" data-toggle="modal" data-target="#modal-edit-jahit<?= $u['id_pegawai_jahit'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
-                              <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_jahit/'.$order['id_order'].'/'.$u['id_pegawai_jahit']); ?>';"><i class="fa fa-trash"></i></button>
+                                <?php if(is_admin() || (is_produksi() && $jahit['status_jahit'] != 4)):?>
+                                <button type="button" data-toggle="modal" data-target="#modal-edit-jahit<?= $u['id_pegawai_jahit'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_jahit/'.$order['id_order'].'/'.$u['id_pegawai_jahit']); ?>';"><i class="fa fa-trash"></i></button>
+                                <?php endif;?>
                               <?php endif;?>
                             </td>
                           </tr>
@@ -1038,8 +1046,10 @@
                       <h5>Data Pegawai QC & Packaging</h5>
                     </div>
                     <div class="col-md-6 text-right">
-                      <?php if(is_admin() || (is_produksi() && $qc['status_qc'] != 4)):?>
-                      <a href="#" data-toggle="modal" data-target="#modal-add-qc" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                      <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
+                        <?php if(is_admin() || (is_produksi() && $qc['status_qc'] != 4)):?>
+                        <a href="#" data-toggle="modal" data-target="#modal-add-qc" class="btn btn-info"><i class="fa fa-plus"></i> Tambah Data</a>
+                        <?php endif;?>
                       <?php endif;?>
                     </div>
                   </div>
@@ -1083,9 +1093,11 @@
                             <td><?= $u['catatan_revisi'] ?></td>
                             <td><?= $u['tgl_cair'] ?></td>
                             <td class="text-center">
-                              <?php if(is_admin() || (is_produksi() && $qc['status_qc'] != 4)):?>
-                              <button type="button" data-toggle="modal" data-target="#modal-edit-qc<?= $u['id_pegawai_qc'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
-                              <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_qc/'.$order['id_order'].'/'.$u['id_pegawai_qc']); ?>';"><i class="fa fa-trash"></i></button>
+                              <?php if(is_admin() || (is_produksi() && $order['status_order'] != 4)):?>
+                                <?php if(is_admin() || (is_produksi() && $qc['status_qc'] != 4)):?>
+                                <button type="button" data-toggle="modal" data-target="#modal-edit-qc<?= $u['id_pegawai_qc'] ?>" class="btn btn-info"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger" data-confirm="Anda yakin ingin menghapus data ini?|Data yang sudah dihapus tidak akan kembali." data-confirm-yes="document.location.href='<?= base_url('Order/hapus_pegawai_qc/'.$order['id_order'].'/'.$u['id_pegawai_qc']); ?>';"><i class="fa fa-trash"></i></button>
+                                <?php endif;?>
                               <?php endif;?>
                             </td>
                           </tr>

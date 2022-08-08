@@ -151,7 +151,17 @@ class Pengajuan_hpp extends CI_Controller {
 
 	public function posting($id_pengajuan_hpp)
 	{
+		$pemasukan		= $this->db->select_sum('jumlah')->from('tb_pemasukan')->get()->row_array();
+		$pengeluaran		= $this->db->select_sum('jumlah')->from('tb_pengeluaran')->get()->row_array();
+		$saldo = $pemasukan['jumlah'] - $pengeluaran['jumlah'];
+
 		$gp = $this->M_pengajuan_hpp->get_by_id($id_pengajuan_hpp);
+
+		if($saldo < $gp['jumlah']){
+			$this->session->set_flashdata('msg', 'saldo-tidak-cukup');
+			redirect('pengajuan-hpp');
+		}
+		
 		$data = [
 			'tanggal' => $gp['tanggal'],
 			'id_jenis_pengeluaran' => $gp['id_jenis_pengeluaran'],

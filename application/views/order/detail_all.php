@@ -70,6 +70,10 @@
                       <th class="text-center"><?= $order['jumlah_ukuran_xxl'] ?> pcs</th>
                       <th class="text-center"><?= $order['jumlah_ukuran_xxl_p'] ?> pcs</th>
                     </tr>
+                    <tr>
+                      <th class="text-center">TOTAL</th>
+                      <th class="text-center" colspan="2"><?= $jumlah_order ?> </th>
+                    </tr>
                   </table>
                 </div>
               </div>

@@ -74,6 +74,15 @@ class Pengeluaran extends CI_Controller {
 				'jumlah'			=> $data['jumlah'],
 			];
 
+			$pemasukan		= $this->db->select_sum('jumlah')->from('tb_pemasukan')->get()->row_array();
+			$pengeluaran		= $this->db->select_sum('jumlah')->from('tb_pengeluaran')->get()->row_array();
+			$saldo = $pemasukan['jumlah'] - $pengeluaran['jumlah'];
+
+			if($saldo < $data['jumlah']){
+				$this->session->set_flashdata('msg', 'saldo-tidak-cukup');
+				redirect('tambah-pengeluaran');
+			}
+
 			if ($this->M_pengeluaran->insert($data_user)) {
 				$this->session->set_flashdata('msg', 'error');
 				redirect('tambah-pengeluaran');

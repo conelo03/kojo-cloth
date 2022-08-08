@@ -100,7 +100,17 @@ class Gaji extends CI_Controller {
 
 	public function posting($id_gaji)
 	{
+		$pemasukan		= $this->db->select_sum('jumlah')->from('tb_pemasukan')->get()->row_array();
+		$pengeluaran		= $this->db->select_sum('jumlah')->from('tb_pengeluaran')->get()->row_array();
+		$saldo = $pemasukan['jumlah'] - $pengeluaran['jumlah'];
+
 		$gp = $this->M_gaji->get_by_id($id_gaji);
+
+		if($saldo < $gp['jumlah']){
+			$this->session->set_flashdata('msg', 'saldo-tidak-cukup');
+			redirect('gaji');
+		}
+
 		$data = [
 			'tanggal' => $gp['tanggal'],
 			'id_jenis_pengeluaran' => '2',

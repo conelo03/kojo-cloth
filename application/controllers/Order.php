@@ -38,6 +38,8 @@ class Order extends CI_Controller {
 	{
     $data['title']		= 'Order Belum Dikonfirmasi';
 		$data['order']		= $this->M_order->get_all_by_id($id_order);
+		$data['jumlah_order'] = $data['order']['jumlah_ukuran_s'] + $data['order']['jumlah_ukuran_m'] + $data['order']['jumlah_ukuran_l'] + $data['order']['jumlah_ukuran_xl'] + $data['order']['jumlah_ukuran_xxl']
+		+ $data['order']['jumlah_ukuran_s_p'] + $data['order']['jumlah_ukuran_m_p'] + $data['order']['jumlah_ukuran_l_p'] + $data['order']['jumlah_ukuran_xl_p'] + $data['order']['jumlah_ukuran_xxl_p'];
 		$this->load->view('order/detail_all', $data);
 	}
 

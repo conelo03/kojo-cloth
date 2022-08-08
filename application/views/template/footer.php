@@ -316,6 +316,14 @@
           position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
       });
     </script>
+  <?php elseif($this->session->flashdata('msg')=='saldo-tidak-cukup'):?>
+    <script type="text/javascript">
+      iziToast.error({
+          title: 'Gagal!',
+          message: 'Saldo Perusahaan tidak cukup untuk melakukan transaksi ini!',
+          position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+      });
+    </script>
   <?php elseif($this->session->flashdata('msg')=='edit'):?>
     <script type="text/javascript">
       iziToast.info({

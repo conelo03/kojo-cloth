@@ -142,7 +142,17 @@ class Gaji_produksi extends CI_Controller {
 
 	public function posting($id_gaji_produksi)
 	{
+		$pemasukan		= $this->db->select_sum('jumlah')->from('tb_pemasukan')->get()->row_array();
+		$pengeluaran		= $this->db->select_sum('jumlah')->from('tb_pengeluaran')->get()->row_array();
+		$saldo = $pemasukan['jumlah'] - $pengeluaran['jumlah'];
+
 		$gp = $this->M_gaji_produksi->get_by_id($id_gaji_produksi);
+
+		if($saldo < $gp['jumlah']){
+			$this->session->set_flashdata('msg', 'saldo-tidak-cukup');
+			redirect('gaji-produksi');
+		}
+
 		$data = [
 			'tanggal' => $gp['tanggal_pencairan'],
 			'id_jenis_pengeluaran' => '1',
