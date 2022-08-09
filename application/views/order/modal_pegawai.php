@@ -233,11 +233,11 @@
           <label for="1">Detail Ukuran</label>
           <select name="detail_ukuran" class="form-control" required="">
             <option value="" disabled="" selected="">-- Pilih Ukuran --</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
+            <option value="S" <?= $u['detail_ukuran'] == 'S' ? 'selected' : '' ?>>S</option>
+            <option value="M" <?= $u['detail_ukuran'] == 'M' ? 'selected' : '' ?>>M</option>
+            <option value="L" <?= $u['detail_ukuran'] == 'L' ? 'selected' : '' ?>>L</option>
+            <option value="XL" <?= $u['detail_ukuran'] == 'XL' ? 'selected' : '' ?>>XL</option>
+            <option value="XXL" <?= $u['detail_ukuran'] == 'XXL' ? 'selected' : '' ?>>XXL</option>
           </select>
         </div>
         <div class="form-group">
@@ -387,11 +387,11 @@
           <label for="1">Detail Ukuran</label>
           <select name="detail_ukuran" class="form-control" required="">
             <option value="" disabled="" selected="">-- Pilih Ukuran --</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
+            <option value="S" <?= $u['detail_ukuran'] == 'S' ? 'selected' : '' ?>>S</option>
+            <option value="M" <?= $u['detail_ukuran'] == 'M' ? 'selected' : '' ?>>M</option>
+            <option value="L" <?= $u['detail_ukuran'] == 'L' ? 'selected' : '' ?>>L</option>
+            <option value="XL" <?= $u['detail_ukuran'] == 'XL' ? 'selected' : '' ?>>XL</option>
+            <option value="XXL" <?= $u['detail_ukuran'] == 'XXL' ? 'selected' : '' ?>>XXL</option>
           </select>
         </div>
         <div class="form-group">
