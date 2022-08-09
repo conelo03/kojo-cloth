@@ -143,7 +143,7 @@ class Pengajuan_kasbon extends CI_Controller {
 
 		if($saldo < $gp['jumlah']){
 			$this->session->set_flashdata('msg', 'saldo-tidak-cukup');
-			redirect('pengajuan_kasbon');
+			redirect('pengajuan-kasbon');
 		}
 		
 		$data = [
