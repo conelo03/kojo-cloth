@@ -55,6 +55,69 @@
         });
       });
 
+      $("#select-pegawai-kasbon").change(function(){ 
+      
+        $.ajax({
+          type: "POST", 
+          url: "<?= base_url("Pengajuan_kasbon/get_kasbon"); ?>", 
+          data: {id_pegawai : $("#select-pegawai-kasbon").val()}, 
+          async : true,
+          dataType: "JSON",
+          success: function(res) {
+            console.log(res);
+            if(res.response === true){
+              document.getElementById("sisa_kasbon").setAttribute('value', res.data.sisa);
+              $('#item-error').html('');
+            } else {
+              $('#item-error').html('Item tidak ditemukan!');
+              document.getElementById("sisa_kasbon").setAttribute('value', '');
+            }
+          }, 
+        });
+      });
+
+      $("#select-pegawai-kasbon-jahit").change(function(){ 
+      
+        $.ajax({
+          type: "POST", 
+          url: "<?= base_url("Pengajuan_kasbon/get_kasbon"); ?>", 
+          data: {id_pegawai : $("#select-pegawai-kasbon-jahit").val()}, 
+          async : true,
+          dataType: "JSON",
+          success: function(res) {
+            console.log(res);
+            if(res.response === true){
+              document.getElementById("sisa_kasbon_jahit").setAttribute('value', res.data.sisa);
+              $('#item-error').html('');
+            } else {
+              $('#item-error').html('Item tidak ditemukan!');
+              document.getElementById("sisa_kasbon_jahit").setAttribute('value', '');
+            }
+          }, 
+        });
+      });
+
+      $("#select-pegawai-kasbon-qc").change(function(){ 
+        
+        $.ajax({
+          type: "POST", 
+          url: "<?= base_url("Pengajuan_kasbon/get_kasbon"); ?>", 
+          data: {id_pegawai : $("#select-pegawai-kasbon-qc").val()}, 
+          async : true,
+          dataType: "JSON",
+          success: function(res) {
+            console.log(res);
+            if(res.response === true){
+              document.getElementById("sisa_kasbon_qc").setAttribute('value', res.data.sisa);
+              $('#item-error').html('');
+            } else {
+              $('#item-error').html('Item tidak ditemukan!');
+              document.getElementById("sisa_kasbon_qc").setAttribute('value', '');
+            }
+          }, 
+        });
+      });
+
       $("#select-order").change(function(){ 
       
         $.ajax({

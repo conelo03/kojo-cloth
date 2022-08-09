@@ -41,6 +41,14 @@ class Pengajuan_kasbon extends CI_Controller {
 			$this->load->view('pengajuan_kasbon/tambah', $data);
 		} else {
 			$data		= $this->input->post(null, true);
+
+			$cek = $this->db->get_where('tb_pengajuan_kasbon', ['id_pegawai' => $data['id_pegawai'], 'sisa != ' => 0])->num_rows();
+
+			if($cek > 0){
+				$this->session->set_flashdata('msg', 'error');
+				redirect('tambah-pengajuan-kasbon');
+			}
+
 			$data_user	= [
 				'tanggal'			=> $data['tanggal'],
 				'id_jenis_pengeluaran'			=> $data['id_jenis_pengeluaran'],
@@ -222,6 +230,23 @@ class Pengajuan_kasbon extends CI_Controller {
 		}
 
 		return $this->upload->data('file_name');
+	}
+
+	public function get_kasbon()
+	{
+		$id_pegawai = $this->input->post('id_pegawai');
+		$pegawai = $this->db->query("SELECT SUM(sisa) as sisa FROM `tb_pengajuan_kasbon` where id_pegawai = '$id_pegawai'")->row_array();
+
+		$data = [
+			'sisa' => $pegawai['sisa'] == null ? 0 : $pegawai['sisa'],
+		];
+		
+		$response = [
+			'response' => true,
+			'data'	=> $data
+
+		]; 
+		echo json_encode($response);
 	}
 
 	private function send_message($judul, $konten, $url) {

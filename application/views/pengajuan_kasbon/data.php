@@ -33,7 +33,7 @@
                       <th>Sisa</th>
                       <th>Pegawai</th>
                       <th>Status</th>
-                      <th class="text-center" style="width: 350px;">Aksi</th>
+                      <th class="text-center" style="width: 330px;">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -60,9 +60,6 @@
                         ?>  
                       </td>
                       <td class="text-center">
-                      <?php if((is_produksi() || is_admin()) && $u['sisa'] > 0): ?>
-                        <button class="btn btn-success" data-target="#preview<?= $u['id_pengajuan_kasbon'] ?>" data-toggle="modal"><i class="fa fa-check"></i> Bayar</button>
-                      <?php endif; ?> 
                         <?php if($u['status'] == 0): ?>
                           <?php if(is_owner() || is_admin()): ?>
                             <button class="btn btn-success" data-confirm="Anda yakin ingin menyetujui Pengajuan Kasbon?|Data yang sudah disetujui tidak akan bisa dibatalkan." data-confirm-yes="document.location.href='<?= base_url('approve-pengajuan-kasbon/'.$u['id_pengajuan_kasbon']); ?>';"><i class="fa fa-check"></i> Approve</button>

@@ -11,7 +11,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="1">Nama Pegawai</label>
-          <select name="id_pegawai" class="form-control" required="">
+          <select name="id_pegawai" class="form-control" id="select-pegawai-kasbon" required="">
             <option value="" disabled="" selected="">-- Pilih Pegawai --</option>
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>"><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
@@ -45,6 +45,10 @@
           <label for="1">Harga</label>
           <input type="hidden" class="form-control" id="1" name="harga" value="<?= $upah_cutting['upah'] ?>" required="">
           <input type="number" class="form-control" id="1" name="harga" value="<?= $upah_cutting['upah'] ?>" readonly>
+        </div>
+        <div class="form-group">
+          <label for="1">Sisa Kasbon</label>
+          <input type="text" class="form-control" id="sisa_kasbon" name="" value="" readonly="">
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
@@ -120,7 +124,7 @@
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
-          <input type="number" class="form-control" id="1" name="kasbon" value="<?= $u['kasbon'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="kasbon" value="<?= $u['kasbon'] ?>" <?= $u['kasbon'] == 0 ? 'readonly' : 'required' ?>>
         </div>
         <div class="form-group">
           <label for="1">Tanggal Pencairan</label>
@@ -154,7 +158,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="1">Nama Pegawai</label>
-          <select name="id_pegawai" class="form-control" required="">
+          <select name="id_pegawai" class="form-control" id="select-pegawai-kasbon-jahit" required="">
             <option value="" disabled="" selected="">-- Pilih Pegawai --</option>
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>"><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
@@ -188,6 +192,10 @@
           <label for="1">Harga</label>
           <input type="hidden" class="form-control" id="1" name="harga" value="<?= $upah_jahit['upah'] ?>" required="">
           <input type="number" class="form-control" id="1" name="harga" value="<?= $upah_jahit['upah'] ?>" readonly>
+        </div>
+        <div class="form-group">
+          <label for="1">Sisa Kasbon</label>
+          <input type="text" class="form-control" id="sisa_kasbon_jahit" name="" value="" readonly="">
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
@@ -259,7 +267,7 @@
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
-          <input type="number" class="form-control" id="1" name="kasbon" value="<?= $u['kasbon'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="kasbon" value="<?= $u['kasbon'] ?>"  <?= $u['kasbon'] == 0 ? 'readonly' : 'required' ?>>
         </div>
         <div class="form-group">
           <label for="1">Tanggal Pencairan</label>
@@ -289,7 +297,7 @@
       <div class="modal-body">
         <div class="form-group">
           <label for="1">Nama Pegawai</label>
-          <select name="id_pegawai" class="form-control" required="">
+          <select name="id_pegawai" class="form-control" id="select-pegawai-kasbon-qc" required="">
             <option value="" disabled="" selected="">-- Pilih Pegawai --</option>
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>"><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
@@ -323,6 +331,10 @@
           <label for="1">Harga</label>
           <input type="hidden" class="form-control" id="1" name="harga" value="<?= $upah_qc['upah'] ?>" required="">
           <input type="number" class="form-control" id="1" name="harga" value="<?= $upah_qc['upah'] ?>" readonly>
+        </div>
+        <div class="form-group">
+          <label for="1">Sisa Kasbon</label>
+          <input type="text" class="form-control" id="sisa_kasbon_qc" name="" value="" readonly="">
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
@@ -385,7 +397,7 @@
         </div>
         <div class="form-group">
           <label for="1">Detail Ukuran</label>
-          <select name="detail_ukuran" class="form-control" required="">
+          <select name="detail_ukuran" class="form-control" id="select-pegawai-kasbon-qc" required="">
             <option value="" disabled="" selected="">-- Pilih Ukuran --</option>
             <option value="S" <?= $u['detail_ukuran'] == 'S' ? 'selected' : '' ?>>S</option>
             <option value="M" <?= $u['detail_ukuran'] == 'M' ? 'selected' : '' ?>>M</option>
@@ -413,7 +425,7 @@
         </div>
         <div class="form-group">
           <label for="1">Kasbon</label>
-          <input type="number" class="form-control" id="1" name="kasbon" value="<?= $u['kasbon'] ?>" required="">
+          <input type="number" class="form-control" id="1" name="kasbon" value="<?= $u['kasbon'] ?>"  <?= $u['kasbon'] == 0 ? 'readonly' : 'required' ?>>
         </div>
         <div class="form-group">
           <label for="1">Tanggal Pencairan</label>

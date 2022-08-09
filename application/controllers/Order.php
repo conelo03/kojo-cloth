@@ -601,6 +601,29 @@ class Order extends CI_Controller {
 	public function tambah_pegawai_cutting($id_order)
 	{
 		$data		= $this->input->post(null, true);
+		
+		$cek = $this->db->get_where('tb_pegawai_cutting', ['id_pegawai' => $data['id_pegawai'], 'pola_potongan' => $data['pola_potongan'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
+
+		if($cek->num_rows() > 0 ){
+			$this->session->set_flashdata('msg', 'error');
+			redirect('detail-order/'.$id_order);
+		}	
+
+		if($data['kasbon'] != 0){
+			$cek_kasbon = $this->db->get_where('tb_pengajuan_kasbon', ['id_pegawai' => $data['id_pegawai'], 'sisa !=' => 0])->row_array();
+			$sisa = $cek_kasbon['sisa'] - $data['kasbon'];
+
+			if(($data['kasbon'] > $cek_kasbon['sisa']) || ($data['kasbon'] > ($data['jumlah'] * $data['harga']))){
+				$this->session->set_flashdata('msg', 'error');
+				redirect('detail-order/'.$id_order);
+			}
+			$data_kasbon = [
+				'id_pengajuan_kasbon' => $cek_kasbon['id_pengajuan_kasbon'],
+				'sisa' => $sisa,
+			];
+			$this->M_pengajuan_kasbon->update($data_kasbon);
+		}
+
 		$data_ = [
 			'id_order'	=> $id_order,
 			'id_pegawai' => $data['id_pegawai'],
@@ -611,15 +634,9 @@ class Order extends CI_Controller {
 			'pola_potongan' => $data['pola_potongan'],
 			'detail_ukuran' => $data['detail_ukuran'],
 			'catatan_potongan' => $data['catatan_potongan'],
-			'created_at' => date('Y-m-d H:i:s')
+			'created_at' => date('Y-m-d H:i:s'),
+			'id_pengajuan_kasbon' => $data['kasbon'] != 0 && $cek_kasbon != null ? $cek_kasbon['id_pengajuan_kasbon'] : 0
 		];
-
-		$cek = $this->db->get_where('tb_pegawai_cutting', ['id_pegawai' => $data['id_pegawai'], 'pola_potongan' => $data['pola_potongan'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
-
-		if($cek->num_rows() > 0 ){
-			$this->session->set_flashdata('msg', 'error');
-			redirect('detail-order/'.$id_order);
-		}	
 
 		$this->db->insert('tb_pegawai_cutting', $data_);
 
@@ -630,6 +647,26 @@ class Order extends CI_Controller {
 	public function edit_pegawai_cutting($id_order, $id_pegawai_cutting)
 	{
 		$data		= $this->input->post(null, true);
+
+		$cek = $this->db->get_where('tb_pegawai_cutting', ['id_pegawai_cutting' => $id_pegawai_cutting])->row_array();
+		if($cek['id_pengajuan_kasbon'] != 0){
+			$kasbon  = $this->db->get_where('tb_pengajuan_kasbon', ['id_pengajuan_kasbon' => $cek['id_pengajuan_kasbon']])->row_array();
+
+			if(($data['kasbon'] > $kasbon['sisa']) || ($data['kasbon'] > ($data['jumlah'] * $data['harga']))){
+				$this->session->set_flashdata('msg', 'error');
+				redirect('detail-order/'.$id_order);
+			}
+			
+			$sisa = $kasbon['sisa'] + $cek['kasbon'] - $data['kasbon'];
+
+			$data_kasbon = [
+				'id_pengajuan_kasbon' => $kasbon['id_pengajuan_kasbon'],
+				'sisa' => $sisa,
+			];
+			$this->M_pengajuan_kasbon->update($data_kasbon);
+
+		}
+
 		$data_ = [
 			'id_order'	=> $id_order,
 			'id_pegawai' => $data['id_pegawai'],
@@ -651,6 +688,19 @@ class Order extends CI_Controller {
 
 	public function hapus_pegawai_cutting($id_order, $id_pegawai_cutting)
 	{
+		$cek = $this->db->get_where('tb_pegawai_cutting', ['id_pegawai_cutting' => $id_pegawai_cutting])->row_array();
+		if($cek['id_pengajuan_kasbon'] != 0){
+			$kasbon  = $this->db->get_where('tb_pengajuan_kasbon', ['id_pengajuan_kasbon' => $cek['id_pengajuan_kasbon']])->row_array();
+			$sisa = $kasbon['sisa'] + $cek['kasbon'];
+
+			$data_kasbon = [
+				'id_pengajuan_kasbon' => $kasbon['id_pengajuan_kasbon'],
+				'sisa' => $sisa,
+			];
+			$this->M_pengajuan_kasbon->update($data_kasbon);
+
+		}
+
 		$this->db->where('id_pegawai_cutting', $id_pegawai_cutting);
 		$this->db->delete('tb_pegawai_cutting');
 
@@ -661,6 +711,29 @@ class Order extends CI_Controller {
 	public function tambah_pegawai_jahit($id_order)
 	{
 		$data		= $this->input->post(null, true);
+
+		$cek = $this->db->get_where('tb_pegawai_jahit', ['id_pegawai' => $data['id_pegawai'], 'ukuran_pendek' => $data['ukuran_pendek'], 'ukuran_panjang' => $data['ukuran_panjang'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
+
+		if($cek->num_rows() > 0 ){
+			$this->session->set_flashdata('msg', 'error');
+			redirect('detail-order/'.$id_order);
+		}	
+
+		if($data['kasbon'] != 0){
+			$cek_kasbon = $this->db->get_where('tb_pengajuan_kasbon', ['id_pegawai' => $data['id_pegawai'], 'sisa !=' => 0])->row_array();
+			$sisa = $cek_kasbon['sisa'] - $data['kasbon'];
+
+			if(($data['kasbon'] > $cek_kasbon['sisa']) || ($data['kasbon'] > ($data['jumlah'] * $data['harga']))){
+				$this->session->set_flashdata('msg', 'error');
+				redirect('detail-order/'.$id_order);
+			}
+			$data_kasbon = [
+				'id_pengajuan_kasbon' => $cek_kasbon['id_pengajuan_kasbon'],
+				'sisa' => $sisa,
+			];
+			$this->M_pengajuan_kasbon->update($data_kasbon);
+		}
+
 		$data_ = [
 			'id_order'	=> $id_order,
 			'id_pegawai' => $data['id_pegawai'],
@@ -671,15 +744,9 @@ class Order extends CI_Controller {
 			'ukuran_pendek' => $data['ukuran_pendek'],
 			'ukuran_panjang' => $data['ukuran_panjang'],
 			'detail_ukuran' => $data['detail_ukuran'],
-			'created_at' => date('Y-m-d H:i:s')
+			'created_at' => date('Y-m-d H:i:s'),
+			'id_pengajuan_kasbon' => $data['kasbon'] != 0 && $cek_kasbon != null ? $cek_kasbon['id_pengajuan_kasbon'] : 0
 		];
-
-		$cek = $this->db->get_where('tb_pegawai_jahit', ['id_pegawai' => $data['id_pegawai'], 'ukuran_pendek' => $data['ukuran_pendek'], 'ukuran_panjang' => $data['ukuran_panjang'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
-
-		if($cek->num_rows() > 0 ){
-			$this->session->set_flashdata('msg', 'error');
-			redirect('detail-order/'.$id_order);
-		}	
 
 		$this->db->insert('tb_pegawai_jahit', $data_);
 
@@ -690,6 +757,26 @@ class Order extends CI_Controller {
 	public function edit_pegawai_jahit($id_order, $id_pegawai_jahit)
 	{
 		$data		= $this->input->post(null, true);
+
+		$cek = $this->db->get_where('tb_pegawai_jahit', ['id_pegawai_jahit' => $id_pegawai_jahit])->row_array();
+		if($cek['id_pengajuan_kasbon'] != 0){
+			$kasbon  = $this->db->get_where('tb_pengajuan_kasbon', ['id_pengajuan_kasbon' => $cek['id_pengajuan_kasbon']])->row_array();
+
+			if(($data['kasbon'] > $kasbon['sisa']) || ($data['kasbon'] > ($data['jumlah'] * $data['harga']))){
+				$this->session->set_flashdata('msg', 'error');
+				redirect('detail-order/'.$id_order);
+			}
+
+			$sisa = $kasbon['sisa'] + $cek['kasbon'] - $data['kasbon'];
+
+			$data_kasbon = [
+				'id_pengajuan_kasbon' => $kasbon['id_pengajuan_kasbon'],
+				'sisa' => $sisa,
+			];
+			$this->M_pengajuan_kasbon->update($data_kasbon);
+
+		}
+
 		$data_ = [
 			'id_order'	=> $id_order,
 			'id_pegawai' => $data['id_pegawai'],
@@ -711,6 +798,19 @@ class Order extends CI_Controller {
 
 	public function hapus_pegawai_jahit($id_order, $id_pegawai_jahit)
 	{
+		$cek = $this->db->get_where('tb_pegawai_jahit', ['id_pegawai_jahit' => $id_pegawai_jahit])->row_array();
+		if($cek['id_pengajuan_kasbon'] != 0){
+			$kasbon  = $this->db->get_where('tb_pengajuan_kasbon', ['id_pengajuan_kasbon' => $cek['id_pengajuan_kasbon']])->row_array();
+			$sisa = $kasbon['sisa'] + $cek['kasbon'];
+
+			$data_kasbon = [
+				'id_pengajuan_kasbon' => $kasbon['id_pengajuan_kasbon'],
+				'sisa' => $sisa,
+			];
+			$this->M_pengajuan_kasbon->update($data_kasbon);
+
+		}
+
 		$this->db->where('id_pegawai_jahit', $id_pegawai_jahit);
 		$this->db->delete('tb_pegawai_jahit');
 
@@ -721,6 +821,29 @@ class Order extends CI_Controller {
 	public function tambah_pegawai_qc($id_order)
 	{
 		$data		= $this->input->post(null, true);
+
+		$cek = $this->db->get_where('tb_pegawai_qc', ['id_pegawai' => $data['id_pegawai'], 'ukuran_pendek' => $data['ukuran_pendek'], 'ukuran_panjang' => $data['ukuran_panjang'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
+
+		if($cek->num_rows() > 0 ){
+			$this->session->set_flashdata('msg', 'error');
+			redirect('detail-order/'.$id_order);
+		}	
+
+		if($data['kasbon'] != 0){
+			$cek_kasbon = $this->db->get_where('tb_pengajuan_kasbon', ['id_pegawai' => $data['id_pegawai'], 'sisa !=' => 0])->row_array();
+			$sisa = $cek_kasbon['sisa'] - $data['kasbon'];
+
+			if(($data['kasbon'] > $cek_kasbon['sisa']) || ($data['kasbon'] > ($data['jumlah'] * $data['harga']))){
+				$this->session->set_flashdata('msg', 'error');
+				redirect('detail-order/'.$id_order);
+			}
+			$data_kasbon = [
+				'id_pengajuan_kasbon' => $cek_kasbon['id_pengajuan_kasbon'],
+				'sisa' => $sisa,
+			];
+			$this->M_pengajuan_kasbon->update($data_kasbon);
+		}
+
 		$data_ = [
 			'id_order'	=> $id_order,
 			'id_pegawai' => $data['id_pegawai'],
@@ -733,15 +856,11 @@ class Order extends CI_Controller {
 			'detail_ukuran' => $data['detail_ukuran'],
 			'keterangan' => $data['keterangan'],
 			'catatan_revisi' => $data['catatan_revisi'],
-			'created_at' => date('Y-m-d H:i:s')
+			'created_at' => date('Y-m-d H:i:s'),
+			'id_pengajuan_kasbon' => $data['kasbon'] != 0 && $cek_kasbon != null ? $cek_kasbon['id_pengajuan_kasbon'] : 0
 		];
 
-		$cek = $this->db->get_where('tb_pegawai_qc', ['id_pegawai' => $data['id_pegawai'], 'ukuran_pendek' => $data['ukuran_pendek'], 'ukuran_panjang' => $data['ukuran_panjang'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
-
-		if($cek->num_rows() > 0 ){
-			$this->session->set_flashdata('msg', 'error');
-			redirect('detail-order/'.$id_order);
-		}	
+		
 
 		$this->db->insert('tb_pegawai_qc', $data_);
 
@@ -752,6 +871,26 @@ class Order extends CI_Controller {
 	public function edit_pegawai_qc($id_order, $id_pegawai_qc)
 	{
 		$data		= $this->input->post(null, true);
+
+		$cek = $this->db->get_where('tb_pegawai_qc', ['id_pegawai_qc' => $id_pegawai_qc])->row_array();
+		if($cek['id_pengajuan_kasbon'] != 0){
+			$kasbon  = $this->db->get_where('tb_pengajuan_kasbon', ['id_pengajuan_kasbon' => $cek['id_pengajuan_kasbon']])->row_array();
+
+			if(($data['kasbon'] > $kasbon['sisa']) || ($data['kasbon'] > ($data['jumlah'] * $data['harga']))){
+				$this->session->set_flashdata('msg', 'error');
+				redirect('detail-order/'.$id_order);
+			}
+
+			$sisa = $kasbon['sisa'] + $cek['kasbon'] - $data['kasbon'];
+
+			$data_kasbon = [
+				'id_pengajuan_kasbon' => $kasbon['id_pengajuan_kasbon'],
+				'sisa' => $sisa,
+			];
+			$this->M_pengajuan_kasbon->update($data_kasbon);
+
+		}
+		
 		$data_ = [
 			'id_order'	=> $id_order,
 			'id_pegawai' => $data['id_pegawai'],
@@ -775,6 +914,19 @@ class Order extends CI_Controller {
 
 	public function hapus_pegawai_qc($id_order, $id_pegawai_qc)
 	{
+		$cek = $this->db->get_where('tb_pegawai_qc', ['id_pegawai_qc' => $id_pegawai_qc])->row_array();
+		if($cek['id_pengajuan_kasbon'] != 0){
+			$kasbon  = $this->db->get_where('tb_pengajuan_kasbon', ['id_pengajuan_kasbon' => $cek['id_pengajuan_kasbon']])->row_array();
+			$sisa = $kasbon['sisa'] + $cek['kasbon'];
+
+			$data_kasbon = [
+				'id_pengajuan_kasbon' => $kasbon['id_pengajuan_kasbon'],
+				'sisa' => $sisa,
+			];
+			$this->M_pengajuan_kasbon->update($data_kasbon);
+
+		}
+
 		$this->db->where('id_pegawai_qc', $id_pegawai_qc);
 		$this->db->delete('tb_pegawai_qc');
 
