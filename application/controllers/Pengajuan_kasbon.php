@@ -108,6 +108,15 @@ class Pengajuan_kasbon extends CI_Controller {
 	public function hapus($id_pengajuan_kasbon)
 	{
 		$this->M_pengajuan_kasbon->delete($id_pengajuan_kasbon);
+
+		$this->db->where('id_pengajuan_kasbon', $id_pengajuan_kasbon);
+		$this->db->update('tb_pegawai_cutting', ['id_pengajuan_kasbon' => 0]);
+
+		$this->db->where('id_pengajuan_kasbon', $id_pengajuan_kasbon);
+		$this->db->update('tb_pegawai_jahit', ['id_pengajuan_kasbon' => 0]);
+
+		$this->db->where('id_pengajuan_kasbon', $id_pengajuan_kasbon);
+		$this->db->update('tb_pegawai_qc', ['id_pengajuan_kasbon' => 0]);
 		$this->session->set_flashdata('msg', 'hapus');
 		redirect('pengajuan-kasbon');
 	}
@@ -195,7 +204,7 @@ class Pengajuan_kasbon extends CI_Controller {
 		$this->db->where('id_pengajuan_kasbon', $id_pengajuan_kasbon);
 		$this->db->update('tb_pengajuan_kasbon', ['sisa' => $sisa]);
 
-		$this->session->set_flashdata('msg', 'posting');
+		$this->session->set_flashdata('msg', 'bayar-kasbon');
 		redirect('pengajuan-kasbon');
 	}
 

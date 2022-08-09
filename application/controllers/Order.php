@@ -614,6 +614,13 @@ class Order extends CI_Controller {
 			'created_at' => date('Y-m-d H:i:s')
 		];
 
+		$cek = $this->db->get_where('tb_pegawai_cutting', ['id_pegawai' => $data['id_pegawai'], 'pola_potongan' => $data['pola_potongan'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
+
+		if($cek->num_rows() > 0 ){
+			$this->session->set_flashdata('msg', 'error');
+			redirect('detail-order/'.$id_order);
+		}	
+
 		$this->db->insert('tb_pegawai_cutting', $data_);
 
 		$this->session->set_flashdata('msg', 'success');
@@ -666,6 +673,13 @@ class Order extends CI_Controller {
 			'detail_ukuran' => $data['detail_ukuran'],
 			'created_at' => date('Y-m-d H:i:s')
 		];
+
+		$cek = $this->db->get_where('tb_pegawai_jahit', ['id_pegawai' => $data['id_pegawai'], 'ukuran_pendek' => $data['ukuran_pendek'], 'ukuran_panjang' => $data['ukuran_panjang'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
+
+		if($cek->num_rows() > 0 ){
+			$this->session->set_flashdata('msg', 'error');
+			redirect('detail-order/'.$id_order);
+		}	
 
 		$this->db->insert('tb_pegawai_jahit', $data_);
 
@@ -721,6 +735,13 @@ class Order extends CI_Controller {
 			'catatan_revisi' => $data['catatan_revisi'],
 			'created_at' => date('Y-m-d H:i:s')
 		];
+
+		$cek = $this->db->get_where('tb_pegawai_qc', ['id_pegawai' => $data['id_pegawai'], 'ukuran_pendek' => $data['ukuran_pendek'], 'ukuran_panjang' => $data['ukuran_panjang'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
+
+		if($cek->num_rows() > 0 ){
+			$this->session->set_flashdata('msg', 'error');
+			redirect('detail-order/'.$id_order);
+		}	
 
 		$this->db->insert('tb_pegawai_qc', $data_);
 

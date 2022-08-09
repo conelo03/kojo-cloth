@@ -308,6 +308,14 @@
           position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
       });
     </script>
+  <?php elseif($this->session->flashdata('msg')=='bayar-kasbon'):?>
+    <script type="text/javascript">
+      iziToast.success({
+          title: 'Sukses!',
+          message: 'Pembayaran Kasbon Berhasil!',
+          position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+      });
+    </script>
   <?php elseif($this->session->flashdata('msg')=='error'):?>
     <script type="text/javascript">
       iziToast.error({
