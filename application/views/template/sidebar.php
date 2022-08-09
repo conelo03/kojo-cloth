@@ -2,6 +2,7 @@
 $id_pegawai = $this->session->userdata('id_pegawai');
 $get_user = $this->db->get_where('tb_pegawai', ['id_pegawai' => $id_pegawai])->row_array();
 $jml_pengajuan = $this->db->get_where('tb_pengajuan', ['status' => 0])->num_rows();
+$jml_pengajuan_kasbon = $this->db->get_where('tb_pengajuan_kasbon', ['status' => 0])->num_rows();
 $jml_pengajuan_hpp = $this->db->get_where('tb_pengajuan_hpp', ['status' => 1])->num_rows();
 $jml_gaji = $this->db->get_where('tb_gaji', ['status' => 0])->num_rows();
 $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->num_rows();
@@ -123,7 +124,8 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
             <li class="<?= $title == 'Data Gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji<?= $jml_gaji == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_gaji.'</span>' ?></span></a></li> 
             <li class="<?= $title == 'Data Gaji Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('gaji-produksi');?>"><i class="fas fa-file-invoice-dollar"></i> <span>Data Gaji Produksi<?= $jml_gaji_produksi == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_gaji_produksi.'</span>' ?></span></a></li> 
             <li class="menu-header">Data Pengajuan</li>    
-            <li class="<?= $title == 'Data Pengajuan Bahan Baku' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan Bahan Baku<?= $jml_pengajuan_hpp == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_pengajuan_hpp.'</span>' ?></span></a></li>       
+            <li class="<?= $title == 'Data Pengajuan Bahan Baku' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-hpp');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan Bahan Baku<?= $jml_pengajuan_hpp == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_pengajuan_hpp.'</span>' ?></span></a></li> 
+            <li class="<?= $title == 'Data Pengajuan Kasbon Produksi' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan-kasbon');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan Kasbon Produksi<?= $jml_pengajuan_kasbon == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_pengajuan_kasbon.'</span>' ?></span></a></li>       
             <li class="<?= $title == 'Data Pengajuan' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('pengajuan');?>"><i class="fas fa-clipboard-check"></i> <span>Data Pengajuan<?= $jml_pengajuan == 0 ? '': '<span class="badge badge-warning" style="max-width: 30px;">'.$jml_pengajuan.'</span>' ?></span></a></li> 
             <!-- <li class="menu-header">Data Transaksi</li>
             <li class="<?= $title == 'Cash Flow' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('cash-flow');?>"><i class="fas fa-sync"></i> <span>Cash Flow</span></a></li>       -->

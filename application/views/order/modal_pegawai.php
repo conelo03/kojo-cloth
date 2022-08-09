@@ -12,7 +12,7 @@
         <div class="form-group">
           <label for="1">Nama Pegawai</label>
           <select name="id_pegawai" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Pegawai --</option>
+            <option value="" disabled="" selected="">-- Pilih Pegawai --</option>
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>"><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
             <?php } ?>
@@ -21,7 +21,7 @@
         <div class="form-group">
           <label for="1">Pola Potongan</label>
           <select name="pola_potongan" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Pola --</option>
+            <option value="" disabled="" selected="">-- Pilih Pola --</option>
             <option value="Pola Kojo">Pola Kojo</option>
             <option value="Pola Luar">Pola Luar</option>
           </select>
@@ -29,7 +29,7 @@
         <div class="form-group">
           <label for="1">Detail Ukuran</label>
           <select name="detail_ukuran" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="" disabled="" selected="">-- Pilih Ukuran --</option>
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
@@ -84,7 +84,7 @@
         <div class="form-group">
           <label for="1">Nama Pegawai</label>
           <select name="id_pegawai" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Pegawai --</option>
+            <option value="" disabled="" selected="">-- Pilih Pegawai --</option>
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>" <?= $u['id_pegawai'] == $key['id_pegawai'] ? 'selected' : '' ?>><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
             <?php } ?>
@@ -93,7 +93,7 @@
         <div class="form-group">
           <label for="1">Pola Potongan</label>
           <select name="pola_potongan" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Pola --</option>
+            <option value="" disabled="" selected="">-- Pilih Pola --</option>
             <option value="Pola Kojo" <?= $u['pola_potongan'] == 'Pola Kojo' ? 'selected' : '' ?>>Pola Kojo</option>
             <option value="Pola Luar" <?= $u['pola_potongan'] == 'Pola Luar' ? 'selected' : '' ?>>Pola Luar</option>
           </select>
@@ -101,7 +101,7 @@
         <div class="form-group">
           <label for="1">Detail Ukuran</label>
           <select name="detail_ukuran" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="" disabled="" selected="">-- Pilih Ukuran --</option>
             <option value="S" <?= $u['detail_ukuran'] == 'S' ? 'selected' : '' ?>>S</option>
             <option value="M" <?= $u['detail_ukuran'] == 'M' ? 'selected' : '' ?>>M</option>
             <option value="L" <?= $u['detail_ukuran'] == 'L' ? 'selected' : '' ?>>L</option>
@@ -155,7 +155,7 @@
         <div class="form-group">
           <label for="1">Nama Pegawai</label>
           <select name="id_pegawai" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Pegawai --</option>
+            <option value="" disabled="" selected="">-- Pilih Pegawai --</option>
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>"><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
             <?php } ?>
@@ -164,7 +164,7 @@
         <div class="form-group">
           <label for="1">Detail Ukuran</label>
           <select name="detail_ukuran" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="" disabled="" selected="">-- Pilih Ukuran --</option>
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
@@ -223,7 +223,7 @@
         <div class="form-group">
           <label for="1">Nama Pegawai</label>
           <select name="id_pegawai" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Pegawai --</option>
+            <option value="" disabled="" selected="">-- Pilih Pegawai --</option>
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>" <?= $u['id_pegawai'] == $key['id_pegawai'] ? 'selected' : '' ?>><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
             <?php } ?>
@@ -232,7 +232,7 @@
         <div class="form-group">
           <label for="1">Detail Ukuran</label>
           <select name="detail_ukuran" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="" disabled="" selected="">-- Pilih Ukuran --</option>
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
@@ -290,7 +290,7 @@
         <div class="form-group">
           <label for="1">Nama Pegawai</label>
           <select name="id_pegawai" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Pegawai --</option>
+            <option value="" disabled="" selected="">-- Pilih Pegawai --</option>
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>"><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
             <?php } ?>
@@ -299,7 +299,7 @@
         <div class="form-group">
           <label for="1">Detail Ukuran</label>
           <select name="detail_ukuran" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="" disabled="" selected="">-- Pilih Ukuran --</option>
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
@@ -377,7 +377,7 @@
         <div class="form-group">
           <label for="1">Nama Pegawai</label>
           <select name="id_pegawai" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Pegawai --</option>
+            <option value="" disabled="" selected="">-- Pilih Pegawai --</option>
             <?php foreach ($pegawai as $key) { ?>
               <option value="<?= $key['id_pegawai'] ?>" <?= $u['id_pegawai'] == $key['id_pegawai'] ? 'selected' : '' ?>><?= $key['nama'] ?> - <?= $key['jabatan'] ?></option>
             <?php } ?>
@@ -386,7 +386,7 @@
         <div class="form-group">
           <label for="1">Detail Ukuran</label>
           <select name="detail_ukuran" class="form-control" required="">
-            <option disabled="" selected="">-- Pilih Ukuran --</option>
+            <option value="" disabled="" selected="">-- Pilih Ukuran --</option>
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>

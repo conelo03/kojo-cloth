@@ -60,7 +60,7 @@
                         ?>  
                       </td>
                       <td class="text-center">
-                      <?php if($u['sisa'] > 0): ?>
+                      <?php if((is_produksi() || is_admin()) && $u['sisa'] > 0): ?>
                         <button class="btn btn-success" data-target="#preview<?= $u['id_pengajuan_kasbon'] ?>" data-toggle="modal"><i class="fa fa-check"></i> Bayar</button>
                       <?php endif; ?> 
                         <?php if($u['status'] == 0): ?>
