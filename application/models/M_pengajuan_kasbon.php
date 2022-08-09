@@ -13,11 +13,6 @@ class M_pengajuan_kasbon extends CI_Model {
 		$this->db->from($this->table);
 		$this->db->join('tb_jenis_pengeluaran', 'tb_jenis_pengeluaran.id_jenis_pengeluaran=tb_pengajuan_kasbon.id_jenis_pengeluaran');
 		$this->db->join('tb_pegawai', 'tb_pegawai.id_pegawai=tb_pengajuan_kasbon.id_pegawai');
-		if(is_admin() || is_owner() || is_keuangan()){
-
-		}else{
-			$this->db->where('tb_pengajuan_kasbon.id_pegawai', $id_pegawai);
-		}
 		$this->db->order_by('tanggal', 'DESC');
     return $this->db->get();
 	}
