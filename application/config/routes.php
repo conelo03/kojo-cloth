@@ -212,6 +212,14 @@ $route['batal-pengajuan-hpp/(:any)']    	= 'Pengajuan_hpp/batal/$1';
 $route['posting-pengajuan-hpp/(:any)']    	= 'Pengajuan_hpp/posting/$1';
 $route['approve-pengajuan-hpp/(:any)']    	= 'Pengajuan_hpp/approve/$1';
 
+$route['pengajuan-kasbon'] 				    = 'Pengajuan_kasbon';
+$route['tambah-pengajuan-kasbon'] 	        = 'Pengajuan_kasbon/tambah';
+$route['edit-pengajuan-kasbon/(:any)'] 	    = 'Pengajuan_kasbon/edit/$1';
+$route['hapus-pengajuan-kasbon/(:any)']    	= 'Pengajuan_kasbon/hapus/$1';
+$route['posting-pengajuan-kasbon/(:any)']    	= 'Pengajuan_kasbon/posting/$1';
+$route['approve-pengajuan-kasbon/(:any)']    	= 'Pengajuan_kasbon/approve/$1';
+$route['bayar-pengajuan-kasbon/(:any)']    	= 'Pengajuan_kasbon/bayar/$1';
+
 $route['detail-pengajuan-hpp/(:any)'] 				    = 'Pengajuan_hpp/detail/$1';
 $route['tambah-detail-pengajuan-hpp/(:any)'] 	        = 'Pengajuan_hpp/tambah_detail/$1';
 $route['edit-detail-pengajuan-hpp/(:any)/(:any)'] 	    = 'Pengajuan_hpp/edit_detail/$1/$2';
