@@ -9,6 +9,7 @@ class M_gaji_produksi extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from($this->table);
+		$this->db->join('tb_jenis_pengeluaran', 'tb_jenis_pengeluaran.id_jenis_pengeluaran=tb_gaji_produksi.id_jenis_pengeluaran');
 		$this->db->order_by('tanggal_pencairan', 'DESC');
     return $this->db->get();
 	}

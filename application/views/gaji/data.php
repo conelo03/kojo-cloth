@@ -29,6 +29,7 @@
                     <tr>
                       <th class="text-center">#</th>
                       <th style="width: 80px;">Tanggal</th>
+                      <th>Jenis</th>
                       <th>Jumlah</th>
                       <th>Keterangan</th>
                       <th>Status</th>
@@ -42,6 +43,7 @@
                     <tr>
                       <td class="text-center"><?= $no++;?></td>
                       <td><?= $u['tanggal'];?></td>
+                      <td><?= $u['jenis_pengeluaran'];?></td>
                       <td>Rp <?= number_format($u['jumlah'], '2',',','.' );?></td>
                       <td><?= $u['keterangan'];?></td>
                       <td>

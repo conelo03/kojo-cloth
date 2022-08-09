@@ -32,6 +32,7 @@ class Gaji_produksi extends CI_Controller {
 			$data		= $this->input->post(null, true);
 			$data_user	= [
 				'tanggal_pencairan'			=> $data['tanggal_pencairan'],
+				'id_jenis_pengeluaran' => '1',
 				'keterangan'			=> $data['keterangan'],
 			];
 
@@ -89,7 +90,7 @@ class Gaji_produksi extends CI_Controller {
 	public function generate($id_gaji_produksi)
 	{
 		$gaji = $this->M_gaji_produksi->get_by_id($id_gaji_produksi);
-		$pegawai = $this->M_pegawai->get_data()->result_array();
+		$pegawai = $this->db->get_where('tb_pegawai', ['jabatan' => 'Pegawai Produksi'])->result_array();
 		foreach ($pegawai as $p) {
 			$id_pegawai = $p['id_pegawai'];
 			$tanggal_pencairan = $gaji['tanggal_pencairan'];
@@ -155,7 +156,7 @@ class Gaji_produksi extends CI_Controller {
 
 		$data = [
 			'tanggal' => $gp['tanggal_pencairan'],
-			'id_jenis_pengeluaran' => '1',
+			'id_jenis_pengeluaran' => $gp['id_jenis_pengeluaran'],
 			'keterangan' => $gp['keterangan'],
 			'referensi' => '-',
 			'jumlah' => $gp['jumlah']

@@ -32,6 +32,7 @@ class Gaji extends CI_Controller {
 			$data		= $this->input->post(null, true);
 			$data_user	= [
 				'tanggal'			=> $data['tanggal'],
+				'id_jenis_pengeluaran' => '2',
 				'keterangan'			=> $data['keterangan'],
 			];
 
@@ -113,7 +114,7 @@ class Gaji extends CI_Controller {
 
 		$data = [
 			'tanggal' => $gp['tanggal'],
-			'id_jenis_pengeluaran' => '2',
+			'id_jenis_pengeluaran' => $gp['id_jenis_pengeluaran'],
 			'keterangan' => $gp['keterangan'],
 			'referensi' => '-',
 			'jumlah' => $gp['jumlah']
