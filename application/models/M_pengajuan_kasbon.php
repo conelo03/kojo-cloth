@@ -24,7 +24,12 @@ class M_pengajuan_kasbon extends CI_Model {
 
 	public function get_by_id($id_pengajuan_kasbon)
 	{
-		return $this->db->get_where($this->table, ['id_pengajuan_kasbon' => $id_pengajuan_kasbon])->row_array();
+		$this->db->select('*');
+		$this->db->from($this->table);
+		$this->db->join('tb_jenis_pengeluaran', 'tb_jenis_pengeluaran.id_jenis_pengeluaran=tb_pengajuan_kasbon.id_jenis_pengeluaran');
+		$this->db->join('tb_pegawai', 'tb_pegawai.id_pegawai=tb_pengajuan_kasbon.id_pegawai');
+		$this->db->where('tb_pengajuan_kasbon.id_pengajuan_kasbon', $id_pengajuan_kasbon);
+    return $this->db->get()->row_array();
 	}
 
 	public function get_by_role($role)

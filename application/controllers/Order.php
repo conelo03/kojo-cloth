@@ -601,7 +601,13 @@ class Order extends CI_Controller {
 	public function tambah_pegawai_cutting($id_order)
 	{
 		$data		= $this->input->post(null, true);
-		
+		$batas = $this->cek_batas_order($data['detail_ukuran'], $data['jumlah'], $id_order, 'cutting');
+
+		if($batas != TRUE) {
+			$this->session->set_flashdata('msg', 'batas-order');
+			redirect('detail-order/'.$id_order);
+		}
+
 		$cek = $this->db->get_where('tb_pegawai_cutting', ['id_pegawai' => $data['id_pegawai'], 'pola_potongan' => $data['pola_potongan'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
 
 		if($cek->num_rows() > 0 ){
@@ -647,6 +653,13 @@ class Order extends CI_Controller {
 	public function edit_pegawai_cutting($id_order, $id_pegawai_cutting)
 	{
 		$data		= $this->input->post(null, true);
+		
+		$batas = $this->cek_batas_order($data['detail_ukuran'], $data['jumlah'], $id_order, 'cutting', 'edit');
+
+		if($batas != TRUE) {
+			$this->session->set_flashdata('msg', 'batas-order');
+			redirect('detail-order/'.$id_order);
+		}
 
 		$cek = $this->db->get_where('tb_pegawai_cutting', ['id_pegawai_cutting' => $id_pegawai_cutting])->row_array();
 		if($cek['id_pengajuan_kasbon'] != 0){
@@ -712,6 +725,13 @@ class Order extends CI_Controller {
 	{
 		$data		= $this->input->post(null, true);
 
+		$batas = $this->cek_batas_order($data['detail_ukuran'], $data['jumlah'], $id_order, 'jahit');
+
+		if($batas != TRUE) {
+			$this->session->set_flashdata('msg', 'batas-order');
+			redirect('detail-order/'.$id_order);
+		}
+
 		$cek = $this->db->get_where('tb_pegawai_jahit', ['id_pegawai' => $data['id_pegawai'], 'ukuran_pendek' => $data['ukuran_pendek'], 'ukuran_panjang' => $data['ukuran_panjang'], 'detail_ukuran' => $data['detail_ukuran'], 'tgl_cair' => $data['tgl_cair']]);
 
 		if($cek->num_rows() > 0 ){
@@ -757,6 +777,13 @@ class Order extends CI_Controller {
 	public function edit_pegawai_jahit($id_order, $id_pegawai_jahit)
 	{
 		$data		= $this->input->post(null, true);
+
+		$batas = $this->cek_batas_order($data['detail_ukuran'], $data['jumlah'], $id_order, 'jahit', 'edit');
+
+		if($batas != TRUE) {
+			$this->session->set_flashdata('msg', 'batas-order');
+			redirect('detail-order/'.$id_order);
+		}
 
 		$cek = $this->db->get_where('tb_pegawai_jahit', ['id_pegawai_jahit' => $id_pegawai_jahit])->row_array();
 		if($cek['id_pengajuan_kasbon'] != 0){
@@ -1320,6 +1347,99 @@ class Order extends CI_Controller {
 		$data['result_c3'] = $result_c3;
 
 		$this->load->view('order/data_rekapitulasi_new', $data);
+	}
+
+	private function cek_batas_order($ukuran, $jumlah, $id_order, $mode, $mode1 = 'add'){
+		$order		= $this->M_order->get_by_id($id_order);
+		$jumlah_s = $order['jumlah_ukuran_s'] + $order['jumlah_ukuran_s_p'];
+		$jumlah_m = $order['jumlah_ukuran_m'] + $order['jumlah_ukuran_m_p'];
+		$jumlah_l = $order['jumlah_ukuran_l'] + $order['jumlah_ukuran_l_p'];
+		$jumlah_xl = $order['jumlah_ukuran_xl'] + $order['jumlah_ukuran_xl_p'];
+		$jumlah_xxl = $order['jumlah_ukuran_xxl'] + $order['jumlah_ukuran_xxl_p'];
+
+		$jml_cutting_s = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_cutting` where id_order='$id_order' AND detail_ukuran='S'")->row_array();
+		$jml_cutting_m = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_cutting` where id_order='$id_order' AND detail_ukuran='M'")->row_array();
+		$jml_cutting_l = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_cutting` where id_order='$id_order' AND detail_ukuran='L'")->row_array();
+		$jml_cutting_xl = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_cutting` where id_order='$id_order' AND detail_ukuran='XL'")->row_array();
+		$jml_cutting_xxl = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_cutting` where id_order='$id_order' AND detail_ukuran='XXL'")->row_array();
+		$jml_jahit_s = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='S'")->row_array();
+		$jml_jahit_m = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='M'")->row_array();
+		$jml_jahit_l = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='L'")->row_array();
+		$jml_jahit_xl = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='XL'")->row_array();
+		$jml_jahit_xxl = $this->db->query("SELECT SUM(jumlah) as jumlah FROM `tb_pegawai_jahit` where id_order='$id_order' AND detail_ukuran='XXL'")->row_array();
+
+		if($ukuran == 'S'){
+			if($jumlah > $jumlah_s){
+				return FALSE;
+			}
+		}elseif($ukuran == 'M'){
+			if($jumlah > $jumlah_m){
+				return FALSE;
+				
+			}
+		}elseif($ukuran == 'L'){
+			if($jumlah > $jumlah_l){
+				return FALSE;
+			}
+		}elseif($ukuran == 'XL'){
+			if($jumlah > $jumlah_xl){
+				return FALSE;
+			}
+		}elseif($ukuran == 'XXL'){
+			if($jumlah > $jumlah_xxl){
+				return FALSE;
+			}
+		}
+		if($mode1 == 'add'){
+			if($mode == 'cutting'){
+				if($ukuran == 'S'){
+					if(($jumlah + $jml_cutting_s['jumlah']) > $jumlah_s){
+						return FALSE;
+					}
+				}elseif($ukuran == 'M'){
+					if(($jumlah + $jml_cutting_m['jumlah']) > $jumlah_m){
+						return FALSE;
+					}
+				}elseif($ukuran == 'L'){
+					if(($jumlah + $jml_cutting_l['jumlah']) > $jumlah_l){
+						return FALSE;
+					}
+				}elseif($ukuran == 'XL'){
+					if(($jumlah + $jml_cutting_xl['jumlah']) > $jumlah_xl){
+						return FALSE;
+					}
+				}elseif($ukuran == 'XXL'){
+					if(($jumlah + $jml_cutting_xxl['jumlah']) > $jumlah_xxl){
+						return FALSE;
+					}
+				}
+			}elseif($mode == 'jahit'){
+				if($ukuran == 'S'){
+					if(($jumlah + $jml_jahit_s['jumlah']) > $jumlah_s){
+						return FALSE;
+					}
+				}elseif($ukuran == 'M'){
+					if(($jumlah + $jml_jahit_m['jumlah']) > $jumlah_m){
+						return FALSE;
+					}
+				}elseif($ukuran == 'L'){
+					if(($jumlah + $jml_jahit_l['jumlah']) > $jumlah_l){
+						return FALSE;
+					}
+				}elseif($ukuran == 'XL'){
+					if(($jumlah + $jml_jahit_xl['jumlah']) > $jumlah_xl){
+						return FALSE;
+					}
+				}elseif($ukuran == 'XXL'){
+					if(($jumlah + $jml_jahit_xxl['jumlah']) > $jumlah_xxl){
+						return FALSE;
+					}
+				}
+			}
+		}
+		
+
+		return TRUE;
 	}
 
 	private function send_message($judul, $konten, $url) {

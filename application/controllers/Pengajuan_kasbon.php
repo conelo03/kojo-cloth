@@ -23,12 +23,16 @@ class Pengajuan_kasbon extends CI_Controller {
 		$this->load->view('pengajuan_kasbon/data', $data);
 	}
 
-	public function my()
+	public function detail($id_pengajuan_kasbon)
 	{
-		$id_pegawai = $this->session->userdata('id_pegawai');
-    $data['title']		= 'pengajuan_kasbonku';
-		$data['pengajuan_kasbon']		= $this->M_pengajuan_kasbon->get_data()->result_array();
-		$this->load->view('pengajuan_kasbon/data', $data);
+    $data['title']		= 'Data Pengajuan Kasbon Produksi';
+		$data['p']	= $this->M_pengajuan_kasbon->get_by_id($id_pengajuan_kasbon);
+		$data['pengajuan_kasbon'] = $this->db->query("SELECT kasbon, created_at FROM tb_pegawai_qc where id_pengajuan_kasbon='$id_pengajuan_kasbon' 
+		UNION 
+		SELECT kasbon, created_at FROM tb_pegawai_cutting where id_pengajuan_kasbon='$id_pengajuan_kasbon' 
+		UNION 
+		SELECT kasbon, created_at FROM tb_pegawai_jahit where id_pengajuan_kasbon='$id_pengajuan_kasbon' ORDER BY DATE(created_at) ASC")->result_array();
+		$this->load->view('pengajuan_kasbon/detail', $data);
 	}
 
 	public function tambah()

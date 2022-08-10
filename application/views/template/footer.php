@@ -395,6 +395,14 @@
           position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
       });
     </script>
+  <?php elseif($this->session->flashdata('msg')=='batas-order'):?>
+    <script type="text/javascript">
+      iziToast.error({
+          title: 'Gagal!',
+          message: 'Jumlah melebihi batas Order!',
+          position: 'topCenter', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+      });
+    </script>
   <?php elseif($this->session->flashdata('msg')=='edit'):?>
     <script type="text/javascript">
       iziToast.info({

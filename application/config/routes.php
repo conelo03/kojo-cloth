@@ -219,6 +219,7 @@ $route['hapus-pengajuan-kasbon/(:any)']    	= 'Pengajuan_kasbon/hapus/$1';
 $route['posting-pengajuan-kasbon/(:any)']    	= 'Pengajuan_kasbon/posting/$1';
 $route['approve-pengajuan-kasbon/(:any)']    	= 'Pengajuan_kasbon/approve/$1';
 $route['bayar-pengajuan-kasbon/(:any)']    	= 'Pengajuan_kasbon/bayar/$1';
+$route['detail-pengajuan-kasbon/(:any)']    	= 'Pengajuan_kasbon/detail/$1';
 
 $route['detail-pengajuan-hpp/(:any)'] 				    = 'Pengajuan_hpp/detail/$1';
 $route['tambah-detail-pengajuan-hpp/(:any)'] 	        = 'Pengajuan_hpp/tambah_detail/$1';
