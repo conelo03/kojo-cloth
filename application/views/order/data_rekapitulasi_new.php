@@ -39,6 +39,41 @@
                   </div>
                 </div>
               </form>
+              <div class="table-responsive">
+                <table class="table table-striped" id="">
+                  <thead>
+                    <tr>
+                      <th class="text-center">#</th>
+                      <th>Instansi</th>
+                      <th>Jas</th>
+                      <th>Jaket</th>
+                      <th>Kemeja</th>
+                      <th>Kaos</th>
+                      <th>Sweater</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php
+                    $no = 1; 
+                    foreach($all_data as $u):
+                    ?>
+                    <tr>
+                      <td class="text-center"><?= $no++;?></td>
+                      <td><?= $u['instansi'];?></td>
+                      <td><?= $u['jas'];?></td>
+                      <td><?= $u['jaket'];?></td>
+                      <td><?= $u['kemeja'];?></td>
+                      <td><?= $u['kaos'];?></td>
+                      <td><?= $u['sweater'];?></td>
+                    </tr>
+                    <?php endforeach;?>
+                  </tbody>
+                </table>
+              </div>
+              
+              <br>
+                <br>
+                <br>
               <?php 
               if(is_admin()){
                 foreach ($list_all_data as $index => $value) { ?>
@@ -132,6 +167,12 @@
                 </th>
               </tr>
               <tr>
+                <th colspan="8">
+                  - Tindakan yang harus dilakukan pada cluster 1 (Order banyak) : <br>
+                  * Promosi dilakukan dengan memberikan diskon 5% dan bonus 1 produk
+                </th>
+              </tr>
+              <tr>
                 <th>No</th>
                 <th>Instansi</th>
                 <th>Jas</th>
@@ -172,6 +213,12 @@
                 </th>
               </tr>
               <tr>
+                <th colspan="7">
+                  - Tindakan yang harus dilakukan pada cluster 2 (Order sedang) : <br>
+                  * Promosi dilakukan dengan memberikan diskon Rp. 1.000/pcs 
+                </th>
+              </tr>
+              <tr>
                 <th>No</th>
                 <th>Instansi</th>
                 <th>Jas</th>
@@ -209,6 +256,12 @@
               <tr>
                 <th colspan="7">
                   Hasil Cluster 3
+                </th>
+              </tr>
+              <tr>
+                <th colspan="7">
+                  - Tindakan yang harus dilakukan pada cluster 3 (order kurang) : <br>
+                  * Promo harga khusus seperti promo tanggal cantik dan promo hari besar
                 </th>
               </tr>
               <tr>

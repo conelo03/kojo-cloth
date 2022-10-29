@@ -1339,6 +1339,7 @@ class Order extends CI_Controller {
 		$data['month_c'] = $month;
 		$data['month']		= $this->db->query("SELECT DATE_FORMAT(tgl_order, '%Y-%m') as tgl1, DATE_FORMAT(tgl_order, '%M %Y') as tgl FROM tb_order GROUP BY DATE_FORMAT(tgl_order, '%M %Y') order by tgl_order ASC")->result_array();
 		$data['list_all_data'] = $list_all_data;
+		$data['all_data'] = $this->db->query("SELECT * FROM tb_rekapitulasi JOIN tb_pelanggan ON(tb_rekapitulasi.id_pelanggan=tb_pelanggan.id_pelanggan)")->result_array();
 		$data['c1'] = $c1;
 		$data['c2'] = $c2;
 		$data['c3'] = $c3;

@@ -17,6 +17,18 @@ class Dashboard extends CI_Controller {
 	public function index()
 	{
 		$data['title']	= 'Dashboard';
+		$this->db->select('tb_produk.nama_produk, count(tb_order.id_order) as terjual');
+		$this->db->from('tb_order');
+		$this->db->join('tb_produk', 'tb_produk.id_produk=tb_order.id_produk', 'right');
+		$this->db->where('tb_order.status_order', 4);
+		$this->db->group_by('tb_order.id_produk');
+		$grafik	= $this->db->get()->result_array();
+		$arr_jml = [];
+		$arr_produk = [];
+		foreach ($grafik as $key) {
+			array_push($arr_produk, $key['nama_produk']);
+			array_push($arr_jml, $key['terjual']);
+		}
 		$data['pemasukan']		= $this->db->select_sum('jumlah')->from('tb_pemasukan')->get()->row_array();
 		$data['pengeluaran']		= $this->db->select_sum('jumlah')->from('tb_pengeluaran')->get()->row_array();
 		$data['pengajuan'] = $this->db->get_where('tb_pengajuan', ['status' => 0])->num_rows();
@@ -36,6 +48,8 @@ class Dashboard extends CI_Controller {
 		$this->db->where('tanggal_agenda <=', $tanggal);
 		$this->db->where('tenggat_agenda >=', $tanggal);
 		$data['agenda']		= $this->db->get()->result_array();
+		$data['json_terjual'] = json_encode($arr_jml);
+		$data['json_produk'] = json_encode($arr_produk);
 		$this->load->view('dashboard', $data);
 	}
 }

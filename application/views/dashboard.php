@@ -206,6 +206,16 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
+              <h4>Grafik Penjualan per Produk</h4>
+            </div>
+            <div class="card-body">
+              <canvas id="myChart" height="158"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
               <h4>Data Agenda yang Berjalan</h4>
             </div>
             <div class="card-body">

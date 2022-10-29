@@ -22,13 +22,62 @@
   <script src="<?= base_url(); ?>assets/vendor/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="<?= base_url(); ?>assets/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
   <script type="text/javascript" src="<?php echo base_url().'assets/vendor/izitoast/js/iziToast.min.js'?>"></script>
+  <script type="text/javascript" src="<?php echo base_url().'assets/vendor/chart.js/Chart.min.js'?>"></script>
 
   <!-- Template JS File -->
   <script src="<?= base_url(); ?>assets/js/scripts.js"></script>
   <script src="<?= base_url(); ?>assets/js/custom.js"></script>
 
   <!-- Page Specific JS File -->
-  <script src="<?= base_url(); ?>assets/js/page/index-0.js"></script>
+  <!-- <script src="<?= base_url(); ?>assets/js/page/index.js"></script> -->
+  <script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: <?= $json_produk ?>,
+        datasets: [{
+          label: 'Sales',
+          data: <?= $json_terjual ?>,
+          borderWidth: 2,
+          backgroundColor: 'rgba(63,82,227,.8)',
+          borderWidth: 0,
+          borderColor: 'transparent',
+          pointBorderWidth: 0,
+          pointRadius: 3.5,
+          pointBackgroundColor: 'transparent',
+          pointHoverBackgroundColor: 'rgba(63,82,227,.8)',
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            gridLines: {
+              drawBorder: false,
+              color: '#f2f2f2',
+            },
+            ticks: {
+              beginAtZero: true,
+              stepSize: 5,
+              callback: function(value, index, values) {
+                return value;
+              }
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false,
+              tickMarkLength: 15,
+            }
+          }]
+        },
+      }
+    });
+
+  </script>
   <script type="text/javascript">
     $(document).ready(function(){
       
