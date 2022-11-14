@@ -35,6 +35,7 @@
                 <div class="article-title">
                   <h2><a href="#"><?= $p['nama_produk'] ?></a></h2>
                   <?php 
+                  if($o) {
                     if ($o['rate'] != 0 || $o['rate'] != NULL) {
                       for ($i=1; $i <= 5; $i++) { 
                         if ($i <= $o['rate']) {?>
@@ -51,6 +52,9 @@
                     } else {
                       echo " (0 terjual)";
                     }
+                  } else {
+                    echo 'Belum ada rating. (0 terjual)';
+                  }
                   ?>
                 </div>
                 <!-- <p>Rp <?= number_format($p['harga_produk'], 2, '.', ',') ?></p> -->

@@ -102,6 +102,7 @@
                 <div class="form-group">
                   <label>Design Order</label>
                   <input type="file" name="design_order" class="form-control" required="">
+                  <span class="text-danger small">*) Masukan satu file yg memuat design depan/belakang, logo, warna dll</span><br>
                   <span class="text-danger small">*) File yg diupload berformat (.jpg, .jpeg, .png)</span>
                   <?= form_error('design_order', '<span class="text-danger small">', '</span>'); ?>
                 </div>

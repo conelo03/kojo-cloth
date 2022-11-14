@@ -199,4 +199,21 @@ class Agenda extends CI_Controller {
 
 		return $this->upload->data('file_name');
 	}
+
+	public function survey()
+	{
+    $data['title']		= 'Data Survey';
+		$this->db->select('*');
+		$this->db->from('tb_survey');
+		$this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan=tb_survey.id_pelanggan');
+		$data['survey']		= $this->db->get()->result_array();
+		$this->load->view('survey/data', $data);
+	}
+
+	public function detail_survey($id_survey)
+	{
+		$data['title']		= 'My Survey';
+		$data['s'] = $this->db->get_where('tb_survey', ['id_survey' => $id_survey])->row_array();
+		$this->load->view('survey/edit', $data);
+	}
 }

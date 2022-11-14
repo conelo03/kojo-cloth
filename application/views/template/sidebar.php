@@ -90,6 +90,7 @@ $jml_gaji_produksi = $this->db->get_where('tb_gaji_produksi', ['status' => 1])->
             <?php if(is_admin() || is_k_marketing() || is_marketing() || is_owner()):?>
             <li class="menu-header">Data Agenda</li>  
             <li class="<?= $title == 'Data Agenda' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('agenda');?>"><i class="fas fa-calendar"></i> <span>Data Agenda</span></a></li>
+            <li class="<?= $title == 'Data Survey' ? 'active' : ''; ?>"><a class="nav-link" href="<?= base_url('survey');?>"><i class="fas fa-question-circle"></i> <span>Data Survey</span></a></li>
             <?php endif;?>
 
             <?php if(is_produksi() || is_marketing() || is_purchase() || is_k_marketing()):?>

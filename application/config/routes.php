@@ -71,6 +71,11 @@ $route['edit-order-pelanggan/(:any)'] 	    = 'DashboardPelanggan/edit_order/$1';
 $route['hapus-order-pelanggan/(:any)']    	= 'DashboardPelanggan/hapus_order/$1';
 $route['ulasan-order/(:any)']    	= 'DashboardPelanggan/ulasan_order/$1';
 
+$route['my-survey'] 	        = 'DashboardPelanggan/survey';
+$route['tambah-survey-pelanggan'] 	        = 'DashboardPelanggan/tambah_survey';
+$route['edit-survey-pelanggan/(:any)'] 	    = 'DashboardPelanggan/edit_survey/$1';
+$route['hapus-survey-pelanggan/(:any)']    	= 'DashboardPelanggan/hapus_survey/$1';
+
 // pegawai
 $route['administrator'] 				= 'Login';
 $route['login'] 				= 'Login/proses';
@@ -155,6 +160,9 @@ $route['detail-agenda/(:any)'] 				    = 'Agenda/detail/$1';
 $route['tambah-detail-agenda/(:any)'] 	        = 'Agenda/tambah_detail/$1';
 $route['edit-detail-agenda/(:any)/(:any)'] 	    = 'Agenda/edit_detail/$1/$2';
 $route['hapus-detail-agenda/(:any)/(:any)']    	= 'Agenda/hapus_detail/$1/$2';
+
+$route['survey'] 				    = 'Agenda/survey';
+$route['detail-survey/(:any)'] 				    = 'Agenda/detail_survey/$1';
 
 $route['pemasukan'] 				    = 'Pemasukan';
 $route['tambah-pemasukan'] 	        = 'Pemasukan/tambah';

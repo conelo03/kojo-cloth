@@ -15,6 +15,7 @@
           <li class="nav-item <?= $title == 'Ulasan' ? 'active' : '' ?>"><a href="<?= base_url('ulasan-pelanggan') ?>" class="nav-link">Ulasan Order</a></li>
           <li class="nav-item <?= $title == 'My Order' ? 'active' : '' ?>"><a href="<?= base_url('my-order') ?>" class="nav-link">My Order</a></li>
           <li class="nav-item <?= $title == 'Riwayat Order' ? 'active' : '' ?>"><a href="<?= base_url('riwayat-order-pelanggan') ?>" class="nav-link">Riwayat Order</a></li>
+          <li class="nav-item <?= $title == 'My Survey' ? 'active' : '' ?>"><a href="<?= base_url('my-survey') ?>" class="nav-link">My Survey</a></li>
         </ul>
       </div>
 

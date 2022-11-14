@@ -43,6 +43,49 @@
                   <textarea name="ulasan" class="form-control" required=""><?= $order['ulasan']; ?></textarea>
                   <?= form_error('ulasan', '<span class="text-danger small">', '</span>'); ?>
                 </div>
+                <div class="form-group">
+                  <label>Keterangan</label>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <span class="fa fa-star" style="color: orange"></span>
+                    </div>
+                    <div class="col-md-3">Buruk</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                    </div>
+                    <div class="col-md-3">Kurang</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                    </div>
+                    <div class="col-md-3">Cukup</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                    </div>
+                    <div class="col-md-3">Baik</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2">
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                      <span class="fa fa-star" style="color: orange"></span>
+                    </div>
+                    <div class="col-md-3">Sangat Baik</div>
+                  </div>
+                </div>
               </div>
 
               <div class="card-footer text-right">

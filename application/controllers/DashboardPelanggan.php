@@ -297,4 +297,105 @@ class DashboardPelanggan extends CI_Controller {
 		$this->form_validation->set_rules('password2', 'Konfirmasi Password', 'matches[password]');
 		
 	}
+
+	public function survey()
+	{
+		$data['title']	= 'My Survey';
+		$id_pelanggan = $this->session->userdata('id_pelanggan');
+		$this->db->select('*');
+		$this->db->from('tb_survey');
+		$this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan=tb_survey.id_pelanggan');
+		$this->db->where('tb_survey.id_pelanggan', $id_pelanggan);
+		$data['survey']		= $this->db->get()->result_array();
+		$this->load->view('pelanggan-page/survey/data', $data);
+	}
+
+	public function tambah_survey()
+	{
+		$this->validation_survey();
+		if (!$this->form_validation->run()) {
+			$data['title']		= 'My Order';
+			$this->load->view('pelanggan-page/survey/tambah', $data);
+		} else {
+			$data		= $this->input->post(null, true);
+			$data_user	= [
+				'tanggal_survey'			=> $data['tanggal_survey'],
+				'id_pelanggan'			=> $this->session->userdata('id_pelanggan'),
+				'keseluruhan'			=> $data['keseluruhan'],
+				'aspek_tanggal'			=> $data['aspek_tanggal'],
+				'aspek_lokasi'			=> $data['aspek_lokasi'],
+				'aspek_sesi'			=> $data['aspek_sesi'],
+				'pembicara'			=> $data['pembicara'],
+				'kali_pertama'			=> $data['kali_pertama'],
+				'kemungkinan_memesan_produk'			=> $data['kemungkinan_memesan_produk'],
+				'merekomendasikan_ke_orang_lain'			=> $data['merekomendasikan_ke_orang_lain'],
+				'pertama_kali_tahu'			=> $data['pertama_kali_tahu'],
+				'rekomendasi_tema'			=> $data['rekomendasi_tema'],
+				'saran'			=> $data['saran'],
+			];
+
+			$insert = $this->db->insert('tb_survey', $data_user);
+
+			if (!$insert) {
+				$this->session->set_flashdata('msg', 'error');
+				redirect('tambah-survey-pelanggan');
+			} else {
+				$this->session->set_flashdata('msg', 'success');
+				redirect('my-survey');
+			}
+		}
+	}
+
+	public function edit_survey($id_survey)
+	{
+		$this->validation_survey();
+		if (!$this->form_validation->run()) {
+			$data['title']		= 'My Survey';
+			$data['s'] = $this->db->get_where('tb_survey', ['id_survey' => $id_survey])->row_array();
+			$this->load->view('pelanggan-page/survey/edit', $data);
+		} else {
+			$data		= $this->input->post(null, true);
+			$data_user	= [
+				'id_survey' => $id_survey,
+				'tanggal_survey'			=> $data['tanggal_survey'],
+				'id_pelanggan'			=> $this->session->userdata('id_pelanggan'),
+				'keseluruhan'			=> $data['keseluruhan'],
+				'aspek_tanggal'			=> $data['aspek_tanggal'],
+				'aspek_lokasi'			=> $data['aspek_lokasi'],
+				'aspek_sesi'			=> $data['aspek_sesi'],
+				'pembicara'			=> $data['pembicara'],
+				'kali_pertama'			=> $data['kali_pertama'],
+				'kemungkinan_memesan_produk'			=> $data['kemungkinan_memesan_produk'],
+				'merekomendasikan_ke_orang_lain'			=> $data['merekomendasikan_ke_orang_lain'],
+				'pertama_kali_tahu'			=> $data['pertama_kali_tahu'],
+				'rekomendasi_tema'			=> $data['rekomendasi_tema'],
+				'saran'			=> $data['saran'],
+			];
+
+			$this->db->where('id_survey', $id_survey);
+			$insert = $this->db->update('tb_survey', $data_user);
+
+			if (!$insert) {
+				$this->session->set_flashdata('msg', 'error');
+				redirect('edit-survey-pelanggan/'.$id_survey);
+			} else {
+				$this->session->set_flashdata('msg', 'success');
+				redirect('my-survey');
+			}
+		}
+	}
+
+	public function hapus_survey($id_survey)
+	{
+		$this->db->delete('tb_survey', ['id_survey' => $id_survey]);
+		$this->session->set_flashdata('msg', 'hapus');
+		redirect('my-survey');
+	}
+
+	private function validation_survey()
+	{
+		$this->form_validation->set_rules('tanggal_survey', 'Tgl Survey', 'required|trim');
+		
+	} 
+
 }
