@@ -269,7 +269,7 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="kemungkinan_memesan_produk" value="10" id="kemungkinan_memesan_produk10" <?= $s['kemungkinan_memesan_produk'] == '10' ? 'checked' : '' ?>>
                     <label class="form-check-label" for="kemungkinan_memesan_produk10">
-                      10 Sangat Tidak Mungkin
+                      10 Sangat Mungkin
                     </label>
                   </div>
                 </div>
@@ -333,7 +333,7 @@
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="merekomendasikan_ke_orang_lain" value="10" id="merekomendasikan_ke_orang_lain10" <?= $s['merekomendasikan_ke_orang_lain'] == '10' ? 'checked' : '' ?>>
                     <label class="form-check-label" for="merekomendasikan_ke_orang_lain10">
-                      10 Sangat Tidak Mungkin
+                      10 Sangat Mungkin
                     </label>
                   </div>
                 </div>
