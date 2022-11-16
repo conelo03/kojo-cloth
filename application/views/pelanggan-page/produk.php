@@ -34,27 +34,31 @@
                 <div class="article-title">
                   <h2><a href="#"><?= $p['nama_produk'] ?></a></h2>
                   <?php 
-                    if ($o['rate'] != 0 || $o['rate'] != NULL) {
-                      for ($i=1; $i <= 5; $i++) { 
-                        if ($i <= $o['rate']) {?>
-                          <span class="fa fa-star" style="color: orange"></span>
-                        <?php } else { ?>
-                          <span class="fa fa-star"></span>
-                        <?php }
+                    if($o) {
+                      if ($o['rate'] != 0 || $o['rate'] != NULL) {
+                        for ($i=1; $i <= 5; $i++) { 
+                          if ($i <= $o['rate']) {?>
+                            <span class="fa fa-star" style="color: orange"></span>
+                          <?php } else { ?>
+                            <span class="fa fa-star"></span>
+                          <?php }
+                        }
+                      } else {
+                        echo 'Belum ada rating.';
+                      }
+                      if ($o['terjual'] != 0 || $o['terjual'] != NULL) {                      
+                        echo " (".$o['terjual']." terjual)";
+                      } else {
+                        echo " (0 terjual)";
                       }
                     } else {
-                      echo 'Belum ada rating.';
-                    }
-                    if ($o['terjual'] != 0 || $o['terjual'] != NULL) {                      
-                      echo " (".$o['terjual']." terjual)";
-                    } else {
-                      echo " (0 terjual)";
+                      echo 'Belum ada rating. (0 terjual)';
                     }
                   ?>
                 </div>
                 <!-- <p>Rp <?= number_format($p['harga_produk'], 2, '.', ',') ?></p> -->
                 <div class="article-cta">
-                  <a href="<?= base_url('tambah-order-pelanggan/'.$p['id_produk']) ?>">Check Out <i class="fas fa-chevron-right"></i></a>
+                  <a href="<?= base_url('detail-produk/'.$p['id_produk']) ?>">Check Out <i class="fas fa-chevron-right"></i></a>
                 </div>
               </div>
             </article>

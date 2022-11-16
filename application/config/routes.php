@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['home-pelanggan']				= 'HomePelanggan';
+$route['detail-produk-pelanggan/(:any)']				= 'HomePelanggan/produk/$1';
 $route['ulasan-pelanggan']				= 'HomePelanggan/ulasan';
 $route['registrasi-pelanggan']				= 'HomePelanggan/registrasi';
 
@@ -61,6 +62,8 @@ $route['registrasi-pelanggan']				= 'HomePelanggan/registrasi';
 $route['login-pelanggan'] 				= 'LoginPelanggan/proses';
 $route['logout-pelanggan'] 				= 'LoginPelanggan/logout';
 $route['dashboard-pelanggan']				= 'DashboardPelanggan';
+
+$route['detail-produk/(:any)']				= 'HomePelanggan/produk/$1';
 $route['profile-pelanggan/(:any)']				= 'DashboardPelanggan/profile/$1';
 $route['password-pelanggan/(:any)']				= 'DashboardPelanggan/password/$1';
 $route['my-order'] 	        = 'DashboardPelanggan/order';

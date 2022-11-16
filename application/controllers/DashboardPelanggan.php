@@ -25,6 +25,22 @@ class DashboardPelanggan extends CI_Controller {
 		$this->load->view('pelanggan-page/produk', $data);
 	}
 
+	public function produk($id_produk)
+	{
+		$data['title']	= 'Home';
+		$this->db->select('*');
+		$this->db->from('tb_produk');
+		$this->db->where('id_produk', $id_produk);
+		$data['produk']		= $this->db->get()->row_array();
+		$this->db->select('*');
+		$this->db->from('tb_order');
+		$this->db->join('tb_pelanggan', 'tb_pelanggan.id_pelanggan=tb_order.id_pelanggan');
+		$this->db->where('id_produk', $id_produk);
+		$this->db->where('ulasan !=', NULL);
+		$data['order']		= $this->db->get()->result_array();
+		$this->load->view('pelanggan-page/detail_produk', $data);
+	}
+
 	public function order()
 	{
 		$data['title']	= 'My Order';

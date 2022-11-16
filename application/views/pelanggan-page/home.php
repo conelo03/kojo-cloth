@@ -59,7 +59,7 @@
                 </div>
                 <!-- <p>Rp <?= number_format($p['harga_produk'], 2, '.', ',') ?></p> -->
                 <div class="article-cta">
-                  <a href="<?= base_url('tambah-order-pelanggan/'.$p['id_produk']) ?>">Check Out <i class="fas fa-chevron-right"></i></a>
+                  <a href="<?= base_url('detail-produk-pelanggan/'.$p['id_produk']) ?>">Check Out <i class="fas fa-chevron-right"></i></a>
                 </div>
               </div>
             </article>
