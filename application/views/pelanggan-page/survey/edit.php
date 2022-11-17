@@ -28,31 +28,31 @@
                 <div class="form-group">
                   <label class="d-block">1.	Secara keseluruhan, seberapa puaskah Anda dengan acara ini?</label>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Sangat Puas" id="keseluruhan1" <?= $s['keseluruhan'] == 'Sangat Puas' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="5" id="keseluruhan1" <?= $s['keseluruhan'] == '5' ? 'checked' : '' ?>>
                     <label class="form-check-label" for="keseluruhan1">
                       Sangat Puas
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Puas" id="keseluruhan2" <?= $s['keseluruhan'] == 'Puas' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="4" id="keseluruhan2" <?= $s['keseluruhan'] == '4' ? 'checked' : '' ?>>
                     <label class="form-check-label" for="keseluruhan2">
                       Puas
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Biasa" id="keseluruhan3" <?= $s['keseluruhan'] == 'Biasa' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="3" id="keseluruhan3" <?= $s['keseluruhan'] == '3' ? 'checked' : '' ?>>
                     <label class="form-check-label" for="keseluruhan3">
                       Biasa
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Tidak Puas" id="keseluruhan4" <?= $s['keseluruhan'] == 'Tidak Puas' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="4" id="keseluruhan4" <?= $s['keseluruhan'] == '4' ? 'checked' : '' ?>>
                     <label class="form-check-label" for="keseluruhan4">
                       Tidak Puas
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Sangat Tidak Puas" id="keseluruhan5" <?= $s['keseluruhan'] == 'Sangat Tidak Puas' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="1" id="keseluruhan5" <?= $s['keseluruhan'] == '1' ? 'checked' : '' ?>>
                     <label class="form-check-label" for="keseluruhan5">
                       Sangat Tidak Puas
                     </label>
@@ -63,31 +63,31 @@
                   <div class="form-group col-md-3">
                     <label class="d-block">Tanggal dan Waktu</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Sangat Puas" id="aspek_tanggal1" <?= $s['aspek_tanggal'] == 'Sangat Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="5" id="aspek_tanggal1" <?= $s['aspek_tanggal'] == '5' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_tanggal1">
                         Sangat Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Puas" id="aspek_tanggal2" <?= $s['aspek_tanggal'] == 'Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="4" id="aspek_tanggal2" <?= $s['aspek_tanggal'] == '4' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_tanggal2">
                         Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Biasa" id="aspek_tanggal3" <?= $s['aspek_tanggal'] == 'Biasa' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="3" id="aspek_tanggal3" <?= $s['aspek_tanggal'] == '3' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_tanggal3">
                         Biasa
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Tidak Puas" id="aspek_tanggal4" <?= $s['aspek_tanggal'] == 'Tidak Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="2" id="aspek_tanggal4" <?= $s['aspek_tanggal'] == '2' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_tanggal4">
                         Tidak Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Sangat Tidak Puas" id="aspek_tanggal5" <?= $s['aspek_tanggal'] == 'Sangat Tidak Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="1" id="aspek_tanggal5" <?= $s['aspek_tanggal'] == '1' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_tanggal5">
                         Sangat Tidak Puas
                       </label>
@@ -96,31 +96,31 @@
                   <div class="form-group col-md-3">
                     <label class="d-block">Lokasi</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Sangat Puas" id="aspek_lokasi1" <?= $s['aspek_lokasi'] == 'Sangat Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="5" id="aspek_lokasi1" <?= $s['aspek_lokasi'] == '5' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_lokasi1">
                         Sangat Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Puas" id="aspek_lokasi2" <?= $s['aspek_lokasi'] == 'Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="4" id="aspek_lokasi2" <?= $s['aspek_lokasi'] == '4' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_lokasi2">
                         Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Biasa" id="aspek_lokasi3" <?= $s['aspek_lokasi'] == 'Biasa' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="3" id="aspek_lokasi3" <?= $s['aspek_lokasi'] == '3' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_lokasi3">
                         Biasa
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Tidak Puas" id="aspek_lokasi4" <?= $s['aspek_lokasi'] == 'Tidak Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="2" id="aspek_lokasi4" <?= $s['aspek_lokasi'] == '2' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_lokasi4">
                         Tidak Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Sangat Tidak Puas" id="aspek_lokasi5" <?= $s['aspek_lokasi'] == 'Sangat Tidak Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="1" id="aspek_lokasi5" <?= $s['aspek_lokasi'] == '1' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_lokasi5">
                         Sangat Tidak Puas
                       </label>
@@ -129,31 +129,31 @@
                   <div class="form-group col-md-3">
                     <label class="d-block">Sesi</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Sangat Puas" id="aspek_sesi1" <?= $s['aspek_sesi'] == 'Sangat Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="5" id="aspek_sesi1" <?= $s['aspek_sesi'] == '5' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_sesi1">
                         Sangat Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Puas" id="aspek_sesi2" <?= $s['aspek_sesi'] == 'Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="4" id="aspek_sesi2" <?= $s['aspek_sesi'] == '4' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_sesi2">
                         Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Biasa" id="aspek_sesi3" <?= $s['aspek_sesi'] == 'Biasa' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="3" id="aspek_sesi3" <?= $s['aspek_sesi'] == '3' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_sesi3">
                         Biasa
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Tidak Puas" id="aspek_sesi4" <?= $s['aspek_sesi'] == 'Tidak Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="2" id="aspek_sesi4" <?= $s['aspek_sesi'] == '2' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_sesi4">
                         Tidak Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Sangat Tidak Puas" id="aspek_sesi5" <?= $s['aspek_sesi'] == 'Sangat Tidak Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="1" id="aspek_sesi5" <?= $s['aspek_sesi'] == '1' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="aspek_sesi5">
                         Sangat Tidak Puas
                       </label>
@@ -162,31 +162,31 @@
                   <div class="form-group col-md-3">
                     <label class="d-block">Pembicara</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Sangat Puas" id="pembicara1" <?= $s['pembicara'] == 'Sangat Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="pembicara" value="5" id="pembicara1" <?= $s['pembicara'] == '5' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="pembicara1">
                         Sangat Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Puas" id="pembicara2" <?= $s['pembicara'] == 'Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="pembicara" value="4" id="pembicara2" <?= $s['pembicara'] == '4' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="pembicara2">
                         Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Biasa" id="pembicara3" <?= $s['pembicara'] == 'Biasa' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="pembicara" value="3" id="pembicara3" <?= $s['pembicara'] == '3' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="pembicara3">
                         Biasa
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Tidak Puas" id="pembicara4" <?= $s['pembicara'] == 'Tidak Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="pembicara" value="2" id="pembicara4" <?= $s['pembicara'] == '2' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="pembicara4">
                         Tidak Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Sangat Tidak Puas" id="pembicara5" <?= $s['pembicara'] == 'Sangat Tidak Puas' ? 'checked' : '' ?>>
+                      <input class="form-check-input" type="radio" name="pembicara" value="1" id="pembicara5" <?= $s['pembicara'] == '1' ? 'checked' : '' ?>>
                       <label class="form-check-label" for="pembicara5">
                         Sangat Tidak Puas
                       </label>

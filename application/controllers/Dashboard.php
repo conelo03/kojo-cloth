@@ -50,6 +50,18 @@ class Dashboard extends CI_Controller {
 		$data['agenda']		= $this->db->get()->result_array();
 		$data['json_terjual'] = json_encode($arr_jml);
 		$data['json_produk'] = json_encode($arr_produk);
+
+		$this->db->select_avg('keseluruhan');
+		$this->db->select_avg('aspek_tanggal');
+		$this->db->select_avg('aspek_lokasi');
+		$this->db->select_avg('aspek_sesi');
+		$this->db->select_avg('pembicara');
+		$this->db->from('tb_survey');
+		$survey		= $this->db->get()->row_array();
+		$arr_nilai_survey = [$survey['keseluruhan'], $survey['aspek_tanggal'], $survey['aspek_lokasi'], $survey['aspek_sesi'], $survey['pembicara']];
+		$arr_label_survey = ['Keseluruhan', 'Aspek Tanggal', 'Aspek Lokasi', 'Aspek Sesi', 'Pembicara'];
+		$data['json_nilai_survey'] = json_encode($arr_nilai_survey);
+		$data['json_label_survey'] = json_encode($arr_label_survey);
 		$this->load->view('dashboard', $data);
 	}
 }

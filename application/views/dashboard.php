@@ -216,6 +216,39 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
+              <h4>Grafik Survey</h4>
+            </div>
+            <div class="card-body">
+              <canvas id="surveyChart" height="158"></canvas>
+            </div>
+            <div class="card-footer">
+              Keterangan :
+              <div class="row">
+                <div class="col-md-1">5</div>
+                <div class="col-md-4">: Sangat Baik</div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">4</div>
+                <div class="col-md-4">: Baik</div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">3</div>
+                <div class="col-md-4">: Cukup</div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">2</div>
+                <div class="col-md-4">: Kurang</div>
+              </div>
+              <div class="row">
+                <div class="col-md-1">1</div>
+                <div class="col-md-4">: Buruk</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
               <h4>Data Agenda yang Berjalan</h4>
             </div>
             <div class="card-body">

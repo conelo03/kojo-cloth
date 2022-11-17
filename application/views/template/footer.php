@@ -78,6 +78,54 @@
     });
 
   </script>
+  <script>
+    var ctx = document.getElementById("surveyChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: <?= $json_label_survey ?>,
+        datasets: [{
+          label: 'Point',
+          data: <?= $json_nilai_survey ?>,
+          borderWidth: 2,
+          backgroundColor: 'rgba(63,82,227,.8)',
+          borderWidth: 0,
+          borderColor: 'transparent',
+          pointBorderWidth: 0,
+          pointRadius: 3.5,
+          pointBackgroundColor: 'transparent',
+          pointHoverBackgroundColor: 'rgba(63,82,227,.8)',
+        }]
+      },
+      options: {
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            gridLines: {
+              drawBorder: false,
+              color: '#f2f2f2',
+            },
+            ticks: {
+              beginAtZero: true,
+              stepSize: 1,
+              callback: function(value, index, values) {
+                return value;
+              }
+            }
+          }],
+          xAxes: [{
+            gridLines: {
+              display: false,
+              tickMarkLength: 15,
+            }
+          }]
+        },
+      }
+    });
+
+  </script>
   <script type="text/javascript">
     $(document).ready(function(){
       

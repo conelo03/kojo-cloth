@@ -28,31 +28,31 @@
                 <div class="form-group">
                   <label class="d-block">1.	Secara keseluruhan, seberapa puaskah Anda dengan acara ini?</label>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Sangat Puas" id="keseluruhan1" >
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="5" id="keseluruhan1" >
                     <label class="form-check-label" for="keseluruhan1">
                       Sangat Puas
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Puas" id="keseluruhan2" >
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="4" id="keseluruhan2" >
                     <label class="form-check-label" for="keseluruhan2">
                       Puas
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Biasa" id="keseluruhan3" >
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="3" id="keseluruhan3" >
                     <label class="form-check-label" for="keseluruhan3">
                       Biasa
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Tidak Puas" id="keseluruhan4" >
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="2" id="keseluruhan4" >
                     <label class="form-check-label" for="keseluruhan4">
                       Tidak Puas
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="keseluruhan" value="Sangat Tidak Puas" id="keseluruhan5" >
+                    <input class="form-check-input" type="radio" name="keseluruhan" value="1" id="keseluruhan5" >
                     <label class="form-check-label" for="keseluruhan5">
                       Sangat Tidak Puas
                     </label>
@@ -63,31 +63,31 @@
                   <div class="form-group col-md-3">
                     <label class="d-block">Tanggal dan Waktu</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Sangat Puas" id="aspek_tanggal1" >
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="5" id="aspek_tanggal1" >
                       <label class="form-check-label" for="aspek_tanggal1">
                         Sangat Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Puas" id="aspek_tanggal2" >
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="4" id="aspek_tanggal2" >
                       <label class="form-check-label" for="aspek_tanggal2">
                         Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Biasa" id="aspek_tanggal3" >
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="3" id="aspek_tanggal3" >
                       <label class="form-check-label" for="aspek_tanggal3">
                         Biasa
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Tidak Puas" id="aspek_tanggal4" >
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="2" id="aspek_tanggal4" >
                       <label class="form-check-label" for="aspek_tanggal4">
                         Tidak Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="Sangat Tidak Puas" id="aspek_tanggal5" >
+                      <input class="form-check-input" type="radio" name="aspek_tanggal" value="1" id="aspek_tanggal5" >
                       <label class="form-check-label" for="aspek_tanggal5">
                         Sangat Tidak Puas
                       </label>
@@ -96,31 +96,31 @@
                   <div class="form-group col-md-3">
                     <label class="d-block">Lokasi</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Sangat Puas" id="aspek_lokasi1" >
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="5" id="aspek_lokasi1" >
                       <label class="form-check-label" for="aspek_lokasi1">
                         Sangat Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Puas" id="aspek_lokasi2" >
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="4" id="aspek_lokasi2" >
                       <label class="form-check-label" for="aspek_lokasi2">
                         Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Biasa" id="aspek_lokasi3" >
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="3" id="aspek_lokasi3" >
                       <label class="form-check-label" for="aspek_lokasi3">
                         Biasa
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Tidak Puas" id="aspek_lokasi4" >
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="2" id="aspek_lokasi4" >
                       <label class="form-check-label" for="aspek_lokasi4">
                         Tidak Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="Sangat Tidak Puas" id="aspek_lokasi5" >
+                      <input class="form-check-input" type="radio" name="aspek_lokasi" value="1" id="aspek_lokasi5" >
                       <label class="form-check-label" for="aspek_lokasi5">
                         Sangat Tidak Puas
                       </label>
@@ -129,31 +129,31 @@
                   <div class="form-group col-md-3">
                     <label class="d-block">Sesi</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Sangat Puas" id="aspek_sesi1" >
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="5" id="aspek_sesi1" >
                       <label class="form-check-label" for="aspek_sesi1">
                         Sangat Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Puas" id="aspek_sesi2" >
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="4" id="aspek_sesi2" >
                       <label class="form-check-label" for="aspek_sesi2">
                         Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Biasa" id="aspek_sesi3" >
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="3" id="aspek_sesi3" >
                       <label class="form-check-label" for="aspek_sesi3">
                         Biasa
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Tidak Puas" id="aspek_sesi4" >
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="2" id="aspek_sesi4" >
                       <label class="form-check-label" for="aspek_sesi4">
                         Tidak Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="aspek_sesi" value="Sangat Tidak Puas" id="aspek_sesi5" >
+                      <input class="form-check-input" type="radio" name="aspek_sesi" value="1" id="aspek_sesi5" >
                       <label class="form-check-label" for="aspek_sesi5">
                         Sangat Tidak Puas
                       </label>
@@ -162,31 +162,31 @@
                   <div class="form-group col-md-3">
                     <label class="d-block">Pembicara</label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Sangat Puas" id="pembicara1" >
+                      <input class="form-check-input" type="radio" name="pembicara" value="5" id="pembicara1" >
                       <label class="form-check-label" for="pembicara1">
                         Sangat Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Puas" id="pembicara2" >
+                      <input class="form-check-input" type="radio" name="pembicara" value="4" id="pembicara2" >
                       <label class="form-check-label" for="pembicara2">
                         Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Biasa" id="pembicara3" >
+                      <input class="form-check-input" type="radio" name="pembicara" value="3" id="pembicara3" >
                       <label class="form-check-label" for="pembicara3">
                         Biasa
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Tidak Puas" id="pembicara4" >
+                      <input class="form-check-input" type="radio" name="pembicara" value="2" id="pembicara4" >
                       <label class="form-check-label" for="pembicara4">
                         Tidak Puas
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembicara" value="Sangat Tidak Puas" id="pembicara5" >
+                      <input class="form-check-input" type="radio" name="pembicara" value="1" id="pembicara5" >
                       <label class="form-check-label" for="pembicara5">
                         Sangat Tidak Puas
                       </label>

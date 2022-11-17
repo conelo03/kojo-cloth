@@ -42,11 +42,36 @@
                         <?php 
                           if ($u['rate'] != 0 || $u['rate'] != NULL) {
                             for ($i=1; $i <= 5; $i++) { 
-                              if ($i <= $u['rate']) {?>
+                              if ($i <= round($u['rate'])) {?>
                                 <span class="fa fa-star" style="color: orange"></span>
                               <?php } else { ?>
                                 <span class="fa fa-star"></span>
                               <?php }
+                            }
+                          }
+                        ?>
+                        <?php
+                          if ($u['rate'] != 0 || $u['rate'] != NULL) {
+                            $rate = round($u['rate']);
+                            switch ($rate) {
+                              case 1:
+                                echo "(Buruk)";
+                                break;
+                              case 2:
+                                echo "(Kurang)";
+                                break;
+                              case 3:
+                                echo "(Cukup)";
+                                break;
+                              case 4:
+                                echo "(Baik)";
+                                break;
+                              case 5:
+                                echo "(Sangat Baik)";
+                                break;
+                              default:
+                                echo '';
+                                break;
                             }
                           }
                         ?>
